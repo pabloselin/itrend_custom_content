@@ -178,11 +178,57 @@ function cptui_register_my_taxes() {
 		"query_var" => true,
 		"rewrite" => [ 'slug' => 'tareas', 'with_front' => true, ],
 		"show_admin_column" => true,
-		"show_in_rest" => true,
+		"show_in_rest" => false,
 		"rest_base" => "tareas",
 		"rest_controller_class" => "WP_REST_Terms_Controller",
 		"show_in_quick_edit" => false,
 		];
 	register_taxonomy( "tareas", [ "actor" ], $args );
+
+	/**
+	 * Taxonomy: Acciones GRRD.
+	 */
+
+	$labels = [
+		"name" => __( "Acciones GRRD", "twentytwenty" ),
+		"singular_name" => __( "Acción GRRD", "twentytwenty" ),
+		"menu_name" => __( "Acciones GRRD", "twentytwenty" ),
+		"all_items" => __( "Todas las Acciones GRRD", "twentytwenty" ),
+		"edit_item" => __( "Editar Acción GRRD", "twentytwenty" ),
+		"view_item" => __( "Ver Acción GRRD", "twentytwenty" ),
+		"update_item" => __( "Actualizar nombre de Acción GRRD", "twentytwenty" ),
+		"add_new_item" => __( "Añadir nueva Acción GRRD", "twentytwenty" ),
+		"new_item_name" => __( "Nuevo nombre de Acción GRRD", "twentytwenty" ),
+		"parent_item" => __( "Acción GRRD superior", "twentytwenty" ),
+		"parent_item_colon" => __( "Acción GRRD superior:", "twentytwenty" ),
+		"search_items" => __( "Buscar Acciones GRRD", "twentytwenty" ),
+		"popular_items" => __( "Acciones GRRD más usadas", "twentytwenty" ),
+		"separate_items_with_commas" => __( "Separar Acciones GRRD con coma", "twentytwenty" ),
+		"add_or_remove_items" => __( "Añadir o quitar Acciones GRRD", "twentytwenty" ),
+		"choose_from_most_used" => __( "Escoger entre los más usados", "twentytwenty" ),
+		"not_found" => __( "No encontrado", "twentytwenty" ),
+		"no_terms" => __( "No hay Acciones GRRD", "twentytwenty" ),
+		"items_list_navigation" => __( "Navegación de lista de Acciones GRRD", "twentytwenty" ),
+		"items_list" => __( "Lista de Acciones GRRD", "twentytwenty" ),
+	];
+
+	$args = [
+		"label" => __( "Acciones GRRD", "twentytwenty" ),
+		"labels" => $labels,
+		"public" => true,
+		"publicly_queryable" => true,
+		"hierarchical" => true,
+		"show_ui" => true,
+		"show_in_menu" => true,
+		"show_in_nav_menus" => true,
+		"query_var" => true,
+		"rewrite" => [ 'slug' => 'acciones-grrd', 'with_front' => true, ],
+		"show_admin_column" => true,
+		"show_in_rest" => false,
+		"rest_base" => "acciones-grrd",
+		"rest_controller_class" => "WP_REST_Terms_Controller",
+		"show_in_quick_edit" => false,
+		];
+	register_taxonomy( "acciones_grrd", [ "actor" ], $args );
 }
 add_action( 'init', 'cptui_register_my_taxes' );

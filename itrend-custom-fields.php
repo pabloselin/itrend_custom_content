@@ -8,8 +8,8 @@ function itrend_cmb2_add_metabox() {
 	$prefix = '_itrend_';
 
 	$cmb = new_cmb2_box( array(
-		'id'           => $prefix . 'itrend',
-		'title'        => __( 'Campos adicionales actor', 'itrend' ),
+		'id'           => $prefix . 'itrend_actor_instituciones',
+		'title'        => __( 'INSTITUCIONES', 'itrend' ),
 		'object_types' => array( 'actor' ),
 		'context'      => 'normal',
 		'priority'     => 'default',
@@ -37,25 +37,27 @@ function itrend_cmb2_add_metabox() {
 		),
 	) );
 
-	$cmb->add_field( array(
-		'name' => __( 'Información de contacto', 'itrend' ),
-		'id' => $prefix . 'contacto_section_title',
-		'type' => 'title',
+	$contacto = new_cmb2_box( array(
+		'id'           => $prefix . 'itrend_contacto_actor',
+		'title'        => __( 'INFORMACION DE CONTACTO', 'itrend' ),
+		'object_types' => array( 'actor' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
 	) );
 
-	$cmb->add_field( array(
+	$contacto->add_field( array(
 		'name' => __( 'Nombre de Contacto', 'itrend' ),
 		'id' => $prefix . 'contacto_nombre',
 		'type' => 'text',
 	) );
 
-	$cmb->add_field( array(
+	$contacto->add_field( array(
 		'name' => __( 'Cargo', 'itrend' ),
 		'id' => $prefix . 'contacto_cargo',
 		'type' => 'text',
 	) );
 
-	$cmb->add_field( array(
+	$contacto->add_field( array(
 		'name' => __( 'Teléfono', 'itrend' ),
 		'id' => $prefix . 'contacto_telefono',
 		'type' => 'text',
@@ -66,25 +68,25 @@ function itrend_cmb2_add_metabox() {
 		)
 	) );
 
-	$cmb->add_field( array(
+	$contacto->add_field( array(
 		'name' => __( 'Región', 'itrend' ),
 		'id' => $prefix . 'contacto_region',
 		'type' => 'text'
 	) );
 
-	$cmb->add_field( array(
+	$contacto->add_field( array(
 		'name' => __( 'Comuna', 'itrend' ),
 		'id' => $prefix . 'contacto_comuna',
 		'type' => 'text'
 	) );
 
-	$cmb->add_field( array(
+	$contacto->add_field( array(
 		'name' => __( 'Dirección', 'itrend' ),
 		'id' => $prefix . 'contacto_direccion',
 		'type' => 'text'
 	) );
 
-	$cmb->add_field( array(
+	$contacto->add_field( array(
 		'name' => __( 'Correo', 'itrend' ),
 		'id' => $prefix . 'contacto_correo',
 		'type' => 'text_email',
@@ -94,121 +96,29 @@ function itrend_cmb2_add_metabox() {
 		)
 	) );
 
-	$cmb->add_field( array(
+	$contacto->add_field( array(
 		'name' => __( 'Sitio Web', 'itrend' ),
 		'id' => $prefix . 'contacto_web',
 		'type' => 'text_url',
 	) );
 
-	$cmb->add_field( array(
-		'name' => __( 'Resumen Rol en acciones de GRRD', 'itrend' ),
-		'id' => $prefix . 'resumen_rol',
-		'type' => 'wysiwyg',
-	) );
-
-	$cmb->add_field( array(
-		'name' => __( 'Acciones de GRRD', 'itrend' ),
-		'id' => $prefix . 'accionesgrrd_section_title',
-		'type' => 'title',
-	) );
-
-	$cmb->add_field( array(
-		'name' => __( 'Acciones GRRD Prevención', 'itrend' ),
-		'id' => $prefix . 'acciones_prevencion',
-		'type' => 'multicheck',
-		'select_all_button' => false,
-		'options' => array(
-			'anticipacion' => __( 'Anticipación', 'itrend' ),
-			'mitigacion' => __( 'Mitigación', 'itrend' ),
-			'preparacion' => __( 'Preparación', 'itrend' ),
-			'alerta' => __( 'Alerta', 'itrend' ),
-		),
-	) );
-
-	$cmb->add_field( array(
-		'name' => __( 'Descripción acción de prevención: Anticipación', 'itrend' ),
-		'id' => $prefix . 'descripcion_accion_prevencion_anticipacion',
-		'type' => 'wysiwyg'
-	));
-
-	$cmb->add_field( array(
-		'name' => __( 'Descripción acción de prevención: Mitigación', 'itrend' ),
-		'id' => $prefix . 'descripcion_accion_prevencion_mitigacion',
-		'type' => 'wysiwyg'
-	));
-
-	$cmb->add_field( array(
-		'name' => __( 'Descripción acción de prevención: Preparación', 'itrend' ),
-		'id' => $prefix . 'descripcion_accion_prevencion_preparacion',
-		'type' => 'wysiwyg'
-	));
-
-	$cmb->add_field( array(
-		'name' => __( 'Descripción acción de prevención: Alerta', 'itrend' ),
-		'id' => $prefix . 'descripcion_accion_prevencion_alerta',
-		'type' => 'wysiwyg'
-	));
-
-	$cmb->add_field( array(
-		'name' => __( 'Acciones GRRD Respuesta', 'itrend' ),
-		'id' => $prefix . 'acciones_respuesta',
-		'type' => 'multicheck',
-		'select_all_button' => false,
-		'options' => array(
-			'alarma' => __( 'Alarma', 'itrend' ),
-			//El guion se convierte en dash en la clase correspondiente
-			'operaciones-emergencia' => __( 'Operaciones de emergencia', 'itrend' ),
-		),
-	) );
-
-	$cmb->add_field( array(
-		'name' => __( 'Descripción acción de respuesta: Alarma', 'itrend' ),
-		'id' => $prefix . 'descripcion_accion_respuesta_alarma',
-		'type' => 'wysiwyg'
-	));
-
-	$cmb->add_field( array(
-		'name' => __( 'Descripción acción de respuesta: Operación de emergencia', 'itrend' ),
-		'id' => $prefix . 'descripcion_accion_respuesta_operaciones_emergencia',
-		'type' => 'wysiwyg'
-	));
-
-	$cmb->add_field( array(
-		'name' => __( 'Acciones GRRD Recuperación', 'itrend' ),
-		'id' => $prefix . 'acciones_recuperacion',
-		'type' => 'multicheck',
-		'select_all_button' => false,
-		'options' => array(
-			'rehabilitacion' => __( 'Rehabilitación', 'itrend' ),
-			'reconstruccion' => __( 'Reconstrucción', 'itrend' ),
-		),
-	) );
-
-	$cmb->add_field( array(
-		'name' => __( 'Descripción acción de recuperación: Rehabilitación', 'itrend' ),
-		'id' => $prefix . 'descripcion_accion_recuperacion_rehabilitacion',
-		'type' => 'wysiwyg'
-	));
-
-	$cmb->add_field( array(
-		'name' => __( 'Descripción acción de recuperación: Reconstrucción', 'itrend' ),
-		'id' => $prefix . 'descripcion_accion_recuperacion_reconstruccion',
-		'type' => 'wysiwyg'
-	));
-
+	
 	// Tareas conditional fields
+
+	$tareasbox = new_cmb2_box( array(
+		'id'           => $prefix . 'itrend_tareas_actor',
+		'title'        => __( 'TAREAS', 'itrend' ),
+		'object_types' => array( 'actor' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
+	) );
+
 	$tareas = get_terms( array(
 							'hide_empty' => false,
 							'taxonomy'	 => 'tareas'
 						) );
 
-	$cmb->add_field( array(
-		'name'	=> __('Tareas', 'itrend'),
-		'id'	=> $prefix . 'tareas_title',
-		'type'	=> 'title'
-	));
-
-	$cmb->add_field( array(
+	$tareasbox->add_field( array(
 		'name'	=> __('Asignar Tarea', 'itrend'),
 		'id'	=> $prefix . 'tareas_taxonomy_replacement',
 		'type'	=> 'taxonomy_multicheck',
@@ -217,16 +127,65 @@ function itrend_cmb2_add_metabox() {
 		'text'	=> array(
 			'no_terms_text' => __('No se encontraron tareas', 'itrend')
 		),
+		'query_args'	=> array(
+			'hide_empty'	=> false,
+			'childless'		=> true
+		),
 		'remove_default'	=> true
 	));
 
 	foreach($tareas as $tarea) {
 
-			$cmb->add_field( array(
+			$tareasbox->add_field( array(
 				'name' => __( 'Descripción para tarea: ' . $tarea->name , 'itrend' ),
 				'id' => $prefix . 'descripcion_relacion_tarea_' . $tarea->slug,
 				'type' => 'wysiwyg'
 			));
 
+	}
+
+	// ACCIONES conditional fields
+
+	$accionesbox = new_cmb2_box( array(
+		'id'           => $prefix . 'itrend_acciones_actor',
+		'title'        => __( 'ACCIONES GRRD', 'itrend' ),
+		'object_types' => array( 'actor' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
+	) );
+
+	$accionesbox->add_field( array(
+		'name' => __( 'Resumen Rol en acciones de GRRD', 'itrend' ),
+		'id' => $prefix . 'resumen_rol',
+		'type' => 'wysiwyg',
+	) );
+
+	$acciones = get_terms( array(
+							'hide_empty' => false,
+							'taxonomy'	 => 'acciones_grrd'
+						) );
+
+	$accionesbox->add_field( array(
+		'name'	=> __('Asignar Acción', 'itrend'),
+		'id'	=> $prefix . 'acciones_taxonomy_replacement',
+		'type'	=> 'taxonomy_multicheck',
+		'select_all_button' => false,
+		'taxonomy'	=> 'acciones_grrd',
+		'query_args'	=> array(
+			'hide_empty'	=> false,
+			'childless'		=> true
+		),
+		'text'	=> array(
+			'no_terms_text' => __('No se encontraron acciones', 'itrend')
+		),
+		'remove_default'	=> true
+	));
+
+	foreach($acciones as $accion) {
+			$accionesbox->add_field( array(
+				'name' => __( 'Descripción para Acción GRRD: ' . $accion->name , 'itrend' ),
+				'id' => $prefix . 'descripcion_relacion_accion_' . $accion->slug,
+				'type' => 'wysiwyg'
+			));
 	}
 }
