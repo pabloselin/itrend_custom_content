@@ -60,6 +60,10 @@ function itrend_cmb2_add_metabox() {
 		'id' => $prefix . 'contacto_telefono',
 		'type' => 'text',
 		'default' => '+56',
+		'repeatable'	=> true,
+		'text'	=> array(
+			'add_row_text'	=> 'Añadir otro teléfono'
+		)
 	) );
 
 	$cmb->add_field( array(
@@ -84,6 +88,10 @@ function itrend_cmb2_add_metabox() {
 		'name' => __( 'Correo', 'itrend' ),
 		'id' => $prefix . 'contacto_correo',
 		'type' => 'text_email',
+		'repeatable'	=> true,
+		'text'	=> array(
+			'add_row_text' => 'Añadir otro correo'
+		)
 	) );
 
 	$cmb->add_field( array(
@@ -108,6 +116,7 @@ function itrend_cmb2_add_metabox() {
 		'name' => __( 'Acciones GRRD Prevención', 'itrend' ),
 		'id' => $prefix . 'acciones_prevencion',
 		'type' => 'multicheck',
+		'select_all_button' => false,
 		'options' => array(
 			'anticipacion' => __( 'Anticipación', 'itrend' ),
 			'mitigacion' => __( 'Mitigación', 'itrend' ),
@@ -144,6 +153,7 @@ function itrend_cmb2_add_metabox() {
 		'name' => __( 'Acciones GRRD Respuesta', 'itrend' ),
 		'id' => $prefix . 'acciones_respuesta',
 		'type' => 'multicheck',
+		'select_all_button' => false,
 		'options' => array(
 			'alarma' => __( 'Alarma', 'itrend' ),
 			//El guion se convierte en dash en la clase correspondiente
@@ -167,6 +177,7 @@ function itrend_cmb2_add_metabox() {
 		'name' => __( 'Acciones GRRD Recuperación', 'itrend' ),
 		'id' => $prefix . 'acciones_recuperacion',
 		'type' => 'multicheck',
+		'select_all_button' => false,
 		'options' => array(
 			'rehabilitacion' => __( 'Rehabilitación', 'itrend' ),
 			'reconstruccion' => __( 'Reconstrucción', 'itrend' ),
@@ -201,6 +212,7 @@ function itrend_cmb2_add_metabox() {
 		'name'	=> __('Asignar Tarea', 'itrend'),
 		'id'	=> $prefix . 'tareas_taxonomy_replacement',
 		'type'	=> 'taxonomy_multicheck',
+		'select_all_button' => false,
 		'taxonomy'	=> 'tareas',
 		'text'	=> array(
 			'no_terms_text' => __('No se encontraron tareas', 'itrend')
