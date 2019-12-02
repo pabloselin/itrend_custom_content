@@ -178,9 +178,9 @@ function itrend_cmb2_add_metabox() {
 			'type' => 'select',
 			'show_option_none' => 'Escoge una región para ver las comunas',
 			'options' => array(
-				)
-			) 
-		);
+			)
+		) 
+	);
 
 	endif;
 	
@@ -294,3 +294,27 @@ function itrend_cmb2_add_metabox() {
 		));
 	}
 }
+
+function itrend_tareas_fields( array $meta_boxes) {
+	$prefix = '_itrend_';
+
+	$meta_boxes['tareasbox'] = array(
+		'id'           => $prefix . 'itrend_tareas_fields',
+		'title'        => __( 'Información extra tarea', 'itrend' ),
+		'object_types' => array( 'tareas' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
+		'fields'	   => array(
+			array(
+				'name'	=> __('Nombre oficial', 'itrend'),
+				'type'	=> 'text',
+				'id'	=> $prefix . 'nombre_oficial'
+				)
+			)
+		);
+
+	return $meta_boxes;
+}
+
+add_filter('cmb2-taxonomy_meta_boxes', 'itrend_tareas_fields');
+
