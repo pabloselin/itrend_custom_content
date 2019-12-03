@@ -19,6 +19,7 @@ define( 'ITREND_PLUGIN_VERSION', '0.0.2' );
 include( plugin_dir_path( __FILE__ ) . 'itrend-custom-fields.php' );
 include( plugin_dir_path( __FILE__ ) . 'itrend-custom-posts.php' );
 include( plugin_dir_path( __FILE__ ) . 'itrend-custom-taxonomies.php' );
+include( plugin_dir_path( __FILE__ ) . 'itrend-template-functions.php' );
 
 function itrend_admin_scripts() {
 	wp_register_script( 'fields-logic', plugin_dir_url(__FILE__) . 'itrend-fields-logic.js', array('jquery'), ITREND_PLUGIN_VERSION, false );

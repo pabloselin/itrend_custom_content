@@ -1,4 +1,10 @@
 <?php
+/**
+ * Funciones para generar los campos personalizados
+ * 
+ */
+
+
 
 function itrend_populate_regiones() {
 	$regiones = array(
