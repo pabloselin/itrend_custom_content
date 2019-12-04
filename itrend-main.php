@@ -38,16 +38,19 @@ function itrend_create_regiones_terms() {
 
 	foreach($alcances as $alcance):
 		if( !term_exists( $alcance, 'alcance_territorial' )):
-			wp_insert_term( $alcance, 'alcance_territorial' );
+			if($alcance == 'Regional'):
+				$regionalid = wp_insert_term( $alcance, 'alcance_territorial' );
+				foreach($regiones as $region):
+					$slug = sanitize_title( $region );
+					if( !term_exists( $region, 'alcance_territorial' )):
+						wp_insert_term( $region, 'alcance_territorial', array('slug' => $slug, 'parent' => $regionalid['term_id']) );
+					endif;
+				endforeach;
+			else:
+				wp_insert_term( $alcance, 'alcance_territorial' );
+			endif;
 		endif;
 	endforeach;
+	}
 
-	foreach($regiones as $region):
-		$slug = sanitize_title( $region );
-		if( !term_exists( $region, 'alcance_territorial' )):
-			wp_insert_term( $region, 'alcance_territorial', array('slug' => $slug) );
-		endif;
-	endforeach;
-}
-
-register_activation_hook( __FILE__ , 'itrend_create_regiones_terms' );
+	register_activation_hook( __FILE__ , 'itrend_create_regiones_terms' );

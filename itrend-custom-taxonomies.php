@@ -1,52 +1,5 @@
 <?php
 function cptui_register_my_taxes() {
-
-	/**
-	 * Taxonomy: Tipo de Organización.
-	 */
-
-	$labels = [
-		"name" => __( "Tipo de Organización", "twentytwenty" ),
-		"singular_name" => __( "Tipos de Organización", "twentytwenty" ),
-		"menu_name" => __( "Tipo Organización", "twentytwenty" ),
-		"all_items" => __( "Todos los Tipos de Organización", "twentytwenty" ),
-		"edit_item" => __( "Editar Tipo de Organización", "twentytwenty" ),
-		"view_item" => __( "Ver Tipo de Organización", "twentytwenty" ),
-		"update_item" => __( "Actualizar Tipo de Organización", "twentytwenty" ),
-		"add_new_item" => __( "Añadir nuevo Tipo de Organización", "twentytwenty" ),
-		"new_item_name" => __( "Nuevo Tipo de Organización", "twentytwenty" ),
-		"parent_item" => __( "Sector de Organización", "twentytwenty" ),
-		"parent_item_colon" => __( "Sector de Organización:", "twentytwenty" ),
-		"search_items" => __( "Buscar Tipos de Organización", "twentytwenty" ),
-		"popular_items" => __( "Tipos de Organización más usados", "twentytwenty" ),
-		"separate_items_with_commas" => __( "Separar Tipos de Organización con comas", "twentytwenty" ),
-		"add_or_remove_items" => __( "Añadir o quitar Tipos de Organización", "twentytwenty" ),
-		"choose_from_most_used" => __( "Buscar entre los Tipos de Organización más usados", "twentytwenty" ),
-		"not_found" => __( "No se encontraron Tipos de Organización", "twentytwenty" ),
-		"no_terms" => __( "No hay Tipos de Organización", "twentytwenty" ),
-		"items_list_navigation" => __( "Navegación de lista de Tipos de Organización", "twentytwenty" ),
-		"items_list" => __( "Lista de Tipos de Organización", "twentytwenty" ),
-	];
-
-	$args = [
-		"label" => __( "Tipo de Organización", "twentytwenty" ),
-		"labels" => $labels,
-		"public" => true,
-		"publicly_queryable" => true,
-		"hierarchical" => true,
-		"show_ui" => true,
-		"show_in_menu" => true,
-		"show_in_nav_menus" => true,
-		"query_var" => true,
-		"rewrite" => [ 'slug' => 'tipo-de-organizacion', 'with_front' => true, ],
-		"show_admin_column" => false,
-		"show_in_rest" => true,
-		"rest_base" => "tipo_de_organizacion",
-		"rest_controller_class" => "WP_REST_Terms_Controller",
-		"show_in_quick_edit" => true,
-		];
-	register_taxonomy( "tipo_de_organizacion", [ "actor" ], $args );
-
 	/**
 	 * Taxonomy: Sectores.
 	 */

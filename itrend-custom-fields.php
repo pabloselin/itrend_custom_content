@@ -116,9 +116,49 @@ function itrend_cmb2_add_metabox() {
 		),
 	) );
 
+	$contactopersona = new_cmb2_box( array(
+		'id'           => $prefix . 'itrend_contacto_persona',
+		'title'        => __( 'PERSONA DE CONTACTO', 'itrend' ),
+		'object_types' => array( 'actor' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
+	));
+
+	$contactopersona->add_field( array(
+		'name' => __( 'Nombre de Contacto', 'itrend' ),
+		'id' => $prefix . 'contactopersona_nombre',
+		'type' => 'text',
+	) );
+
+	$contactopersona->add_field( array(
+		'name' => __( 'Cargo', 'itrend' ),
+		'id' => $prefix . 'contactopersona_cargo',
+		'type' => 'text',
+	) );
+
+	$contactopersona->add_field( array(
+		'name' => __( 'Correo Personal', 'itrend' ),
+		'id' => $prefix . 'contactopersona_correo',
+		'type' => 'text_email',
+		'repeatable'	=> true,
+		'text'	=> array(
+			'add_row_text' => 'Añadir otro correo'
+		)
+	) );
+
+	$contactopersona->add_field( array(
+		'name' => __( 'Teléfono / Celular', 'itrend' ),
+		'id' => $prefix . 'contactopersona_telefono',
+		'type' => 'text',
+		'repeatable'	=> true,
+		'text'	=> array(
+			'add_row_text'	=> 'Añadir otro teléfono'
+		)
+	) );
+
 	$contacto = new_cmb2_box( array(
 		'id'           => $prefix . 'itrend_contacto_actor',
-		'title'        => __( 'INFORMACION DE CONTACTO', 'itrend' ),
+		'title'        => __( 'UBICACIÓN Y CONTACTO INSTITUCIONAL', 'itrend' ),
 		'object_types' => array( 'actor' ),
 		'context'      => 'normal',
 		'priority'     => 'default',
@@ -198,7 +238,7 @@ function itrend_cmb2_add_metabox() {
 	) );
 
 	$contacto->add_field( array(
-		'name' => __( 'Correo', 'itrend' ),
+		'name' => __( 'Correo Institucional', 'itrend' ),
 		'id' => $prefix . 'contacto_correo',
 		'type' => 'text_email',
 		'repeatable'	=> true,
