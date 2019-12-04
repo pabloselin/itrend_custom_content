@@ -165,18 +165,6 @@ function itrend_cmb2_add_metabox() {
 	) );
 
 	$contacto->add_field( array(
-		'name' => __( 'Nombre de Contacto', 'itrend' ),
-		'id' => $prefix . 'contacto_nombre',
-		'type' => 'text',
-	) );
-
-	$contacto->add_field( array(
-		'name' => __( 'Cargo', 'itrend' ),
-		'id' => $prefix . 'contacto_cargo',
-		'type' => 'text',
-	) );
-
-	$contacto->add_field( array(
 		'name' => __( 'Teléfono', 'itrend' ),
 		'id' => $prefix . 'contacto_telefono',
 		'type' => 'text',

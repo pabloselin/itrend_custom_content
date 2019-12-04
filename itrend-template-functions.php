@@ -75,6 +75,11 @@ function itrend_get_actor_metadata( $actorid, $field = null) {
 
 
 function itrend_actor_fields_shortcode( $atts ) {
+	
+	// Permite tener la informacion en el frontend rapidamente
+	// Ejemplo [itrend_actor id=120 all=true field=contactopersona_correo]
+	// TODO: Darle formato a la informacion que se devuelve
+
 	$a = shortcode_atts( array(
 		'field' => '',
 		'id' => '',
