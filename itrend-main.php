@@ -3,7 +3,7 @@
  * Plugin Name:      	Contenido personalizado para visualizacion Itrend
  * Plugin URI:       	https://itrend.cl
  * Description:      	Los tipos de contenido, taxonomias y campos personalizados para la visualizacion de actores de Itrend, ademas de algunas utilidades
- * Version:           	0.0.2
+ * Version:           	0.1.4
  * Requires at least: 	5.2
  * Requires PHP:      	7.2
  * Author:            	ArtNumerica / APie
@@ -14,7 +14,8 @@
  * Domain Path:       	/lang
  */
 
-define( 'ITREND_PLUGIN_VERSION', '0.0.2' );
+define( 'ITREND_PLUGIN_VERSION', '0.1.4' );
+define( 'ITREND_PREFIX', '_itrend_');
 
 include( plugin_dir_path( __FILE__ ) . 'itrend-custom-fields.php' );
 include( plugin_dir_path( __FILE__ ) . 'itrend-custom-posts.php' );
@@ -58,7 +59,8 @@ function itrend_create_regiones_terms() {
 	register_activation_hook( __FILE__ , 'itrend_create_regiones_terms' );
 
 function itrend_remove_metaboxes() {
-	 remove_meta_box( 'postcustom' , 'actor' , 'normal' ); //removes custom fields for page
-	  remove_meta_box( 'slugdiv' , 'actor' , 'normal' ); //removes custom fields for page
+	 	remove_meta_box( 'postcustom' , 'actor' , 'normal' ); //removes custom fields for page
+	  	remove_meta_box( 'slugdiv' , 'actor' , 'normal' ); //removes custom fields for page
 	}
+
 add_action( 'admin_menu' , 'itrend_remove_metaboxes' );

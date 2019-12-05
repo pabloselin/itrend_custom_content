@@ -11,6 +11,7 @@ function itrend_get_actor_fields(  ) {
 
 	$actorfields = array(
 		'codigo', //Texto unico
+		'mision', // Texto con formato
 		'institucion_depende', // Array de IDS
 		'contactopersona_nombre', //Texto unico
 		'contactopersona_cargo', //Texto unico
