@@ -144,7 +144,12 @@ function itrend_cmb2_add_metabox() {
 			'no_terms_text' => __('No se encontraron sectores', 'itrend')
 		),
 		'query_args'	=> array(
-			'hide_empty'	=> false
+			'hide_empty'	=> false,
+			'orderby'		=> 'meta_value_num',
+			'meta_query'	=> array(
+								'key'	=> ITREND_PREFIX . 'numero_tarea',
+								'type'	=> 'NUMERIC'
+								)
 		),
 		'remove_default'	=> true
 	));
