@@ -422,7 +422,7 @@ function itrend_cmb2_add_metabox() {
 }
 
 function itrend_tareas_fields( array $meta_boxes) {
-	$prefix = ITREND_P;
+	$prefix = '_itrend_';
 
 	$meta_boxes['tareasbox'] = array(
 		'id'           => $prefix . 'itrend_tareas_fields',
