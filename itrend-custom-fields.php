@@ -110,7 +110,7 @@ function itrend_cmb2_add_metabox() {
 
 	$institucionesbox->add_field( array(
 		'name'    => __( 'Instituciones de cual depende', 'itrend' ),
-		'desc'    => __( 'Arrastra las instituciones desde la izquierda a la derecha para asociarlas a esta organización.', 'itrend' ),
+		'desc'    => __( 'Aprieta en el signo + en las instituciones de la izquierda para asociarlas a esta organización. (También puedes arrastrarlas de la izquierda a la derecha)', 'itrend' ),
 		'id'      =>  $prefix . 'institucion_depende',
 		'type'    => 'custom_attached_posts',
 		'column'  => true, // Output in the admin post-listing as a custom column. https://github.com/CMB2/CMB2/wiki/Field-Parameters#column
@@ -161,7 +161,7 @@ function itrend_cmb2_add_metabox() {
 
 	$alcance_territorialbox->add_field( array(
 		'name'	=> __('Asignar Alcance Territorial', 'itrend'),
-		'id'	=> $prefix . 'sector_taxonomy_replacement',
+		'id'	=> $prefix . 'alcance_taxonomy_replacement',
 		'type'	=> 'taxonomy_multicheck_hierarchical',
 		'select_all_button' => false,
 		'taxonomy'	=> 'alcance_territorial',

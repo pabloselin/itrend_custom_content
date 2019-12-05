@@ -82,3 +82,21 @@ function itrend_remove_metaboxes() {
 	}
 
 add_action( 'admin_menu' , 'itrend_remove_metaboxes' );
+
+function itrend_translate_attached_posts_fields( $translated_text, $text, $domain ) {
+	switch($translated_text):
+		case 'Filter %s':
+			$translated_text = 'Filtrar %s';
+		break;
+		case 'Attached %s':
+			$translated_text = '%s asociados';
+		break;
+		case 'Available %s':
+			$translated_text = '%s disponibles';
+		break;
+	endswitch;
+
+	return $translated_text;
+}
+
+add_filter( 'gettext', 'itrend_translate_attached_posts_fields', 20, 3 );
