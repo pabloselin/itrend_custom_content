@@ -116,131 +116,55 @@ function itrend_cmb2_add_metabox() {
 		),
 	) );
 
-	$contactopersona = new_cmb2_box( array(
-		'id'           => $prefix . 'itrend_contacto_persona',
-		'title'        => __( 'PERSONA DE CONTACTO', 'itrend' ),
+	$sectorbox = new_cmb2_box(
+		array(
+		'id'           => $prefix . 'itrend_tareas_sector',
+		'title'        => __( 'SECTOR', 'itrend' ),
 		'object_types' => array( 'actor' ),
 		'context'      => 'normal',
 		'priority'     => 'default',
-	));
-
-	$contactopersona->add_field( array(
-		'name' => __( 'Nombre de Contacto', 'itrend' ),
-		'id' => $prefix . 'contactopersona_nombre',
-		'type' => 'text',
-	) );
-
-	$contactopersona->add_field( array(
-		'name' => __( 'Cargo', 'itrend' ),
-		'id' => $prefix . 'contactopersona_cargo',
-		'type' => 'text',
-	) );
-
-	$contactopersona->add_field( array(
-		'name' => __( 'Correo Personal', 'itrend' ),
-		'id' => $prefix . 'contactopersona_correo',
-		'type' => 'text_email',
-		'repeatable'	=> true,
-		'text'	=> array(
-			'add_row_text' => 'Añadir otro correo'
 		)
-	) );
-
-	$contactopersona->add_field( array(
-		'name' => __( 'Teléfono / Celular', 'itrend' ),
-		'id' => $prefix . 'contactopersona_telefono',
-		'type' => 'text',
-		'repeatable'	=> true,
-		'text'	=> array(
-			'add_row_text'	=> 'Añadir otro teléfono'
-		)
-	) );
-
-	$contacto = new_cmb2_box( array(
-		'id'           => $prefix . 'itrend_contacto_actor',
-		'title'        => __( 'UBICACIÓN Y CONTACTO INSTITUCIONAL', 'itrend' ),
-		'object_types' => array( 'actor' ),
-		'context'      => 'normal',
-		'priority'     => 'default',
-	) );
-
-	$contacto->add_field( array(
-		'name' => __( 'Teléfono', 'itrend' ),
-		'id' => $prefix . 'contacto_telefono',
-		'type' => 'text',
-		'repeatable'	=> true,
-		'text'	=> array(
-			'add_row_text'	=> 'Añadir otro teléfono'
-		)
-	) );
-
-	$contacto->add_field( array(
-		'name' => __( 'Región', 'itrend' ),
-		'id' => $prefix . 'contacto_region',
-		'type' => 'select',
-		'show_option_none' => 'Escoge una región',
-		'options_cb' => 'itrend_populate_regiones'
-	) );
-
-	
-	$preselected_region = get_post_meta( $postid, $prefix . 'contacto_region', true );
-	$preselected_comuna = get_post_meta( $postid, $prefix . 'contacto_comuna', true );
-	
-	if($preselected_region):
-
-		$prepop_comunas = itrend_populate_comunas();
-		$comunas_options_noajax = array();
-		
-		foreach($prepop_comunas[$preselected_region] as $precomunaoption) {
-			$comunas_options_noajax[$precomunaoption] = $precomunaoption;
-		}
-
-		$contacto->add_field( array(
-			'name' => __( 'Comuna', 'itrend' ),
-			'id' => $prefix . 'contacto_comuna',
-			'type' => 'select',
-			'show_option_none' => false,
-			'options' => $comunas_options_noajax
-		) );
-
-	else:
-
-
-		$contacto->add_field( array(
-			'name' => __( 'Comuna', 'itrend' ),
-			'id' => $prefix . 'contacto_comuna',
-			'type' => 'select',
-			'show_option_none' => 'Escoge una región para ver las comunas',
-			'options' => array(
-			)
-		) 
 	);
 
-	endif;
-	
-
-	$contacto->add_field( array(
-		'name' => __( 'Dirección', 'itrend' ),
-		'id' => $prefix . 'contacto_direccion',
-		'type' => 'text'
-	) );
-
-	$contacto->add_field( array(
-		'name' => __( 'Correo Institucional', 'itrend' ),
-		'id' => $prefix . 'contacto_correo',
-		'type' => 'text_email',
-		'repeatable'	=> true,
+	$sectorbox->add_field( array(
+		'name'	=> __('Asignar Sector', 'itrend'),
+		'id'	=> $prefix . 'sector_taxonomy_replacement',
+		'type'	=> 'taxonomy_multicheck',
+		'select_all_button' => false,
+		'taxonomy'	=> 'sector',
 		'text'	=> array(
-			'add_row_text' => 'Añadir otro correo'
+			'no_terms_text' => __('No se encontraron sectores', 'itrend')
+		),
+		'query_args'	=> array(
+			'hide_empty'	=> false
+		),
+		'remove_default'	=> true
+	));
+
+	$alcance_territorialbox = new_cmb2_box(
+		array(
+		'id'           => $prefix . 'itrend_tareas_alcance_territorial',
+		'title'        => __( 'ALCANCE TERRITORIAL', 'itrend' ),
+		'object_types' => array( 'actor' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
 		)
-	) );
+	);
 
-	$contacto->add_field( array(
-		'name' => __( 'Sitio Web', 'itrend' ),
-		'id' => $prefix . 'contacto_web',
-		'type' => 'text_url',
-	) );
-
+	$alcance_territorialbox->add_field( array(
+		'name'	=> __('Asignar Alcance Territorial', 'itrend'),
+		'id'	=> $prefix . 'sector_taxonomy_replacement',
+		'type'	=> 'taxonomy_multicheck',
+		'select_all_button' => false,
+		'taxonomy'	=> 'alcance_territorial',
+		'text'	=> array(
+			'no_terms_text' => __('No se encontraron alcances territoriales', 'itrend')
+		),
+		'query_args'	=> array(
+			'hide_empty'	=> false
+		),
+		'remove_default'	=> true
+	));
 	
 	// Tareas conditional fields
 
@@ -327,6 +251,132 @@ function itrend_cmb2_add_metabox() {
 			'type' => 'wysiwyg'
 		));
 	}
+
+	$contactopersona = new_cmb2_box( array(
+		'id'           => $prefix . 'itrend_contacto_persona',
+		'title'        => __( 'PERSONA DE CONTACTO', 'itrend' ),
+		'object_types' => array( 'actor' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
+	));
+
+	$contactopersona->add_field( array(
+		'name' => __( 'Nombre de Contacto', 'itrend' ),
+		'id' => $prefix . 'contactopersona_nombre',
+		'type' => 'text',
+	) );
+
+	$contactopersona->add_field( array(
+		'name' => __( 'Cargo', 'itrend' ),
+		'id' => $prefix . 'contactopersona_cargo',
+		'type' => 'text',
+	) );
+
+	$contactopersona->add_field( array(
+		'name' => __( 'Correo Personal', 'itrend' ),
+		'id' => $prefix . 'contactopersona_correo',
+		'type' => 'text_email',
+		'repeatable'	=> true,
+		'text'	=> array(
+			'add_row_text' => 'Añadir otro correo'
+		)
+	) );
+
+	$contactopersona->add_field( array(
+		'name' => __( 'Teléfono / Celular', 'itrend' ),
+		'id' => $prefix . 'contactopersona_telefono',
+		'type' => 'text',
+		'repeatable'	=> true,
+		'text'	=> array(
+			'add_row_text'	=> 'Añadir otro teléfono'
+		)
+	) );
+
+	$contacto = new_cmb2_box( array(
+		'id'           => $prefix . 'itrend_contacto_actor',
+		'title'        => __( 'UBICACIÓN Y CONTACTO INSTITUCIONAL', 'itrend' ),
+		'object_types' => array( 'actor' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
+	) );
+
+	$contacto->add_field( array(
+		'name' => __( 'Correo Institucional', 'itrend' ),
+		'id' => $prefix . 'contacto_correo',
+		'type' => 'text_email',
+		'repeatable'	=> true,
+		'text'	=> array(
+			'add_row_text' => 'Añadir otro correo'
+		)
+	) );
+
+	$contacto->add_field( array(
+		'name' => __( 'Teléfono', 'itrend' ),
+		'id' => $prefix . 'contacto_telefono',
+		'type' => 'text',
+		'repeatable'	=> true,
+		'text'	=> array(
+			'add_row_text'	=> 'Añadir otro teléfono'
+		)
+	) );
+
+	
+	$contacto->add_field( array(
+		'name' => __( 'Sitio Web', 'itrend' ),
+		'id' => $prefix . 'contacto_web',
+		'type' => 'text_url',
+	) );
+
+	$contacto->add_field( array(
+		'name' => __( 'Región', 'itrend' ),
+		'id' => $prefix . 'contacto_region',
+		'type' => 'select',
+		'show_option_none' => 'Escoge una región',
+		'options_cb' => 'itrend_populate_regiones'
+	) );
+
+	
+	$preselected_region = get_post_meta( $postid, $prefix . 'contacto_region', true );
+	$preselected_comuna = get_post_meta( $postid, $prefix . 'contacto_comuna', true );
+	
+	if($preselected_region):
+
+		$prepop_comunas = itrend_populate_comunas();
+		$comunas_options_noajax = array();
+		
+		foreach($prepop_comunas[$preselected_region] as $precomunaoption) {
+			$comunas_options_noajax[$precomunaoption] = $precomunaoption;
+		}
+
+		$contacto->add_field( array(
+			'name' => __( 'Comuna', 'itrend' ),
+			'id' => $prefix . 'contacto_comuna',
+			'type' => 'select',
+			'show_option_none' => false,
+			'options' => $comunas_options_noajax
+		) );
+
+	else:
+
+
+		$contacto->add_field( array(
+			'name' => __( 'Comuna', 'itrend' ),
+			'id' => $prefix . 'contacto_comuna',
+			'type' => 'select',
+			'show_option_none' => 'Escoge una región para ver las comunas',
+			'options' => array(
+			)
+		) 
+	);
+
+	endif;
+	
+
+	$contacto->add_field( array(
+		'name' => __( 'Dirección', 'itrend' ),
+		'id' => $prefix . 'contacto_direccion',
+		'type' => 'text'
+	) );
 }
 
 function itrend_tareas_fields( array $meta_boxes) {
