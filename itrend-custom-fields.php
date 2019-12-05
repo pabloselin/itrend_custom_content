@@ -217,7 +217,7 @@ function itrend_cmb2_add_metabox() {
 		'query_args'	=> array(
 			'hide_empty'	=> false,
 			'childless'		=> true,
-			'orderby'		=> 'meta_value_num'
+			'orderby'		=> 'meta_value_num',
 			'meta_query'	=> array(
 								'key'	=> ITREND_PREFIX . 'numero_tarea',
 								'type'	=> 'NUMERIC'
