@@ -5,11 +5,12 @@ Interfaz de administración para actores de Itrend
 ## Instalación
 
 Este plugin de WordPress depende de los siguientes plugins:
-	- CMB2
-	- CMB2 Conditional Logic
-	- CMB2 Field Type: Attached Posts
-	- CMB2 Taxonomy
-	- Enter Title Here Changer
+	
+	* CMB2
+	* CMB2 Conditional Logic
+	* CMB2 Field Type: Attached Posts
+	* CMB2 Taxonomy
+	* Enter Title Here Changer
 
 Deben estar instalados y activados para tener la funcionalidad completa
 En la activación del plugin se crean automáticamente los términos para la taxonomía de Alcance Territorial
@@ -28,10 +29,10 @@ actor
 
 Se crean además las siguientes taxonomías:
 
-sector
-alcance_territorial
-tareas
-acciones_grrd
+	* sector
+	* alcance_territorial
+	* tareas
+	* acciones_grrd
 
 Todas las taxonomías son jerárquicas
 
