@@ -23,7 +23,7 @@ El plugin crea una serie de custom posts, taxonomías y campos personalizados (c
 
 El tipo de contenido para actores es:
 
-actor
+	actor
 
 ### Taxonomías
 
@@ -41,35 +41,35 @@ Todas las taxonomías son jerárquicas
 
 La lista de los campos es la siguiente:
 
-'codigo', //Texto unico
+	'codigo', //Texto unico
 
-'mision', // Texto con formato
+	'mision', // Texto con formato
 
-'institucion_depende', // Array de IDS
+	'institucion_depende', // Array de IDS
 
-'contactopersona_nombre', //Texto unico
+	'contactopersona_nombre', //Texto unico
 
-'contactopersona_cargo', //Texto unico
+	'contactopersona_cargo', //Texto unico
 
-'contactopersona_correo', //Texto multiple
+	'contactopersona_correo', //Texto multiple
 
-'contactopersona_telefono', //Texto multiple
+	'contactopersona_telefono', //Texto multiple
 
-'contacto_nombre', //Texto unico
+	'contacto_nombre', //Texto unico
 
-'contacto_cargo', //Texto unico
+	'contacto_cargo', //Texto unico
 
-'contacto_telefono', //Texto multiple
+	'contacto_telefono', //Texto multiple
 
-'contacto_region',//Valor de select input,
+	'contacto_region',//Valor de select input,
 
-'contacto_comuna', //Valor de select input,
+	'contacto_comuna', //Valor de select input,
 
-'contacto_direccion', //Texto unico,
+	'contacto_direccion', //Texto unico,
 
-'contacto_correo', // Texto multiple,
+	'contacto_correo', // Texto multiple,
 
-'contacto_web', // Texto unico
+	'contacto_web', // Texto unico
 
 Los campos tienen un prefijo para mayor diferenciación, el prefijo está creado en la constante ITREND_PREFIX
 
@@ -79,25 +79,24 @@ El plugin crea además campos personalizados dinámicos para añadir descriptore
 
 En Tareas:
 
-[prefijo]descripcion_relacion_tarea_[term_slug]
+	[prefijo]descripcion_relacion_tarea_[term_slug]
 
 En Acciones GRRD:
 
-[prefijo]descripcion_relacion_accion_[term_slug]
+	[prefijo]descripcion_relacion_accion_[term_slug]
 
 ## Funciones utilitarias
 
 De momento se proporcionan dos funciones utilitarias para obtener los campos personalizados
 
-*itrend_get_actor_fields()*
-Devuelve los nombres de todos los campos personalizados
+	*itrend_get_actor_fields()*
+	//Devuelve los nombres de todos los campos personalizados
 
-*itrend_get_actor_metadata( $actorid, $field )*
+	*itrend_get_actor_metadata( $actorid, $field )*
+	//Devuelve los campos o campo asociado a un actor basado en su ID
 
-Devuelve los campos o campo asociado a un actor basado en su ID
-
-*itrend_actor_fields_shortcode()* - incompleta
-Muestra toda la información de los campos personalizados en el frontend mediante un shortcode 
+	*itrend_actor_fields_shortcode()* - incompleta
+	//Muestra toda la información de los campos personalizados en el frontend mediante un shortcode 
 
 IMPORTANTE: Las funciones aún no han sido probadas.
 
