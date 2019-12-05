@@ -86,7 +86,7 @@ function itrend_cmb2_add_metabox() {
 	$postid = $_GET['post'];
 	$prefix = '_itrend_';
 
-	$cmb = new_cmb2_box( array(
+	$codigobox = new_cmb2_box( array(
 		'id'           => $prefix . 'itrend_actor_codigo',
 		'title'        => __( 'CÓDIGO O ABREVIACIÓN', 'itrend' ),
 		'object_types' => array( 'actor' ),
@@ -94,7 +94,7 @@ function itrend_cmb2_add_metabox() {
 		'priority'     => 'default',
 	) );
 
-	$cmb->add_field( array(
+	$codigobox->add_field( array(
 		'name' => __( 'Código o Abreviación', 'itrend' ),
 		'id' => $prefix . 'codigo',
 		'type' => 'text_small',
