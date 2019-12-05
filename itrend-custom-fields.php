@@ -304,6 +304,9 @@ function itrend_cmb2_add_metabox() {
 		'repeatable'	=> true,
 		'text'	=> array(
 			'add_row_text' => 'Añadir otro correo'
+		),
+		'attributes' => array(
+			'placeholder'	=> 'info@itrend.cl'
 		)
 	) );
 
@@ -314,6 +317,9 @@ function itrend_cmb2_add_metabox() {
 		'repeatable'	=> true,
 		'text'	=> array(
 			'add_row_text'	=> 'Añadir otro teléfono'
+		),
+		'attributes' => array(
+			'placeholder'	=> '+56212345678'
 		)
 	) );
 
@@ -332,6 +338,9 @@ function itrend_cmb2_add_metabox() {
 		'repeatable'	=> true,
 		'text'	=> array(
 			'add_row_text' => 'Añadir otro correo'
+		),
+		'attributes' => array(
+			'placeholder'	=> 'info@itrend.cl'
 		)
 	) );
 
@@ -342,6 +351,9 @@ function itrend_cmb2_add_metabox() {
 		'repeatable'	=> true,
 		'text'	=> array(
 			'add_row_text'	=> 'Añadir otro teléfono'
+		),
+		'attributes' => array(
+			'placeholder'	=> '+56212345678'
 		)
 	) );
 
@@ -350,6 +362,9 @@ function itrend_cmb2_add_metabox() {
 		'name' => __( 'Sitio Web', 'itrend' ),
 		'id' => $prefix . 'contacto_web',
 		'type' => 'text_url',
+		'attributes' => array(
+			'placeholder'	=> 'https://itrend.cl'
+		)
 	) );
 
 	$contacto->add_field( array(
@@ -418,7 +433,12 @@ function itrend_tareas_fields( array $meta_boxes) {
 				'name'	=> __('Nombre oficial', 'itrend'),
 				'type'	=> 'text',
 				'id'	=> $prefix . 'nombre_oficial'
-				)
+			),
+			array(
+				'name'	=> __('Número de tarea', 'itrend'),
+				'type'	=> 'text_small',
+				'id'	=> $prefix . 'numero_tarea'
+				),
 			)
 		);
 

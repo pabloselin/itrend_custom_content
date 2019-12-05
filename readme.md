@@ -36,6 +36,10 @@ Se crean además las siguientes taxonomías:
 
 Todas las taxonomías son jerárquicas
 
+### Campos personalizados para taxonomias
+
+	nombre_oficial
+	numero_tarea
 
 ### Campos personalizados
 

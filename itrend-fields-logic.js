@@ -9,6 +9,7 @@ window.MySite_CMB2 = window.MySite_CMB2 || {};
         app.$.checkboxPrevencion = $('div[class*="cmb2-id--itrend-acciones"] input[type="checkbox"], div.cmb2-id--itrend-tareas-taxonomy-replacement input[type="checkbox"], div.cmb2-id--itrend-acciones-taxonomy-replacement input[type="checkbox"]');
         app.$.selectRegion = $('select#_itrend_contacto_region');
         app.$.selectComuna = $('select#_itrend_contacto_comuna');
+        app.$.checkboxTareas = $('#cmb2-metabox-_itrend_itrend_tareas_actor input[type="checkbox"]');
     };
  
     app.init = function() {
@@ -28,6 +29,12 @@ window.MySite_CMB2 = window.MySite_CMB2 || {};
                 app.$.selectComuna.append('<option value="' + comunas[i] + '">' + comunas[i] + '</option>');
             }
         })
+
+        $.each(app.$.checkboxTareas, function() {
+            var tareaInfo = itrend_tareas[$(this).val()];
+            console.log(tareaInfo);
+            $(this).next('label').prepend("<strong>" + tareaInfo.numero + ".</strong> ");
+        });
     };
  
     $( document ).ready( app.init );

@@ -28,9 +28,27 @@ function itrend_admin_scripts() {
 	wp_enqueue_script( 'fields-logic' );
 	wp_enqueue_style( 'fields-style' );
 	wp_localize_script( 'fields-logic', 'itrend_fields', itrend_populate_comunas() );
+	wp_localize_script( 'fields-logic', 'itrend_tareas', itrend_tareas_tax_info() );
 }
 
 add_action( 'admin_enqueue_scripts', 'itrend_admin_scripts', 10, 0 );
+
+function itrend_tareas_tax_info() {
+	$tareas = get_terms( array('taxonomy' => 'tareas', 'hide_empty'=> false ) );
+	$tareas_info = array();
+
+	foreach($tareas as $tarea) {
+		$tarea_numero = get_term_meta( $tarea->term_id, ITREND_PREFIX . 'numero_tarea', true );
+		$tarea_nombre = get_term_meta( $tarea->term_id, ITREND_PREFIX . 'nombre_oficial', true);
+		$tareas_info[$tarea->slug] = array(
+						'slug'		=> $tarea->slug,
+						'numero' 	=> $tarea_numero,
+						'nombre-largo'	=> $tarea_nombre
+						);
+	}
+
+	return $tareas_info;
+}
 
 function itrend_create_regiones_terms() {
 	//Cargo las taxonomias antes
