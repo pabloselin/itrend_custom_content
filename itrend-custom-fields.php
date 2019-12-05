@@ -87,8 +87,8 @@ function itrend_cmb2_add_metabox() {
 	$prefix = '_itrend_';
 
 	$cmb = new_cmb2_box( array(
-		'id'           => $prefix . 'itrend_actor_instituciones',
-		'title'        => __( 'INSTITUCIONES', 'itrend' ),
+		'id'           => $prefix . 'itrend_actor_codigo',
+		'title'        => __( 'CÓDIGO O ABREVIACIÓN', 'itrend' ),
 		'object_types' => array( 'actor' ),
 		'context'      => 'normal',
 		'priority'     => 'default',
@@ -100,7 +100,15 @@ function itrend_cmb2_add_metabox() {
 		'type' => 'text_small',
 	) );
 
-	$cmb->add_field( array(
+	$institucionesbox = new_cmb2_box( array(
+		'id'           => $prefix . 'itrend_actor_instituciones',
+		'title'        => __( 'INSTITUCIONES', 'itrend' ),
+		'object_types' => array( 'actor' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
+	));
+
+	$institucionesbox->add_field( array(
 		'name'    => __( 'Instituciones de cual depende', 'itrend' ),
 		'desc'    => __( 'Arrastra las instituciones desde la izquierda a la derecha para asociarlas a esta organización.', 'itrend' ),
 		'id'      =>  $prefix . 'institucion_depende',
