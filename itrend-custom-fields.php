@@ -218,9 +218,7 @@ function itrend_cmb2_add_metabox() {
 			'hide_empty'	=> false,
 			'childless'		=> true,
 			'orderby'		=> 'meta_value_num',
-			'meta_query'	=> array(
-								'key' => ITREND_PREFIX . 'numero_tarea'
-							)	
+			'meta_key'		=> ITREND_PREFIX . 'numero_tarea'
 		),
 		'remove_default'	=> true
 	));
@@ -424,7 +422,7 @@ function itrend_cmb2_add_metabox() {
 }
 
 function itrend_tareas_fields( array $meta_boxes) {
-	$prefix = ITREND_PREFIX;
+	$prefix = ITREND_P;
 
 	$meta_boxes['tareasbox'] = array(
 		'id'           => $prefix . 'itrend_tareas_fields',
