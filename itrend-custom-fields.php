@@ -417,7 +417,10 @@ function itrend_cmb2_add_metabox() {
 	$contacto->add_field( array(
 		'name' => __( 'Dirección', 'itrend' ),
 		'id' => $prefix . 'contacto_direccion',
-		'type' => 'text'
+		'type' => 'text',
+		'attributes'	=> array(
+			'placeholder'	=> 'Av. Vicuña Mackenna 4860'
+		)
 	) );
 }
 
