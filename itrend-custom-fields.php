@@ -216,8 +216,9 @@ function itrend_cmb2_add_metabox() {
 	foreach($tareas as $tarea) {
 
 		$tareasbox->add_field( array(
-			'name' => __( 'Descripción para tarea: ' . $tarea->name , 'itrend' ),
+			'name' => '<span>' . __( 'Descripción para tarea:', 'itrend' ) . '</span>' . $tarea->name,
 			'id' => $prefix . 'descripcion_relacion_tarea_' . $tarea->slug,
+			'desc'	=> $tarea->name,
 			'type' => 'wysiwyg'
 		));
 
@@ -262,7 +263,7 @@ function itrend_cmb2_add_metabox() {
 
 	foreach($acciones as $accion) {
 		$accionesbox->add_field( array(
-			'name' => __( 'Descripción para Acción GRRD: ' . $accion->name , 'itrend' ),
+			'name' => '<span>' . __( 'Descripción para Acción GRRD:' , 'itrend' ) . '</span>' . $accion->name,
 			'id' => $prefix . 'descripcion_relacion_accion_' . $accion->slug,
 			'type' => 'wysiwyg'
 		));
