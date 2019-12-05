@@ -129,7 +129,7 @@ function itrend_cmb2_add_metabox() {
 	$sectorbox->add_field( array(
 		'name'	=> __('Asignar Sector', 'itrend'),
 		'id'	=> $prefix . 'sector_taxonomy_replacement',
-		'type'	=> 'taxonomy_multicheck',
+		'type'	=> 'taxonomy_multicheck_hierarchical',
 		'select_all_button' => false,
 		'taxonomy'	=> 'sector',
 		'text'	=> array(
@@ -154,7 +154,7 @@ function itrend_cmb2_add_metabox() {
 	$alcance_territorialbox->add_field( array(
 		'name'	=> __('Asignar Alcance Territorial', 'itrend'),
 		'id'	=> $prefix . 'sector_taxonomy_replacement',
-		'type'	=> 'taxonomy_multicheck',
+		'type'	=> 'taxonomy_multicheck_hierarchical',
 		'select_all_button' => false,
 		'taxonomy'	=> 'alcance_territorial',
 		'text'	=> array(
