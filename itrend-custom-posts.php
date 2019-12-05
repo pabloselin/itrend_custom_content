@@ -62,7 +62,7 @@ function cptui_register_my_cpts() {
 		"rewrite" => [ "slug" => "actor", "with_front" => true ],
 		"query_var" => true,
 		"menu_icon" => "dashicons-universal-access-alt",
-		"supports" => [ "title", "editor", "thumbnail", "custom-fields", "revisions" ],
+		"supports" => [ "title", "thumbnail", "custom-fields", "revisions" ],
 	];
 
 	register_post_type( "actor", $args );

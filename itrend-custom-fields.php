@@ -165,6 +165,22 @@ function itrend_cmb2_add_metabox() {
 		),
 		'remove_default'	=> true
 	));
+
+	$misionbox = new_cmb2_box(
+		array(
+		'id'           => $prefix . 'itrend_mision',
+		'title'        => __( '¿QUÉ HACE? (MISIÓN)', 'itrend' ),
+		'object_types' => array( 'actor' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
+		)
+	);
+
+	$misionbox->add_field( array(
+		'id'	=> $prefix . 'mision',
+		'type'	=> 'wysiwyg',
+		'name'	=> "¿Qué hace? (Misión)"
+	));
 	
 	// Tareas conditional fields
 
