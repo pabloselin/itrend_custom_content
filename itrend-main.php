@@ -59,6 +59,6 @@ function itrend_create_regiones_terms() {
 
 function itrend_remove_metaboxes() {
 	 remove_meta_box( 'postcustom' , 'actor' , 'normal' ); //removes custom fields for page
-	  remove_meta_box( 'slug' , 'actor' , 'normal' ); //removes custom fields for page
+	  remove_meta_box( 'slugdiv' , 'actor' , 'normal' ); //removes custom fields for page
 	}
 add_action( 'admin_menu' , 'itrend_remove_metaboxes' );
