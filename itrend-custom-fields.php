@@ -218,8 +218,8 @@ function itrend_cmb2_add_metabox() {
 			'hide_empty'	=> false,
 			'childless'		=> true,
 			'orderby'		=> 'meta_value_num',
-			'meta_query'	array(
-							'key' => ITREND_PREFIX . 'numero_tarea'
+			'meta_query'	=> array(
+								'key' => ITREND_PREFIX . 'numero_tarea'
 							)	
 		),
 		'remove_default'	=> true
