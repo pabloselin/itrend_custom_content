@@ -70,7 +70,7 @@ function itrend_populate_comunas() {
 		//13 Magallanes
 		"Región de Magallanes y la Antártica Chilena" => array("Punta Arenas", "Laguna Blanca", "Río Verde", "San Gregorio", "Cabo de Hornos (Ex Navarino)", "Antártica", "Porvenir", "Primavera", "Timaukel", "Natales", "Torres del Paine"),
 		//14 Metropolitana
-		"Región Metropolitana de Santiago" => array("Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "San Joaquín", "San Miguel", "San Ramón", "Vitacura", "Puente Alto", "Pirque", "San José de Maipo", "Colina", "Lampa", "TilTil", "San Bernardo", "Buin", "Calera de Tango", "Paine", "Melipilla", "Alhué", "Curacaví", "María Pinto", "San Pedro", "Talagante", "El Monte", "Isla de Maipo", "Padre Hurtado", "Peñaflor")
+		"Región Metropolitana de Santiago" => array("Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "San Joaquín", "San Miguel", "San Ramón","Santiago", "Vitacura", "Puente Alto", "Pirque", "San José de Maipo", "Colina", "Lampa", "TilTil", "San Bernardo", "Buin", "Calera de Tango", "Paine", "Melipilla", "Alhué", "Curacaví", "María Pinto", "San Pedro", "Talagante", "El Monte", "Isla de Maipo", "Padre Hurtado", "Peñaflor")
 	);
 
 return $comunas;
@@ -321,7 +321,7 @@ function itrend_cmb2_add_metabox() {
 			'add_row_text'	=> 'Añadir otro teléfono'
 		),
 		'attributes' => array(
-			'placeholder'	=> '+56212345678'
+			'placeholder'	=> '56212345678'
 		)
 	) );
 
@@ -355,7 +355,7 @@ function itrend_cmb2_add_metabox() {
 			'add_row_text'	=> 'Añadir otro teléfono'
 		),
 		'attributes' => array(
-			'placeholder'	=> '+56212345678'
+			'placeholder'	=> '56212345678'
 		)
 	) );
 
