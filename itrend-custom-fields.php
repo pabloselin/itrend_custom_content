@@ -38,7 +38,7 @@ function itrend_populate_regiones() {
 
 function itrend_populate_comunas() {
 
-	$comunas = array(
+	$regiones = array(
 		//0 Arica y Parinacota
 		"Región de Arica y Parinacota" => array("Arica", "Camarones", "Putre", "General Lagos"),
 		//1 Tarapaca
@@ -73,7 +73,15 @@ function itrend_populate_comunas() {
 		"Región Metropolitana de Santiago" => array("Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "San Joaquín", "San Miguel", "San Ramón","Santiago", "Vitacura", "Puente Alto", "Pirque", "San José de Maipo", "Colina", "Lampa", "TilTil", "San Bernardo", "Buin", "Calera de Tango", "Paine", "Melipilla", "Alhué", "Curacaví", "María Pinto", "San Pedro", "Talagante", "El Monte", "Isla de Maipo", "Padre Hurtado", "Peñaflor")
 	);
 
-return $comunas;
+$sortedcomunas = array();
+foreach($regiones as $key=>$region) {
+	sort($region);
+	foreach($region as $comuna) {
+		$sortedcomunas[$key][] = $comuna;
+	}
+}
+
+return $sortedcomunas;
 }
 
 function itrend_selectbox_comunas() {
@@ -225,8 +233,9 @@ function itrend_cmb2_add_metabox() {
 
 	foreach($tareas as $tarea) {
 
+		$tarea_number = get_term_meta( $tarea->term_id, '_itrend_numero_tarea', true );
 		$tareasbox->add_field( array(
-			'name' => '<span>' . __( 'Descripción para tarea:', 'itrend' ) . '</span>' . $tarea->name,
+			'name' => '<span>' . __( 'Descripción para tarea:', 'itrend' ) . '</span>' . $tarea_number . '. ' . $tarea->name,
 			'id' => $prefix . 'descripcion_relacion_tarea_' . $tarea->slug,
 			'desc'	=> $tarea->name,
 			'type' => 'wysiwyg'
@@ -263,7 +272,9 @@ function itrend_cmb2_add_metabox() {
 		'taxonomy'	=> 'acciones_grrd',
 		'query_args'	=> array(
 			'hide_empty'	=> false,
-			'childless'		=> true
+			'childless'		=> true,
+			'orderby'		=> 'meta_value_num',
+			'meta_key'		=> ITREND_PREFIX . 'numero_accion'
 		),
 		'text'	=> array(
 			'no_terms_text' => __('No se encontraron acciones', 'itrend')
@@ -443,6 +454,21 @@ function itrend_tareas_fields( array $meta_boxes) {
 				'name'	=> __('Número de tarea', 'itrend'),
 				'type'	=> 'text_small',
 				'id'	=> $prefix . 'numero_tarea'
+				),
+			)
+		);
+
+	$meta_boxes['accionesbox'] = array(
+		'id'           => $prefix . 'itrend_acciones_fields',
+		'title'        => __( 'Información extra acción GRRD', 'itrend' ),
+		'object_types' => array( 'acciones_grrd' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
+		'fields'	   => array(
+			array(
+				'name'	=> __('Número de acción', 'itrend'),
+				'type'	=> 'text_small',
+				'id'	=> $prefix . 'numero_accion'
 				),
 			)
 		);

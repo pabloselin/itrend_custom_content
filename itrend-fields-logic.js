@@ -32,9 +32,10 @@ window.MySite_CMB2 = window.MySite_CMB2 || {};
 
         $.each(app.$.checkboxTareas, function() {
             var tareaInfo = itrend_tareas[$(this).val()];
-            console.log(tareaInfo);
             $(this).next('label').prepend("<strong>" + tareaInfo.numero + ".</strong> ");
         });
+
+
     };
  
     $( document ).ready( app.init );
@@ -46,7 +47,6 @@ function checkChecked() {
 
     jQuery.each(jQuery('div[class*="cmb2-id--itrend-acciones"] input:checked, div.cmb2-id--itrend-tareas-taxonomy-replacement input:checked, div.cmb2-id--itrend-acciones-taxonomy-replacement input:checked'), function() {
         var val = jQuery(this).val();
-        console.log(val);
         jQuery('div.cmb-type-wysiwyg[class*="' + val + '"]').show()
     });
 }
