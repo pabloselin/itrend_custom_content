@@ -45,8 +45,13 @@ function checkChecked() {
     var descFields = jQuery( 'div[class*="itrend-descripcion-accion"], div[class*="itrend-descripcion-relacion-tarea"], div[class*="itrend-descripcion-relacion-accion"]' );
     descFields.hide();
 
-    jQuery.each(jQuery('div[class*="cmb2-id--itrend-acciones"] input:checked, div.cmb2-id--itrend-tareas-taxonomy-replacement input:checked, div.cmb2-id--itrend-acciones-taxonomy-replacement input:checked'), function() {
+    jQuery.each(jQuery('div.cmb2-id--itrend-tareas-taxonomy-replacement input:checked'), function() {
         var val = jQuery(this).val();
-        jQuery('div.cmb-type-wysiwyg[class*="' + val + '"]').show()
+        jQuery('#_itrend_itrend_tareas_actor div.cmb-type-wysiwyg[class*="' + val + '"]').show()
+    });
+
+    jQuery.each(jQuery('div.cmb2-id--itrend-acciones-taxonomy-replacement input:checked'), function() {
+        var val = jQuery(this).val();
+        jQuery('#_itrend_itrend_acciones_actor div.cmb-type-wysiwyg[class*="' + val + '"]').show()
     });
 }

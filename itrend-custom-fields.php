@@ -261,7 +261,11 @@ function itrend_cmb2_add_metabox() {
 
 	$acciones = get_terms( array(
 		'hide_empty' => false,
-		'taxonomy'	 => 'acciones_grrd'
+		'childless'	 => true,
+		'taxonomy'	 => 'acciones_grrd',
+		'orderby'	 => 'meta_value_num',
+		'meta_key'	 => ITREND_PREFIX . 'numero_accion',
+		'order'		 => 'ASC'
 	) );
 
 	$accionesbox->add_field( array(

@@ -123,33 +123,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "itrend-template-functions.php",
-			"settings":
-			{
-				"buffer_size": 2671,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "itrend-custom-taxonomies.php",
-			"settings":
-			{
-				"buffer_size": 8063,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "ejemplos.php",
-			"settings":
-			{
-				"buffer_size": 299,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -243,10 +216,11 @@
 	],
 	"file_history":
 	[
-		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-template-functions.php",
-		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-custom-fields.php",
-		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/readme.md",
 		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-fields-logic.js",
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-custom-fields.php",
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-template-functions.php",
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/ejemplos.php",
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/readme.md",
 		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-custom-posts.php",
 		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-custom-taxonomies.php",
 		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/cmb2-attached-posts/dploy.yaml",
@@ -338,7 +312,7 @@
 	],
 	"find":
 	{
-		"height": 41.0
+		"height": 28.0
 	},
 	"find_in_files":
 	{
@@ -349,9 +323,17 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"santiago",
+			"centro",
+			"56212345678",
+			"telefono",
+			"56212345678",
+			"telefono",
+			"santiago",
+			"centro",
 			"direccion",
 			"arrastra",
 			"attached",
@@ -391,95 +373,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "itrend-template-functions.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2671,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "itrend-custom-taxonomies.php",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 8063,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 927.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "ejemplos.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 299,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								252,
-								252
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -532,15 +427,15 @@
 		"selected_items":
 		[
 			[
+				"custom",
+				"itrend-custom-fields.php"
+			],
+			[
 				"templ",
 				"itrend-template-functions.php"
 			],
 			[
 				"customf",
-				"itrend-custom-fields.php"
-			],
-			[
-				"custom",
 				"itrend-custom-fields.php"
 			],
 			[
@@ -921,16 +816,16 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "cede",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
-				"cede",
-				"~/Documents/WebDev/local_sites/programagores/app/public/wp-content/themes/cedetgore/cedet.sublime-project"
+				"",
+				"~/Documents/WebDev/local_sites/automark/app/public/wp-content/themes/automark/automark.sublime-project"
 			],
 			[
-				"",
-				"~/Documents/WebDev/local_sites/promptbook/app/public/wp-content/themes/prompt/prompt.sublime-project"
+				"cede",
+				"~/Documents/WebDev/local_sites/programagores/app/public/wp-content/themes/cedetgore/cedet.sublime-project"
 			],
 			[
 				"prom",
