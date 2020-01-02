@@ -21,10 +21,11 @@ include( plugin_dir_path( __FILE__ ) . 'itrend-custom-fields.php' );
 include( plugin_dir_path( __FILE__ ) . 'itrend-custom-posts.php' );
 include( plugin_dir_path( __FILE__ ) . 'itrend-custom-taxonomies.php' );
 include( plugin_dir_path( __FILE__ ) . 'itrend-template-functions.php' );
+include( plugin_dir_path( __FILE__ ) . 'itrend-public.php' );
 
 function itrend_admin_scripts() {
-	wp_register_script( 'fields-logic', plugin_dir_url(__FILE__) . 'itrend-fields-logic.js', array('jquery'), ITREND_PLUGIN_VERSION, false );
-	wp_register_style( 'fields-style', plugin_dir_url(__FILE__) . 'itrend-fields-style.css');
+	wp_register_script( 'fields-logic', plugin_dir_url(__FILE__) . 'js/itrend-fields-logic.js', array('jquery'), ITREND_PLUGIN_VERSION, false );
+	wp_register_style( 'fields-style', plugin_dir_url(__FILE__) . 'css/itrend-fields-style.css');
 	wp_enqueue_script( 'fields-logic' );
 	wp_enqueue_style( 'fields-style' );
 	wp_localize_script( 'fields-logic', 'itrend_fields', itrend_populate_comunas() );
@@ -97,6 +98,15 @@ function itrend_translate_attached_posts_fields( $translated_text, $text, $domai
 	endswitch;
 
 	return $translated_text;
+}
+
+function itrend_relevant_taxonomies() {
+	return array(
+		'sector',
+		'alcance_territorial',
+		'tareas',
+		'acciones_grrd'
+	);
 }
 
 add_filter( 'gettext', 'itrend_translate_attached_posts_fields', 20, 3 );

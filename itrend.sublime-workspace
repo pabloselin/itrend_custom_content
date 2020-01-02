@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"itrend",
+				"itrend_filters"
+			],
+			[
+				"itrend_",
+				"itrend_select_taxonomy"
+			],
+			[
+				"checked",
+				"checkedFilters"
+			],
+			[
+				"wp_enque",
+				"wp_enqueue_style"
+			],
+			[
+				"form-check",
+				"form-check-input \tBootstrap 4 Class"
+			],
+			[
+				"enqueue_scr",
+				"wp_enqueue_scripts"
+			],
+			[
+				"plugin_dir",
+				"plugin_dir_url"
+			],
+			[
+				"wp_enqe",
+				"wp_enqueue_style"
+			],
+			[
+				"get_taxonomy",
+				"get_taxonomy_labels"
+			],
+			[
+				"itrend_actor_",
+				"itrend_actor_filters_sector"
+			],
+			[
+				"itrend_actor_fil",
+				"itrend_actor_fields_shortcode"
+			],
+			[
 				"checkbo",
 				"checkboxTareas"
 			],
@@ -80,10 +124,6 @@
 				"proyecto_titulo"
 			],
 			[
-				"wp_enque",
-				"wp_enqueue_script"
-			],
-			[
 				"innovacion_page",
 				"innovacion_page_ids"
 			],
@@ -123,6 +163,80 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-config.php",
+			"settings":
+			{
+				"buffer_size": 2986,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "itrend-main.php",
+			"settings":
+			{
+				"buffer_size": 3837,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "itrend-public.php",
+			"settings":
+			{
+				"buffer_size": 4093,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/itrend-filters-scripts.js",
+			"settings":
+			{
+				"buffer_size": 1680,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "jQuery(document).ready(function($) {"
+			}
+		},
+		{
+			"file": "templates/itrend-filters-frontend.php",
+			"settings":
+			{
+				"buffer_size": 1662,
+				"encoding": "UTF-8",
+				"line_ending": "Unix",
+				"name": "<?php"
+			}
+		},
+		{
+			"file": "itrend-template-functions.php",
+			"settings":
+			{
+				"buffer_size": 2745,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/debug.log",
+			"settings":
+			{
+				"buffer_size": 15508,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "itrend-custom-fields.php",
+			"settings":
+			{
+				"buffer_size": 17343,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -136,6 +250,10 @@
 		"selected_items":
 		[
 			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
 				"ren",
 				"Rename File"
 			],
@@ -146,10 +264,6 @@
 			[
 				"ins",
 				"Package Control: Install Package"
-			],
-			[
-				"rein",
-				"Indentation: Reindent Lines"
 			],
 			[
 				"comm",
@@ -212,10 +326,17 @@
 	},
 	"expanded_folders":
 	[
-		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content"
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content",
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css",
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/js",
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/vendor",
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/vendor/bootstrap-4.4.1-dist",
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/vendor/bootstrap-4.4.1-dist/js"
 	],
 	"file_history":
 	[
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/itrend-filters-styles.css",
+		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/itrend-fields-style.css",
 		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-fields-logic.js",
 		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-custom-fields.php",
 		"/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-template-functions.php",
@@ -326,6 +447,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			">';\n",
+			"$maintaxonomy",
+			"$mainsector",
 			"santiago",
 			"centro",
 			"56212345678",
@@ -373,8 +497,241 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-config.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2986,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2707,
+								2707
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 69.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "itrend-main.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3837,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2898,
+								2898
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1368.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "itrend-public.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4093,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3705,
+								3705
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1501.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/itrend-filters-scripts.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1680,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1289,
+								1289
+							]
+						],
+						"settings":
+						{
+							"auto_name": "jQuery(document).ready(function($) {",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "templates/itrend-filters-frontend.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1662,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								534,
+								534
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<?php",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "itrend-template-functions.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2745,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2745,
+								2745
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 706.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/pablo/Documents/WebDev/local_sites/itrend/app/public/wp-content/debug.log",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15508,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2443,
+								2443
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "itrend-custom-fields.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17343,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12179,
+								12179
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 404.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -426,6 +783,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"deb",
+				"~/Documents/WebDev/local_sites/itrend/app/public/wp-content/debug.log"
+			],
 			[
 				"custom",
 				"itrend-custom-fields.php"
@@ -821,6 +1182,10 @@
 		[
 			[
 				"",
+				"~/Documents/WebDev/local_sites/csdadmision/app/public/wp-content/themes/csd-admision/csdadmision.sublime-project"
+			],
+			[
+				"autom",
 				"~/Documents/WebDev/local_sites/automark/app/public/wp-content/themes/automark/automark.sublime-project"
 			],
 			[

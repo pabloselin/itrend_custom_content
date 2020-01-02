@@ -92,7 +92,7 @@ add_action( 'cmb2_init', 'itrend_cmb2_add_metabox' );
 function itrend_cmb2_add_metabox() {
 
 	$postid = $_GET['post'];
-	$prefix = '_itrend_';
+	$prefix = ITREND_PREFIX;
 
 	$codigobox = new_cmb2_box( array(
 		'id'           => $prefix . 'itrend_actor_codigo',

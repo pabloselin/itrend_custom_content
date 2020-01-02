@@ -96,3 +96,5 @@ function itrend_actor_fields_shortcode( $atts ) {
 	return $fields;
 }
 
+add_shortcode( 'itrend_actor_fields', 'itrend_actor_fields_shortcode' );
+

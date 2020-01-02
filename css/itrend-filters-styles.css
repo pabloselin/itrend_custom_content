@@ -1,0 +1,31 @@
+#itrend-filters .child-term {
+	margin-left: 12px;
+}
+
+#itrend-filters .status-row {
+	margin-bottom: 24px;
+}
+
+#itrend-filters .form-check-input {
+	margin-right: 12px;
+}
+
+#itrend_table_results td.actor_name {
+	font-weight: bold;
+}
+
+#itrend_table_results td.actor_name span.codigo {
+	display: block;
+}
+
+#itrend-filters #accordion-filters .card-header {
+	cursor: pointer;
+}
+
+#itrend-filters #accordion-filters .card-header i {
+	float: right;
+}
+
+#itrend-filters #accordion-filters .card-header.collapsed i {
+	transform: rotate(180deg);
+}
