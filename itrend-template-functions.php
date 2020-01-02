@@ -97,4 +97,34 @@ function itrend_actor_fields_shortcode( $atts ) {
 }
 
 add_shortcode( 'itrend_actor_fields', 'itrend_actor_fields_shortcode' );
+ 
 
+function itrend_contact_field( $postid, $field, $icon, $single = true, $link = false ) {
+	
+	$postmeta = get_post_meta($postid, $field, $single);	
+	$output = '';
+
+	if( is_array($postmeta) ):	
+
+		$output .= '<div class="fields-info fields-info-multiple">';
+
+		foreach($postmeta as $fieldcontent):
+			foreach($fieldcontent as $fielditem):
+				$output .= '<div>' . $fielditem . '<i class="fa ' . $icon . '"></i></div>';
+			endforeach;
+		endforeach;
+
+		$output .= '</div>';
+
+	else:
+
+		$output .= '<div class="fields-info fields-info-single">' . $postmeta . '<i class="fa fa-fw ' . $icon . '"></i></div>';
+
+	endif;
+
+	return $output;
+}
+
+function itrend_contact_fields_content( $content, $icon ) {
+	return $content . '<i class="fa fa-fw' . $icon . '"></i>';
+}

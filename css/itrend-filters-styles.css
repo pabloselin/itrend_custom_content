@@ -29,3 +29,7 @@
 #itrend-filters #accordion-filters .card-header.collapsed i {
 	transform: rotate(180deg);
 }
+
+.ficha-actor .info-right {
+	text-align: right;
+}

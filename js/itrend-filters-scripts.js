@@ -73,9 +73,13 @@ jQuery(document).ready(function($) {
 	}
 
 	function itrendBuildIdsTable( json ) {
-		console.log(json);
+		
+		const headers = new Headers({
+			'Content-Type': 'application/json',
+            'X-WP-Nonce': itrend_filters.nonce
+		});
 
-		var ids = array();
+		var ids = [];
 
 		for(var i = 0; i < json.length; i++) {
 			ids.push(json[i].id);
@@ -84,6 +88,18 @@ jQuery(document).ready(function($) {
 		var queryUrl = itrend_filters.ids_url + '?items=' + ids.join(',');
 
 		console.log(queryUrl, 'idsqueryUrl:');
+
+		fetch(queryUrl , {
+			method: 'get',
+			headers: headers,
+			credentials: 'same-origin'
+		})
+		.then(function(response) {
+			return response.json();
+		})
+		.then(function(itrendJson) {
+			itrendPopulateTable(itrendJson);
+		});
 	}
 
 	function itrendBuildQuery() {
@@ -151,27 +167,7 @@ jQuery(document).ready(function($) {
 		}
 	}
 
-	function itrendPopulateSearchTable(json) {
-		console.log(json);
-		var table = $('#itrend_table_results > tbody.results');
-		var resultsCount = $('#itrend_results_count');
-		var messages = $('#itrend_messages');
-		table.empty();
-		if(json.length > 0) {
-			
-			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando ' + json.length + ' actores');
-
-			for(var i = 0; i < json.length; i++) {
-				table.append('<tr><td>' + json[i].id + '</td></tr>');
-				//console.log(itrendRenderRow(json[i]));
-			}
-		} else {
-
-			messages.empty().append('<div class="alert alert-warning" role="alert">No se encontraron actores</div>');
-			
-		}
-	}
-
+	
 	function itrendRenderRow(data) {
 		var tableRowTemplate = `<tr>
 									<td class="actor_name">

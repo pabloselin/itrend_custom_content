@@ -3,7 +3,7 @@
 
 function itrend_enqueue_filters_js() {
 	global $post;
-	if( is_a( $post, 'WP_Post') && has_shortcode( $post->post_content, 'itrend_actor_filters' )) {
+	if( is_a( $post, 'WP_Post') && has_shortcode( $post->post_content, 'itrend_actor_filters' ) || is_a( $post, 'WP_Post') && is_singular('actor')) {
 		wp_deregister_script( 'jquery' );
 		wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.4.1.slim.min.js', array(), '3.4.1', false );
 		wp_enqueue_script( 'jquery' );
@@ -27,6 +27,21 @@ function itrend_enqueue_filters_js() {
 
 add_action( 'wp_enqueue_scripts', 'itrend_enqueue_filters_js', 10, 0 );
 
+
+//Filter the content for single actor posts
+function itrend_filter_single_actor( $single )  {
+	global $wp_query, $post;
+
+	if(is_singular( 'actor' )) {
+		
+		$single = plugin_dir_path( __FILE__ ) . 'templates/itrend-ficha-actor.php';	
+
+	}
+
+	return $single;
+}
+
+add_filter( 'single_template', 'itrend_filter_single_actor',10, 1 );
 
 //Select options
 
