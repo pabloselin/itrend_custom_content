@@ -3,25 +3,31 @@
 
 function itrend_enqueue_filters_js() {
 	global $post;
-	if( is_a( $post, 'WP_Post') && has_shortcode( $post->post_content, 'itrend_actor_filters' ) || is_a( $post, 'WP_Post') && is_singular('actor')) {
+	if( is_a( $post, 'WP_Post') && has_shortcode( $post->post_content, 'itrend_actor_filters' ) || is_a( $post, 'WP_Post') && is_singular('actor') || is_post_type_archive('actor') ) {
 		wp_deregister_script( 'jquery' );
 		wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.4.1.slim.min.js', array(), '3.4.1', false );
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_style( 'itrend_filters_styles', plugin_dir_url( __FILE__ ) . 'css/itrend-filters-styles.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 		//wp_enqueue_style( 'itrend_bootstrap_grid', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 		wp_enqueue_style( 'itrend_bootstrap_css', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
-		wp_enqueue_script( 'itrend_filters_scripts', plugin_dir_url(__FILE__) . 'js/itrend-filters-scripts.js' , array('squirrely'), ITREND_PLUGIN_VERSION, false );
-		wp_enqueue_script( 'itrend_bootstrap_js', plugin_dir_url(__FILE__) . 'vendor/bootstrap-4.4.1-dist/js/bootstrap.min.js' , array('jquery', 'popper'), ITREND_PLUGIN_VERSION, false );
-		wp_enqueue_script( 'squirrely', 'https://cdn.jsdelivr.net/npm/squirrelly@7.5.0/dist/squirrelly.min.js', array(), false, false );
+		if(has_shortcode( $post->post_content, 'itrend_actor_filters' ) || is_post_type_archive('actor') ):
+		
+			wp_enqueue_script( 'itrend_filters_scripts', plugin_dir_url(__FILE__) . 'js/itrend-filters-scripts.js' , array('squirrely'), ITREND_PLUGIN_VERSION, false );
+			wp_enqueue_script( 'itrend_bootstrap_js', plugin_dir_url(__FILE__) . 'vendor/bootstrap-4.4.1-dist/js/bootstrap.min.js' , array('jquery', 'popper'), ITREND_PLUGIN_VERSION, false );
+			wp_enqueue_script( 'squirrely', 'https://cdn.jsdelivr.net/npm/squirrelly@7.5.0/dist/squirrelly.min.js', array(), false, false );
+			wp_localize_script( 'itrend_filters_scripts', 'itrend_filters', array(
+				'taxonomies' 	=> itrend_relevant_taxonomies(),
+				'nonce'	  		=> wp_create_nonce( 'wp_rest' ),
+				'rest_url'	  	=> rest_url( 'itrend/v1/actores' ),
+				'search_url'	=> rest_url('relevanssi/v1/search'),
+				'ids_url'		=> rest_url('itrend/v1/ids')
+			));
+		
+		endif;
+
 		wp_enqueue_script( 'fontawesome', 'https://kit.fontawesome.com/14643ca681.js', array(), '5', false );
 		wp_enqueue_script( 'popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', array(), false, false );
-		wp_localize_script( 'itrend_filters_scripts', 'itrend_filters', array(
-			'taxonomies' 	=> itrend_relevant_taxonomies(),
-			'nonce'	  		=> wp_create_nonce( 'wp_rest' ),
-			'rest_url'	  	=> rest_url( 'itrend/v1/actores' ),
-			'search_url'	=> rest_url('relevanssi/v1/search'),
-			'ids_url'		=> rest_url('itrend/v1/ids')
-		));
+		
 	}
 }
 
@@ -35,6 +41,10 @@ function itrend_filter_single_actor( $single )  {
 	if(is_singular( 'actor' )) {
 		
 		$single = plugin_dir_path( __FILE__ ) . 'templates/itrend-ficha-actor.php';	
+
+	} elseif(has_shortcode( $post->post_content, 'itrend_actor_filters' )) {
+
+		$single = plugin_dir_path( __FILE__ ) . 'templates/itrend-filters-frontend.php';
 
 	}
 
@@ -118,6 +128,17 @@ function itrend_actor_filters_output_shortcode( $atts ) {
 }
 
 add_shortcode( 'itrend_actor_filters', 'itrend_actor_filters_output_shortcode' );
+
+function itrend_actor_archive_filter( $archive_template ) {
+
+	if(is_post_type_archive('actor')) {
+		$archive_template = plugin_dir_path( __FILE__ ) . 'templates/itrend-filters-frontend.php';
+	}
+
+	return $archive_template;
+}
+
+add_filter('archive_template', 'itrend_actor_archive_filter', 10, 1);
 
 function itrend_filter_actor_tax( $request ) {
 

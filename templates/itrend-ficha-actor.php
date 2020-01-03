@@ -1,33 +1,38 @@
-<?php get_header();?>
+<?php include( plugin_dir_path( __FILE__ ) . '/itrend-header.php');?>
 
-<article class="ficha-actor">
+<article id="ficha-actor-<?php the_ID();?>" class="ficha-actor">
 	<div class="container">
 		<header class="actor-header">
 			<h2 class="codigo"><?php echo get_post_meta($post->ID, ITREND_PREFIX . 'codigo', true);?></h2>
 			<h1 class="actor-longname"><?php the_title();?></h1>
 			<div class="row info-header">
 				<div class="col-md-6 info-left">
+					
+					<div class="sector">
+						<?php echo itrend_plain_terms('sector', $post->ID);?>
+					</div>
+
 					<?php 
-						$instituciones = get_post_meta( $post->ID, ITREND_PREFIX . 'institucion_depende', false);
+						$instituciones = get_post_meta( $post->ID, ITREND_PREFIX . 'institucion_depende', true);
 						
-						if($instituciones):
+						if($instituciones):?>
+							Depende de: <br>
+							<?php
 							foreach($instituciones as $institucion):?>
 							
-							<div class="institucion_depende">
-								<h3>
+							
+								<p class="institucion-depende">
 									<a href="<?php echo get_permalink($institucion);?>">
 										<?php echo get_the_title($institucion);?>	
 									</a>
-								</h3>
-							</div>
+								</p>
+							
 
 							<?php
 							endforeach;
 						endif;
 					?>
-					<div class="sector">
-						<?php echo itrend_plain_terms('sector', $post->ID);?>
-					</div>
+					
 
 					<div class="mision-content">
 					<?php 
@@ -36,26 +41,30 @@
 					?>
 					</div>
 				</div>
-				<div class="col-md-6 info-right">
-					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_correo', 'fa-envelope', false );?>
-					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_telefono', 'fa-mobile', false );?>
-					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_web', 'fa-globe', true, true );?>
-					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_direccion', 'fa-map-marker-alt', true, true );?>
-					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_comuna', 'fa-map-marker-alt', true, true );?>
-					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_region', 'fa-map-marker-alt', true, true );?>
+				<div class="col-md-6 info-right itrend-datos-contacto">
+					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_correo', 'fa-envelope', false, false );?>
+					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_telefono', 'fa-mobile', false, false);?>
+					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_web', 'fa-globe', true, true);?>
+					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_direccion', 'fa-map-marker-alt', true, false);?>
+					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_comuna', 'fa-map-marker-alt', true, false );?>
+					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_region', 'fa-map-marker-alt', true, false );?>
 
-					<?php if(is_user_logged_in()):?>
-						<div class="info-private">
-								<h5>Información privada</h5>
-								<span class="subtitle">(solo para usuarios registrados del sitio)</span>
-								<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_nombre', 'fa-user', true );?>
-								<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_cargo', 'fa-mobile', true );?>
-								<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_correo', 'fa-envelope', false );?>
-								<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_telefono', 'fa-mobile', false );?>
-						</div>
-					<?php endif;?>
 				</div>
 			</div>
+
+				<?php if(is_user_logged_in()):?>
+						<div class="info-private row">
+								<div class="col-md-6">
+									<h5>Información privada</h5>
+									<span class="subtitle">(visible solo para usuarios registrados del sitio)</span>
+									<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_nombre', 'fa-user', true );?>
+									<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_cargo', 'fa-mobile', true );?>
+									<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_correo', 'fa-envelope', false );?>
+									<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_telefono', 'fa-mobile', false );?>
+								</div>
+						</div>
+					<?php endif;?>
+
 		</header>
 		
 		<?php 
@@ -65,7 +74,8 @@
 							);?>
 		<?php 
 		foreach($taxonomies as $taxonomy):
-		?>	
+			if(has_term( '', $taxonomy )):
+			?>	
 			<?php if($taxonomy == 'acciones_grrd'):
 				$resumenrol = get_post_meta( $post->ID, ITREND_PREFIX . 'resumen_rol', true );
 				?>
@@ -122,11 +132,17 @@
 					?>
 				</div>
 			</div>
-		<?php 
+		<?php
+		//End check if has any term in taxonomy 
+		endif;
+		//End taxonomy cycle
 		endforeach;
 		?>
-	</div>
 
+		<div class="link-archive">
+			<a href="<?php echo get_post_type_archive_link( 'actor' );?>" class="btn btn-block btn-default">Volver a listado de actores</a>
+		</div>
+	</div>
 </article>
 
-<?php get_footer();?>
+<?php include( plugin_dir_path( __FILE__ ) . '/itrend-footer.php');?>

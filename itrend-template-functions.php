@@ -103,28 +103,36 @@ function itrend_contact_field( $postid, $field, $icon, $single = true, $link = f
 	
 	$postmeta = get_post_meta($postid, $field, $single);	
 	$output = '';
+	
+	if( !empty($postmeta)) {
 
-	if( is_array($postmeta) ):	
+		if( is_array($postmeta) ):	
 
 		$output .= '<div class="fields-info fields-info-multiple">';
 
 		foreach($postmeta as $fieldcontent):
 			foreach($fieldcontent as $fielditem):
-				$output .= '<div>' . $fielditem . '<i class="fa ' . $icon . '"></i></div>';
+				$output .= '<div>' . itrend_contact_fields_content( $fielditem, $icon, $link) . '</div>';
 			endforeach;
 		endforeach;
 
 		$output .= '</div>';
 
-	else:
+		else:
 
-		$output .= '<div class="fields-info fields-info-single">' . $postmeta . '<i class="fa fa-fw ' . $icon . '"></i></div>';
+			$output .= '<div class="fields-info fields-info-single">' . itrend_contact_fields_content($postmeta, $icon, $link) . '</div>';
 
-	endif;
+		endif;
+
+	}
 
 	return $output;
 }
 
-function itrend_contact_fields_content( $content, $icon ) {
-	return $content . '<i class="fa fa-fw' . $icon . '"></i>';
+function itrend_contact_fields_content( $content, $icon, $link ) {
+	if($link == true):
+		return '<a href="'. $content .'" target="_blank">' . $content . '<i class="fa fa-fw ' . $icon . '"></i></a>';
+	else:
+		return $content . '<i class="fa fa-fw ' . $icon . '"></i>';
+	endif;
 }
