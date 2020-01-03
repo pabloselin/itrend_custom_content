@@ -88,3 +88,7 @@ body#itrend-vis {
 	color: #555;
 	font-style: italic;
 }
+
+#itrend-vis-main-header {
+	margin-top: 24px;
+}

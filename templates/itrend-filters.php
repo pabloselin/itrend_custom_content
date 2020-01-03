@@ -3,10 +3,12 @@
 ?>
 <div class="container-fluid" id="itrend-filters">
 	<div class="row">
-		<h1>Buscador de Actores</h1>
+		<div class="col-md-12">
+			<h1>Buscador de Actores</h1>
+		</div>
 	</div>
 	<div class="row status-row">
-		<div class="col-md-4">
+		<div class="col-md-3">
 			
 		</div>
 		<div class="col-md-6">
