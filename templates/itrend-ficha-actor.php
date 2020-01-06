@@ -140,7 +140,7 @@
 		?>
 
 		<div class="link-archive">
-			<a href="<?php echo add_query_arg('f', 'filtro', get_post_type_archive_link( 'actor' ) );?>" class="btn btn-block btn-default">Volver a listado de actores</a>
+			<a href="<?php echo add_query_arg('f', 'filtro', get_post_type_archive_link( 'actor' ) );?>" class="btn btn-block btn-primary">Volver al buscador de actores</a>
 		</div>
 	</div>
 </article>
