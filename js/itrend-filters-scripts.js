@@ -162,7 +162,7 @@ jQuery(document).ready(function($) {
 			}
 		} else {
 
-			resultCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando 0 actores');
+			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando 0 actores');
 			messages.empty().append('<div class="alert alert-warning" role="alert">No se encontraron actores</div>');
 			
 		}
