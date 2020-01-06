@@ -10,6 +10,13 @@ body#itrend-vis {
     margin-left: auto;
 }
 
+#itrend-vis .itrend-tabs a {
+	border-radius: 0;
+	background-color: #26a69a;
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
 #itrend-vis .itrend-tabs a:visited {
 	color: white;
 }

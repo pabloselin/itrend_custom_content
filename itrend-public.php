@@ -105,6 +105,8 @@ function itrend_select_taxonomy_field( $taxonomy, $childonly = false ) {
 function itrend_render_checkbox_field($taxonomy, $slug, $name, $child = false) {
 	$term = get_term_by( 'slug', $slug, $taxonomy );
 	$term_meta = get_term_meta( $term->term_id, ITREND_PREFIX . 'numero_tarea', true );
+
+	$name = ($child == true ) ? $name : mb_strtoupper($name);
 	
 	if($term_meta) {
 		$final_name = $term_meta . '.' . $name;

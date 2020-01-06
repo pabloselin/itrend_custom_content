@@ -11,6 +11,8 @@ Este plugin de WordPress depende de los siguientes plugins:
 	* CMB2 Field Type: Attached Posts
 	* CMB2 Taxonomy
 	* Enter Title Here Changer
+	* Relevanssi
+	* Rest API for relevanssi
 
 Deben estar instalados y activados para tener la funcionalidad completa
 En la activación del plugin se crean automáticamente los términos para la taxonomía de Alcance Territorial
