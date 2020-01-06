@@ -2,6 +2,18 @@ body#itrend-vis {
 	background-color: #F1F1F1;
 }
 
+#itrend-vis .container-fluid {
+	width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#itrend-vis .itrend-tabs a:visited {
+	color: white;
+}
+
 #itrend-filters .child-term {
 	margin-left: 12px;
 }

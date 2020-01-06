@@ -153,7 +153,7 @@ jQuery(document).ready(function($) {
 		var messages = $('#itrend_messages');
 		table.empty();
 		if(json.length > 0) {
-			
+			messages.empty();
 			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando ' + json.length + ' actores');
 
 			for(var i = 0; i < json.length; i++) {
@@ -162,6 +162,7 @@ jQuery(document).ready(function($) {
 			}
 		} else {
 
+			resultCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando 0 actores');
 			messages.empty().append('<div class="alert alert-warning" role="alert">No se encontraron actores</div>');
 			
 		}
