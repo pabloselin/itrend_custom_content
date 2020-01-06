@@ -17,6 +17,10 @@
 define( 'ITREND_PLUGIN_VERSION', '0.1.5' );
 define( 'ITREND_PREFIX', '_itrend_');
 
+$pluginurl = plugin_dir_url(__FILE__);
+
+define('ITREND_PLUGIN_URL',$pluginurl);
+
 include( plugin_dir_path( __FILE__ ) . 'itrend-custom-fields.php' );
 include( plugin_dir_path( __FILE__ ) . 'itrend-custom-posts.php' );
 include( plugin_dir_path( __FILE__ ) . 'itrend-custom-taxonomies.php' );

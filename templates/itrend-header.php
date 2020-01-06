@@ -12,17 +12,17 @@
 	<header id="itrend-vis-main-header" class="container-fluid">
 		<div class="row justify-content-end">
 			<div class="col-md-6">
-				<nav class="itrend-tabs">
-					<ul class="nav nav-pills nav-fill">
+				<div class="itrend-tabs">
+					
 						
-						<li class="nav-item">
-							<a class="nav-link <?php echo ($function == 'visualizacion'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'visualizacion', get_post_type_archive_link( 'actor' ));?>">Visualización de actores</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link <?php echo ($function == 'filtro'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'filtro', get_post_type_archive_link( 'actor' ));?>">Listado de actores</a>
-						</li>
-					</ul>
-				</nav>
+						
+						<a class="btn btn-primary waves-light <?php echo ($function == 'visualizacion'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'visualizacion', get_post_type_archive_link( 'actor' ));?>">Visualización de actores</a>
+						
+						
+						<a class="btn btn-primary waves-light <?php echo ($function == 'filtro'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'filtro', get_post_type_archive_link( 'actor' ));?>">Listado de actores</a>
+						
+					
+				</div>
 			</div>
 		</div>
 	</header>

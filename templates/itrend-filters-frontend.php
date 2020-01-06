@@ -5,7 +5,8 @@ $filter = $_GET['f'];
 if($filter == 'filtro'):
 	include( plugin_dir_path( __FILE__ ) . '/itrend-filters.php');
 elseif($filter == 'visualizacion'):
-	include( plugin_dir_path( __FILE__ ) . '/itrend-visualization.php');
+	include( plugin_dir_path( __FILE__ ) . 'network.php' );
+	//include( plugin_dir_path( __FILE__ ) . '/itrend-visualization.php');
 endif;
 ?>
 

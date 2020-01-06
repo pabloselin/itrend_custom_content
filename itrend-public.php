@@ -9,20 +9,23 @@ function itrend_enqueue_filters_js() {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_style( 'itrend_filters_styles', plugin_dir_url( __FILE__ ) . 'css/itrend-filters-styles.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 		//wp_enqueue_style( 'itrend_bootstrap_grid', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
-		wp_enqueue_style( 'itrend_bootstrap_css', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
-		if(has_shortcode( $post->post_content, 'itrend_actor_filters' ) || is_post_type_archive('actor') ):
-		
-			wp_enqueue_script( 'itrend_filters_scripts', plugin_dir_url(__FILE__) . 'js/itrend-filters-scripts.js' , array('squirrely'), ITREND_PLUGIN_VERSION, false );
-			wp_enqueue_script( 'itrend_bootstrap_js', plugin_dir_url(__FILE__) . 'vendor/bootstrap-4.4.1-dist/js/bootstrap.min.js' , array('jquery', 'popper'), ITREND_PLUGIN_VERSION, false );
-			wp_enqueue_script( 'squirrely', 'https://cdn.jsdelivr.net/npm/squirrelly@7.5.0/dist/squirrelly.min.js', array(), false, false );
-			wp_localize_script( 'itrend_filters_scripts', 'itrend_filters', array(
-				'taxonomies' 	=> itrend_relevant_taxonomies(),
-				'nonce'	  		=> wp_create_nonce( 'wp_rest' ),
-				'rest_url'	  	=> rest_url( 'itrend/v1/actores' ),
-				'search_url'	=> rest_url('relevanssi/v1/search'),
-				'ids_url'		=> rest_url('itrend/v1/ids')
-			));
-		
+		if($_GET['f'] != 'visualizacion'):
+			wp_enqueue_style( 'itrend_bootstrap_css', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
+			if(has_shortcode( $post->post_content, 'itrend_actor_filters' ) || is_post_type_archive('actor') ):
+			
+				wp_enqueue_script( 'itrend_filters_scripts', plugin_dir_url(__FILE__) . 'js/itrend-filters-scripts.js' , array('squirrely'), ITREND_PLUGIN_VERSION, false );
+				wp_enqueue_script( 'itrend_bootstrap_js', plugin_dir_url(__FILE__) . 'vendor/bootstrap-4.4.1-dist/js/bootstrap.min.js' , array('jquery', 'popper'), ITREND_PLUGIN_VERSION, false );
+				wp_enqueue_script( 'squirrely', 'https://cdn.jsdelivr.net/npm/squirrelly@7.5.0/dist/squirrelly.min.js', array(), false, false );
+				wp_localize_script( 'itrend_filters_scripts', 'itrend_filters', array(
+					'taxonomies' 	=> itrend_relevant_taxonomies(),
+					'nonce'	  		=> wp_create_nonce( 'wp_rest' ),
+					'rest_url'	  	=> rest_url( 'itrend/v1/actores' ),
+					'search_url'	=> rest_url('relevanssi/v1/search'),
+					'ids_url'		=> rest_url('itrend/v1/ids')
+				));
+			
+			endif;
+
 		endif;
 
 		wp_enqueue_script( 'fontawesome', 'https://kit.fontawesome.com/14643ca681.js', array(), '5', false );
