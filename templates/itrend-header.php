@@ -10,7 +10,7 @@
 </head>
 <body id="itrend-vis">
 	<header id="itrend-vis-main-header" class="container-fluid">
-		<div class="row justify-content-end">
+		<div class="row">
 			<div class="col-md-6">
 				<div class="itrend-tabs">
 					
