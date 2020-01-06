@@ -2,11 +2,6 @@
 	$select_taxonomies = itrend_relevant_taxonomies();
 ?>
 <div class="container-fluid" id="itrend-filters">
-	<div class="row">
-		<div class="col-md-12">
-			<h1>Buscador de Actores</h1>
-		</div>
-	</div>
 	<div class="row status-row">
 		<div class="col-md-3">
 			
