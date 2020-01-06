@@ -151,7 +151,7 @@ jQuery(document).ready(function($) {
 		var table = $('#itrend_table_results > tbody.results');
 		var resultsCount = $('#itrend_results_count');
 		var messages = $('#itrend_messages');
-		table.empty().append('<i class="fas fa-spinner fa-spin"></i> Cargando actores ...');
+		
 		if(json.length > 0) {
 			messages.empty();
 			table.empty();
