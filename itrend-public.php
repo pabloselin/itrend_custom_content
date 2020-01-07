@@ -10,9 +10,11 @@ function itrend_enqueue_filters_js() {
 		wp_enqueue_style( 'itrend_filters_styles', plugin_dir_url( __FILE__ ) . 'css/itrend-filters-styles.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 		//wp_enqueue_style( 'itrend_bootstrap_grid', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 		if($_GET['f'] != 'visualizacion'):
-			wp_enqueue_style( 'itrend_bootstrap_css', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
+			//wp_enqueue_style( 'itrend_bootstrap_css', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
+			wp_enqueue_style( 'materialize', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css', array(), false, 'all' );
+
 			if(has_shortcode( $post->post_content, 'itrend_actor_filters' ) || is_post_type_archive('actor') ):
-			
+				wp_enqueue_script( 'itrend_materialize', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', array(), ITREND_PLUGIN_VERSION, false );
 				wp_enqueue_script( 'itrend_filters_scripts', plugin_dir_url(__FILE__) . 'js/itrend-filters-scripts.js' , array('squirrely'), ITREND_PLUGIN_VERSION, false );
 				wp_enqueue_script( 'itrend_bootstrap_js', plugin_dir_url(__FILE__) . 'vendor/bootstrap-4.4.1-dist/js/bootstrap.min.js' , array('jquery', 'popper'), ITREND_PLUGIN_VERSION, false );
 				wp_enqueue_script( 'squirrely', 'https://cdn.jsdelivr.net/npm/squirrelly@7.5.0/dist/squirrelly.min.js', array(), false, false );
@@ -115,8 +117,9 @@ function itrend_render_checkbox_field($taxonomy, $slug, $name, $child = false) {
 	}
 
 	return '	<div class="form-group form-check ' . ($child == true ? 'child-term' : 'parent-term') . '">
+	<label class="form-check-label" for="check-' .$slug .'">
 	<input data-termlabel="' . $name . '" data-tax="' . $taxonomy . '" data-term="' . $slug . '" class="form-check-input" type="checkbox" value="' . $slug . '" id="check-' . $slug . '"></input>
-	<label class="form-check-label" for="check-' .$slug .'">' . $final_name . ' <span class="termcount-' . ($term->count > 0 ? 'some' : 'none') . '">(' . $term->count . ')</span></label>
+	<span>' . $final_name . ' <span class=" badge termcount-' . ($term->count > 0 ? 'some' : 'none') . '">' . $term->count . '</span></span></label>
 	</div>';
 }
 

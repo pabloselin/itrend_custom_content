@@ -116,7 +116,7 @@
 							
 							<h4 class="accion-name">
 								<?php 	if($taxonomy == 'tareas'):
-											echo get_term_meta( $term->term_id, ITREND_PREFIX . 'numero_tarea', true );
+											echo get_term_meta( $term->term_id, ITREND_PREFIX . 'numero_tarea', true ) . '. ';
 										endif;
 								?>
 								<?php echo $term->name;?>

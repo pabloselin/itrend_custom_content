@@ -71,6 +71,10 @@ body#itrend-vis {
 	font-weight: bold;
 }
 
+.ficha-actor h4.accion-name {
+	font-weight: bold;
+}
+
 .actor-header {
 	margin: 24px 0;
 }
@@ -120,3 +124,4 @@ body#itrend-vis {
 #itrend-vis-main-header {
 	margin-top: 24px;
 }
+

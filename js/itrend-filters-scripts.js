@@ -7,6 +7,8 @@ jQuery(document).ready(function($) {
 	itrendScanCheckedFilters();
 	itrendBuildQuery();
 
+	 $('.collapsible').collapsible();
+
 	//Inicializar al clicar un filtro
 	$('#itrend-filters .itrend_select_taxonomy input.form-check-input').on('click', function(event) {
 		itrendScanCheckedFilters();
@@ -39,7 +41,7 @@ jQuery(document).ready(function($) {
 	
 		checkedFilters.each(function( index ) {
 			var data = $(this).data();
-			infoZone.append('<button class="btn btn-dark btn-block" data-tax="' + data.tax + '" data-term="' + data.term + '">' + data.termlabel + ' <i class="fas fa-times"></i></button>');
+			infoZone.append('<button class="btn btn-small indigo lighten-1" data-tax="' + data.tax + '" data-term="' + data.term + '">' + data.termlabel + ' <i class="fas fa-times"></i></button>');
 			query[data.tax].push(data.term);	
 			
 		})
