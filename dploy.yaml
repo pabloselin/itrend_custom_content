@@ -1,9 +1,0 @@
-dev:
-    scheme: sftp
-    host: sftp.dc2.gpaas.net
-    port: 22
-    user: "1055981"
-    pass: "V83K 8[_}5946gr"
-    check: true
-    path:
-        remote: /lamp0/web/vhosts/itrend.apie.cl/htdocs/wp-content/plugins/itrend_custom_content
