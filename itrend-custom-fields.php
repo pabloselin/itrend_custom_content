@@ -94,6 +94,21 @@ function itrend_cmb2_add_metabox() {
 	$postid = $_GET['post'];
 	$prefix = ITREND_PREFIX;
 
+	$publicinfobox = new_cmb2_box( array(
+		'id'           => $prefix . 'itrend_public_box',
+		'title'        => __( 'Estado del contenido', 'itrend' ),
+		'object_types' => array( 'actor' ),
+		'context'      => 'side',
+		'priority'     => 'default',
+	) );
+
+	$publicinfobox->add_field( array(
+		'name' => __( '¿Publicar textos de Tareas y Acciones?', 'itrend' ),
+		'id' => $prefix . 'public',
+		'type' => 'checkbox',
+		'desc'	=> 'Hacer visible para todos los usuarios las descripciones de tareas'
+	) );
+
 	$codigobox = new_cmb2_box( array(
 		'id'           => $prefix . 'itrend_actor_codigo',
 		'title'        => __( 'CÓDIGO O ABREVIACIÓN', 'itrend' ),

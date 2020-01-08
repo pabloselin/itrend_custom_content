@@ -20,6 +20,7 @@ jQuery(document).ready(function($) {
 			$(this).prop('checked', false);
 		})
 		infoZone.empty();
+		itrendHasFilters();
 	});
 
 	$('#itrend-filters button[data-action="apply_filters"]').on('click', function(event) {
@@ -41,10 +42,12 @@ jQuery(document).ready(function($) {
 	
 		checkedFilters.each(function( index ) {
 			var data = $(this).data();
-			infoZone.append('<button class="btn btn-small indigo lighten-1" data-tax="' + data.tax + '" data-term="' + data.term + '">' + data.termlabel + ' <i class="fas fa-times"></i></button>');
+			infoZone.append('<span class="filter-item" data-tax="' + data.tax + '" data-term="' + data.term + '">' + data.termlabel + ' <i class="fas fa-times"></i></span>');
 			query[data.tax].push(data.term);	
 			
-		})
+		});
+
+		itrendHasFilters();
 	}
 
 	function itrendBuildSearch(searchTerm) {
@@ -208,6 +211,18 @@ jQuery(document).ready(function($) {
 			tareas: data.tareas,
 			acciones_grrd: data.acciones_grrd
 		}, Sqrl);
+	}
+
+	function itrendHasFilters() {
+		var removeFiltersBtn = $('.btn[data-action="clean_filters"]');
+		var appendZone = $('.append-zone-filter');
+		removeFiltersBtn.hide();
+
+		if(appendZone.is(':empty')) {
+			removeFiltersBtn.hide();
+		} else {
+			removeFiltersBtn.show();
+		}
 	}
 
 	function itrendUglyRenderRow( data ) {

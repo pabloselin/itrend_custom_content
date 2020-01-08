@@ -1,0 +1,31 @@
+{
+  "name": "itrend_custom_content",
+  "version": "0.2.1",
+  "description": "WordPress plugin for Itrend Vis",
+  "main": "index.php",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-sass": "^4.0.2",
+    "materialize-css": "^1.0.0-rc.2",
+    "node-sass": "^4.13.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pabloselin/itrend_custom_content.git"
+  },
+  "keywords": [
+    "wordpress",
+    "echarts",
+    "cmb2"
+  ],
+  "author": "Pablo Selin Carrasco / ArtNumerica / APie / Gaston Olivares",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pabloselin/itrend_custom_content/issues"
+  },
+  "homepage": "https://github.com/pabloselin/itrend_custom_content#readme"
+}

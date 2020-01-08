@@ -1,0 +1,196 @@
+
+
+body#itrend-vis {
+	background-color: #F1F1F1;
+	
+	@import '../../node_modules/materialize-css/sass/materialize.scss';
+
+	.container-fluid {
+		width: 100%;
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.itrend-tabs a {
+		border-radius: 0;
+		background-color: #26a69a;
+		text-transform: uppercase;
+		font-size: 14px;
+	}
+
+	.itrend-section-title {
+		font-size: 36px;
+		font-weight: bold;
+		color: #8900D4;
+		margin: 15px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #8900D4;
+	}
+
+	.itrend-tabs a:visited {
+		color: white;
+	}
+
+	.child-term {
+		margin-left: 12px;
+	}
+
+	.status-row {
+		margin-bottom: 24px;
+	}
+
+	.form-check-input {
+		margin-right: 12px;
+	}
+
+	td.actor_name {
+		font-weight: bold;
+	}
+
+	td.actor_name span.codigo {
+		display: block;
+	}
+
+	.card-header {
+		cursor: pointer;
+	}
+
+	.card-header i {
+		float: right;
+	}
+
+	h5.mb-0 {
+		font-size: 20px;
+		margin:0;
+		font-weight: bold;
+	}
+
+	#itrend-filters #accordion-filters .card-header.collapsed i {
+		transform: rotate(180deg);
+	}
+
+	#itrend-filters {
+		.collapsible-body {
+			padding: .5rem 1rem;
+		}
+
+		.parent-term {
+			margin-top: 12px;
+			padding-top: 12px;
+			border-top: 1px solid #ccc;
+		}
+
+		.termcount-some, 
+		.termcount-none {
+			font-size: 12px;
+			background-color: #555;
+			color: white;
+			display: inline-block;
+			margin: 3px;
+			padding: 2px 4px;
+			line-height: 14px;
+			border-radius: 3px;
+		}
+
+		.termcount-none {
+			background-color: #ccc;
+		}
+
+		.filter-item {
+			display: block;
+			background-color: color("indigo", "darken-1");
+			color: white;
+			margin: 6px 0;
+			padding: 6px;
+			@extend .z-depth-2;
+		}
+	}
+
+	.term-checkbox-wrap {
+		margin-bottom: 6px;
+		label {
+			color: #333;
+		}
+	}
+
+	.ficha-actor .info-right {
+		text-align: right;
+	}
+
+	.ficha-actor h1, .ficha-actor h2, .ficha-actor h3, .ficha-actor .title-col {
+		color: #8900D4;
+		font-weight: bold;
+	}
+
+	.ficha-actor h4.accion-name {
+		font-weight: bold;
+	}
+
+	.actor-header {
+		margin: 24px 0;
+	}
+
+	.actor-header h2 {
+		margin: 0;
+	}
+
+	.actor-header h1 {
+		margin-top: 0;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #8900D4;
+		margin-bottom: 0;
+	}
+
+	.itrend-datos-contacto {
+		color: #8900D4;
+		border: 1px dashed #8900D4;
+		border-top: 0;
+		padding-top: 24px;
+		padding-bottom: 24px;
+		margin-top: 24px;
+	}
+
+	.info-private {
+		background-color: #ccc;
+		padding-top: 24px;
+		padding-bottom: 24px;
+		margin-top: 24px;
+		margin-bottom: 24px;
+	}
+
+	.fields-info-single {
+		margin-bottom: 6px;
+	}
+
+	.info-left .sector {
+		color: #8900D4;
+		margin: 6px 0 24px 0;
+	}
+
+	.mision-content {
+		color: #555;
+		font-style: italic;
+	}
+
+	#itrend-vis-main-header {
+		margin-top: 24px;
+	}
+
+	.append-zone-filter .btn {
+		margin-bottom: 12px;
+		width: 100%;
+	}
+
+	.orgs-filter-list h2 {
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+}
+
+
+
+
+

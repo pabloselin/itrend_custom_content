@@ -6,7 +6,7 @@
 			<h2 class="codigo"><?php echo get_post_meta($post->ID, ITREND_PREFIX . 'codigo', true);?></h2>
 			<h1 class="actor-longname"><?php the_title();?></h1>
 			<div class="row info-header">
-				<div class="col-md-6 info-left">
+				<div class="col m6 info-left">
 					
 					<div class="sector">
 						<?php echo itrend_plain_terms('sector', $post->ID);?>
@@ -41,7 +41,7 @@
 					?>
 					</div>
 				</div>
-				<div class="col-md-6 info-right itrend-datos-contacto">
+				<div class="col m6 info-right itrend-datos-contacto">
 					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_correo', 'fa-envelope', false, false );?>
 					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_telefono', 'fa-mobile', false, false);?>
 					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_web', 'fa-globe', true, true);?>
@@ -66,8 +66,19 @@
 					<?php endif;?>
 
 		</header>
+
+
+			<?php
+				$resumenrol = get_post_meta( $post->ID, ITREND_PREFIX . 'resumen_rol', true );
+				?>
+				
+		<div class="resumen-rol-accion">
+			<h2>Resumen Rol en Acciones GRRD</h2>
+			<?php echo apply_filters( 'the_content', $resumenrol );?>
+		</div>
 		
 		<?php 
+		if( get_post_meta( $post->ID, ITREND_PREFIX . 'public', true) == true ):
 			$taxonomies = array(
 							'acciones_grrd',
 							'tareas'
@@ -76,26 +87,16 @@
 		foreach($taxonomies as $taxonomy):
 			if(has_term( '', $taxonomy )):
 			?>	
-			<?php if($taxonomy == 'acciones_grrd'):
-				$resumenrol = get_post_meta( $post->ID, ITREND_PREFIX . 'resumen_rol', true );
-				?>
-				
-				<div class="resumen-rol-accion">
-					<h2>Resumen Rol en Acciones GRRD</h2>
-					<?php echo apply_filters( 'the_content', $resumenrol );?>
-				</div>
-
-			<?php endif;?>
 
 			<div class="row tax-row">
-				<div class="col-md-4 title-col">
+				<div class="col m4 title-col">
 					<?php 
 					$taxobj = get_taxonomy( $taxonomy );
 					$taxlabels = get_taxonomy_labels( $taxobj );
 					echo $taxlabels->name;
 					?>
 				</div>
-				<div class="col-md-8 content-col">
+				<div class="col m8 content-col">
 					<?php
 
 						if($taxonomy == 'tareas'):
@@ -137,6 +138,8 @@
 		endif;
 		//End taxonomy cycle
 		endforeach;
+	//End check public info
+	endif;
 		?>
 
 		<div class="link-archive">

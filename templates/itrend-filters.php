@@ -28,8 +28,8 @@
 					
 				</div>
 				
-				<button class="btn btn-block btn-primary" data-action="clean_filters">Quitar filtros</button>
-				<button class="btn btn-block btn-danger red darken-4" data-action="apply_filters">Filtrar</button>
+				<button class="btn red darken-4" data-action="clean_filters">Quitar filtros</button>
+				<button class="btn" data-action="apply_filters">Filtrar</button>
 
 			</div>
 
@@ -63,8 +63,11 @@
 			?>
 			</ul>
 			</div>
+			
 
-			<button class="btn btn-block btn-danger" data-action="apply_filters">Filtrar</button>
+			<button class="btn red darken-4" data-action="clean_filters">Quitar filtros</button>
+			<button class="btn" data-action="apply_filters">Filtrar</button>
+			
 		</div>
 
 		<div class="col m9 orgs-table-list">
