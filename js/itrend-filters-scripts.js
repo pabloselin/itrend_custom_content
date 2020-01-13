@@ -229,4 +229,20 @@ jQuery(document).ready(function($) {
 		return '<tr><td class="actor_name"><a href="' + data.permalink + '">' + data.postmeta.codigo + '<br />' + data.post_title + '</a></td><td>' + data.sector + '</td><td>' + data.alcance_territorial +'</td><td>' + data.tareas + '</td><td>' + data.acciones_grrd + '</td></tr>';
 	}
 
+	function itrend_download_csv(data) {
+	    var csv = 'Institucion,Title\n';
+
+	    data.forEach(function(row) {
+	            csv += row.join(',');
+	            csv += "\n";
+	    });
+	 
+	    console.log(csv);
+	    var hiddenElement = document.createElement('a');
+	    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+	    hiddenElement.target = '_blank';
+	    hiddenElement.download = 'people.csv';
+	    hiddenElement.click();
+	}
+
 });

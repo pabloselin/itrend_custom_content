@@ -2,8 +2,9 @@
 
 body#itrend-vis {
 	background-color: #F1F1F1;
+	font-family: 'Open Sans', sans-serif;
 	
-	@import '../../node_modules/materialize-css/sass/materialize.scss';
+	@import 'custom-materialize.scss';
 
 	.container-fluid {
 		width: 100%;

@@ -3,6 +3,15 @@
 	[
 		{
 			"path": "."
+		},
+		{
+			"path": "/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/rest-api-for-relevanssi"
+		},
+		{
+			"path": "/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/themes/itrend_plain"
+		},
+		{
+			"path": "/home/pabloselin/Documents/WebDev/projects/itrend/network_visualizer"
 		}
 	]
 }

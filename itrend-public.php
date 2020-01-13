@@ -8,6 +8,7 @@ function itrend_enqueue_filters_js() {
 		wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.4.1.slim.min.js', array(), '3.4.1', false );
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_style( 'itrend_filters_styles', plugin_dir_url( __FILE__ ) . 'css/itrend-actores.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
+		wp_enqueue_style( 'opensans', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap', array(), false, 'all' );
 		//wp_enqueue_style( 'itrend_bootstrap_grid', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 		if($_GET['f'] != 'visualizacion'):
 			//wp_enqueue_style( 'itrend_bootstrap_css', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
