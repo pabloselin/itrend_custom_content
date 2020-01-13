@@ -1,5 +1,3 @@
-<?php if(is_user_logged_in()):?>
-
 <?php include( plugin_dir_path( __FILE__ ) . '/itrend-header.php');?>
 
 <?php 
@@ -21,9 +19,3 @@ switch($filter){
 ?>
 
 <?php include( plugin_dir_path( __FILE__ ) . '/itrend-footer.php');?>
-
-<?php else:?>
-
-	<p>Acceso restringido</p>
-
-	<?php endif;?>
