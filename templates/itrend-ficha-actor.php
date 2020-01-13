@@ -9,7 +9,7 @@
 				<div class="col m6 info-left">
 					
 					<div class="sector">
-						<?php echo itrend_plain_terms('sector', $post->ID);?>
+						Sector/es: <?php echo itrend_plain_terms('sector', $post->ID);?>
 					</div>
 
 					<?php 
@@ -48,22 +48,32 @@
 					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_direccion', 'fa-map-marker-alt', true, false);?>
 					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_comuna', 'fa-map-marker-alt', true, false );?>
 					<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contacto_region', 'fa-map-marker-alt', true, false );?>
-
 				</div>
 			</div>
 
-				<?php if(is_user_logged_in()):?>
+				<?php if(is_user_logged_in()):
+					$nombrepersona = itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_nombre', '', true );
+					$cargopersona = itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_cargo', '', true );
+					$correopersona = itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_correo', '', false );
+					$fonopersona = itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_telefono', '', false );
+
+					if($nombrepersona || $cargopersona || $correopersona || $fonopersona):
+					?>
 						<div class="info-private row">
-								<div class="col-md-6">
+								<div class="col m12">
 									<h5>Información privada</h5>
 									<span class="subtitle">(visible solo para usuarios registrados del sitio)</span>
-									<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_nombre', 'fa-user', true );?>
-									<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_cargo', 'fa-mobile', true );?>
-									<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_correo', 'fa-envelope', false );?>
-									<?php echo itrend_contact_field( $post->ID, ITREND_PREFIX . 'contactopersona_telefono', 'fa-mobile', false );?>
+									<ul class="datos-privados">
+										<li><strong>Persona de contacto:</strong> <?php echo $nombrepersona;?></li>
+										<li><strong>Cargo:</strong> <?php echo $cargopersona;?></li>
+										<li><strong>E-mail: </strong><?php echo $correopersona;?></li>
+										<li><strong>Teléfono: </strong><?php echo $fonopersona;?></li>
+									</ul>
 								</div>
 						</div>
-					<?php endif;?>
+					<?php 
+					endif;
+				endif;?>
 
 		</header>
 

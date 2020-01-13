@@ -21,8 +21,8 @@
 				$introtextfield = 'itrend_metodologia_intro_text';
 			break;
 			default:
-				$title = 'Metodología';
-				$introtextfield = 'itrend_metodologia_intro_text';
+				$title = '';
+				$introtextfield = null;
 		  }
 		  $intro =itrend_get_option($introtextfield);
 	?>

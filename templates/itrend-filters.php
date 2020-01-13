@@ -14,9 +14,9 @@
 				</div>
 			</form>
 		</div>
-		<div class="col m2 download-zone">
+		<!-- <div class="col m2 download-zone">
 			<i class="fas fa-download"></i> Descargar CSV
-		</div>
+		</div> -->
 	</div>
 	<div class="row">
 		<div class="col m3 orgs-filter-list">
