@@ -1,14 +1,6 @@
 <?php
 	$select_taxonomies = itrend_relevant_taxonomies();
 ?>
-<h1 class="itrend-section-title">Buscador de Actores</h1>
-<div class="container-fluid">
-	<div class="row col m6">
-		<?php 
-		$intro =itrend_get_option('itrend_filtro_intro_text');
-		echo apply_filters( 'the_content', $intro );?>
-	</div>
-</div>
 <div class="container-fluid" id="itrend-filters">
 	<div class="row status-row">
 		<div class="col m3">

@@ -3,14 +3,21 @@
 <?php include( plugin_dir_path( __FILE__ ) . '/itrend-header.php');?>
 
 <?php 
+
 $filter = $_GET['f'];
-if($filter == 'filtro'):
-	include( plugin_dir_path( __FILE__ ) . '/itrend-filters.php');
-elseif($filter == 'visualizacion'):
-	include( plugin_dir_path( __FILE__ ) . '/network.php' );
-else:
-	include( plugin_dir_path( __FILE__ ) . '/itrend-filters.php');
-endif;
+switch($filter){
+	case('filtro'):
+		include( plugin_dir_path( __FILE__ ) . '/itrend-filters.php');
+	break;
+	case('visualizacion'):
+		echo do_shortcode( '[netviz]', false );
+	break;
+	case('metodologia'):
+		echo '.';
+	break;
+	default:
+		include( plugin_dir_path( __FILE__ ) . '/itrend-filters.php');
+	};
 ?>
 
 <?php include( plugin_dir_path( __FILE__ ) . '/itrend-footer.php');?>

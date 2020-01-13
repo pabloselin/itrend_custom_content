@@ -21,6 +21,10 @@ body#itrend-vis {
 		font-size: 14px;
 	}
 
+	.right-section {
+		text-align: right;
+	}
+
 	.itrend-section-title {
 		font-size: 36px;
 		font-weight: bold;
@@ -32,6 +36,10 @@ body#itrend-vis {
 
 	.itrend-tabs a:visited {
 		color: white;
+	}
+
+	.introtext {
+		margin: 15px;
 	}
 
 	.child-term {

@@ -5620,6 +5620,8 @@ body#itrend-vis {
     background-color: #26a69a;
     text-transform: uppercase;
     font-size: 14px; }
+  body#itrend-vis .right-section {
+    text-align: right; }
   body#itrend-vis .itrend-section-title {
     font-size: 36px;
     font-weight: bold;
@@ -5629,6 +5631,8 @@ body#itrend-vis {
     border-bottom: 1px solid #8900D4; }
   body#itrend-vis .itrend-tabs a:visited {
     color: white; }
+  body#itrend-vis .introtext {
+    margin: 15px; }
   body#itrend-vis .child-term {
     margin-left: 12px; }
   body#itrend-vis .status-row {
