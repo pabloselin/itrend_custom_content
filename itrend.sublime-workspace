@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"inline",
+				"inline-block\tdisplay"
+			],
+			[
 				"append",
 				"append-zone-filter"
 			],
@@ -55,6 +59,98 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "css/scss/_custom-typography.scss",
+			"settings":
+			{
+				"buffer_size": 1593,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/scss/itrend-actores.scss",
+			"settings":
+			{
+				"buffer_size": 2035,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/itrend-ficha-actor.php",
+			"settings":
+			{
+				"buffer_size": 5439,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "itrend-custom-fields.php",
+			"settings":
+			{
+				"buffer_size": 21420,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/scss/_itrend-ficha-actor.scss",
+			"settings":
+			{
+				"buffer_size": 1076,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "itrend-public.php",
+			"settings":
+			{
+				"buffer_size": 10099,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/itrend-filters.php",
+			"settings":
+			{
+				"buffer_size": 2804,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/itrend-filters-frontend.php",
+			"settings":
+			{
+				"buffer_size": 423,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<?php\n/*\nPlugin Name: Network Visualizer\nPlugin URI: http://www.net-works.cl\nDescription: Genera las visualizaciones a través de la librería echarts.\nVersion: 1.0\nAuthor: Gastón Olivares\nAuthor URI: https://www.researchgate.net/profile/Gaston_Olivares_Fernandez\n*/\n\n\n\n\n\n  if ( !defined('ABSPATH') )\n      define('ABSPATH', dirname(__FILE__) . '/');\n  require_once(ABSPATH . 'wp-config.php');\n\n\n function linspace($i,$f,$n){\n      $step = ($f-$i)/($n-1);\n      return range ($i,$f,$step);\n }\n\n function theta($data){\n \tfor($i=0;$i< count($data);$i++){\n \t\t$data[$i] = $data[$i] *2*pi();\n \t}\n \treturn $data;\n }\n\n function coords($theta,$div){\n \t$coords = array();\n \tfor($i=0;$i< count($theta);$i++){\n \t\tarray_push($coords,array(cos($theta[$i])/$div,sin($theta[$i])/$div));\n \t}\n \treturn $coords;\n }\n\n function linebreak($name){\n   $aux = explode(\" \",$name);\n   $new_name = \"\";\n   foreach($aux as $i => $t){\n     if($i == 4){\n       $new_name .= $t.\"\\n\";\n     }else{\n       $new_name .= $t.\" \";\n     }\n   }\n   return $new_name;\n }\n\n function tareas($META){\n   global $wpdb;\n   $prefix = $wpdb->prefix;\n   $COUNT = array(0=>1,1=>1);\n   $ACTOR = array();\n   $SIZE = array();\n   $DATA = array(\"type\"=>\"force\",\"nodes\"=>array(),\"links\"=>array(),\"categories\"=>array(array(\"name\"=>\"Tareas\",\"itemStyle\"=>array(\"color\"=>\"#1a2c59\")),array(\"name\"=>\"Estado\",\"itemStyle\"=>array(\"color\"=>\"#00bbee\")),array(\"name\"=>\"Privado\",\"itemStyle\"=>array(\"color\"=>\"#fec035\")),array(\"name\"=>\"Academia\",\"itemStyle\"=>array(\"color\"=>\"#ef4853\")),array(\"name\"=>\"Organizaciones sin fines de lucro\",\"itemStyle\"=>array(\"color\"=>\"#732ad1\")),array(\"name\"=>\"Otro sector\",\"itemStyle\"=>array(\"color\"=>\"#00aea5\"))));\n   $query = 'SELECT wpp.post_title, wpt.name, wptt.parent FROM '.$prefix.'term_taxonomy wptt, '.$prefix.'term_relationships wptr, '.$prefix.'posts wpp, '.$prefix.'terms wpt WHERE wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.taxonomy = \"tareas\" AND wptr.object_id = wpp.ID AND wpt.term_id = wptt.term_id AND wpp.post_status = \"publish\" AND wpp.post_type = \"actor\"';\n   if ($result = $wpdb->get_results($query)){\n    $result = json_decode(json_encode($result), True);\n   \tforeach($result as $row){\n   \t\tif(!in_array($row[\"post_title\"],$ACTOR)){\n   \t\t\t$COUNT[0]++;\n   \t\t\tarray_push($ACTOR,$row[\"post_title\"]);\n        $category = $META[\"category\"][$META[\"node_data\"][$row[\"post_title\"]][\"tipo\"]];\n        if (!$category){\n          $category = 5;\n        }\n   \t\t\tarray_push($DATA[\"nodes\"],array(\"name\"=>linebreak($row[\"post_title\"]),\"label\"=>array(\"color\"=>\"#666666\"),\"node_data\"=>$META[\"node_data\"][$row[\"post_title\"]],\"symbolSize\"=>10,\"category\"=>$category,\"symbol\"=>\"circle\",\"itemStyle\"=>array(\"color\"=>$META[\"color2\"][$row[\"post_title\"]],\"borderColor\"=>$META[\"color2\"][$row[\"post_title\"]])));\n   \t\t}else{\n   \t\t\t$node = array_search($row[\"post_title\"],$ACTOR);\n   \t\t\t$DATA[\"nodes\"][$node][\"symbolSize\"] = $DATA[\"nodes\"][$node][\"symbolSize\"] + 3;\n   \t\t}\n   \t\tif(!in_array($row[\"name\"],$ACTOR)){\n   \t\t\t$COUNT[1]++;\n   \t\t\tarray_push($ACTOR,$row[\"name\"]);\n   \t\t\tarray_push($DATA[\"nodes\"],array(\"name\"=>linebreak($row[\"name\"]),\"symbolSize\"=>10,\"category\"=>0,\"symbol\"=>$META[\"symbol\"][$row[\"parent\"]],\"tareas\"=>$META[\"termmeta\"][$row[\"parent\"]],\"itemStyle\"=>array(\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\")));\n   \t\t}else{\n   \t\t\t$node = array_search($row[\"name\"],$ACTOR);\n   \t\t\t$DATA[\"nodes\"][$node][\"symbolSize\"] = $DATA[\"nodes\"][$node][\"symbolSize\"] + 3;\n   \t\t}\n   \t\t$source = array_search($row[\"post_title\"],$ACTOR);\n   \t\t$target = array_search($row[\"name\"],$ACTOR);\n   \t\tarray_push($DATA[\"links\"],array(\"source\"=>$source,\"target\"=>$target));\n   \t}\n   \t$coords_0 = coords(theta(linspace(0,1,$COUNT[0])),1);\n   \t$coords_1 = coords(theta(linspace(0,1,$COUNT[1])),2);\n   \t$i_0 = 0;\n   \t$i_1 = 0;\n   \tfor($i=0;$i<count($DATA[\"nodes\"]);$i++){\n   \t\tif ($DATA[\"nodes\"][$i][\"category\"]>0){\n   \t\t\t$DATA[\"nodes\"][$i][\"x\"] = $coords_0[$i_0][0];\n   \t\t\t$DATA[\"nodes\"][$i][\"y\"] = $coords_0[$i_0][1];\n   \t\t\t$i_0++;\n   \t\t}else{\n   \t\t\t$DATA[\"nodes\"][$i][\"x\"] = $coords_1[$i_1][0];\n   \t\t\t$DATA[\"nodes\"][$i][\"y\"] = $coords_1[$i_1][1];\n   \t\t\t$i_1++;\n   \t\t}\n   \t}\n\n   }\n   return $DATA;\n }\n\n function territorial($META){\n   global $wpdb;\n   $prefix = $wpdb->prefix;\n   $COUNT = array(0=>1,1=>1,2=>1,3=>1);\n   $TAXONOMY = array(\"acciones_grrd\"=>1,\"alcance_territorial\"=>2,\"Regional\"=>3);\n   $DATA = array(\"name\"=>\"Alcance Territorial\",\"symbolSize\"=>50,\"label\"=>array(\"color\"=>\"#d17c2a\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\"), \"children\"=> array(array(\"name\"=>\"Regional\",\"symbolSize\"=>100,\"label\"=>array(\"color\"=>\"#d17c2a\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.8,\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\"),\"children\"=>array()),array(\"name\"=>\"Nacional\",\"symbolSize\"=>100,\"label\"=>array(\"color\"=>\"#d17c2a\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.8,\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\"),\"children\"=>array())));\n   $DATA_AUX = array();\n   $query = 'SELECT wpp.post_title, GROUP_CONCAT(wpt.name) name, GROUP_CONCAT(wptt.taxonomy) taxonomy FROM '.$prefix.'term_taxonomy wptt, '.$prefix.'term_relationships wptr, '.$prefix.'posts wpp, '.$prefix.'terms wpt WHERE wpt.name NOT IN (\"Regional\") AND wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.taxonomy IN (\"acciones_grrd\" , \"alcance_territorial\") AND wptr.object_id = wpp.ID AND wpt.term_id = wptt.term_id AND wpp.post_status = \"publish\" AND wpp.post_type = \"actor\" AND wpp.ID in (SELECT wptr.object_id FROM '.$prefix.'term_relationships wptr, '.$prefix.'term_taxonomy wptt, '.$prefix.'terms wpt WHERE wpt.name = \"Regional\" AND wptt.taxonomy = \"alcance_territorial\" AND wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.term_id = wpt.term_id) GROUP BY wpp.ID';\n   if ($result = $wpdb->get_results($query)){\n    $result = json_decode(json_encode($result), True);\n   \tforeach($result as $row){\n       $institution = $row[\"post_title\"];\n       $name = explode(\",\",$row[\"name\"]);\n       $taxonomy = explode(\",\",$row[\"taxonomy\"]);\n       $TRANSFORM = array();\n       for($i=0;$i<count($name);$i++){\n         $TRANSFORM[$taxonomy[$i]][] = $name[$i];\n       }\n       foreach($TRANSFORM[\"alcance_territorial\"] as $region){\n         foreach ($TRANSFORM[\"acciones_grrd\"] as $accion) {\n           $DATA_AUX[$region][$accion][] = $institution;\n         }\n       }\n     }\n   }\n   $i = 0;\n   foreach ($DATA_AUX as $region => $v1) {\n     $count = 40;\n     foreach ($DATA_AUX[$region] as $accion => $v2) {\n       foreach ($v2 as $institution) {\n         $count++;\n       }\n     }\n     $DATA[\"children\"][0][\"children\"][] = array(\"name\"=>$region,\"symbolSize\"=>$count,\"label\"=>array(\"color\"=>\"#d17c2a\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.8,\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\"),\"children\"=>array());\n     $j = 0;\n     foreach ($DATA_AUX[$region] as $accion => $v2) {\n       $DATA[\"children\"][0][\"children\"][$i][\"children\"][] = array(\"name\"=>linebreak($accion),\"symbolSize\"=>20+count($v2),\"label\"=>array(\"color\"=>\"#d17c2a\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.8,\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\"),\"children\"=>array());\n       foreach ($v2 as $institution) {\n         $DATA[\"children\"][0][\"children\"][$i][\"children\"][$j][\"children\"][] = array(\"name\"=>linebreak($institution),\"label\"=>array(\"color\"=>\"#666666\"),\"node_data\"=>$META[\"node_data\"][$institution],\"symbolSize\"=>20,\"itemStyle\"=>array(\"color\"=>$META[\"color2\"][$institution],\"borderColor\"=>$META[\"color2\"][$institution]));\n       }\n       $j++;\n     }\n     $i++;\n   }\n   $COUNT = array();\n   $TAXONOMY = array(\"acciones_grrd\"=>1,\"alcance_territorial\"=>2,\"Nacional\"=>3);\n   $DATA_AUX = array();\n   $query = 'SELECT wpp.post_title, GROUP_CONCAT(wpt.name) name, GROUP_CONCAT(wptt.taxonomy) taxonomy FROM '.$prefix.'term_taxonomy wptt, '.$prefix.'term_relationships wptr, '.$prefix.'posts wpp, '.$prefix.'terms wpt WHERE wpt.name NOT IN (\"Nacional\") AND wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.taxonomy IN (\"acciones_grrd\" , \"alcance_territorial\") AND wptr.object_id = wpp.ID AND wpt.term_id = wptt.term_id AND wpp.post_status = \"publish\" AND wpp.post_type = \"actor\" AND wpp.ID in (SELECT wptr.object_id FROM '.$prefix.'term_relationships wptr, '.$prefix.'term_taxonomy wptt, '.$prefix.'terms wpt WHERE wpt.name = \"Nacional\" AND wptt.taxonomy = \"alcance_territorial\" AND wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.term_id = wpt.term_id) GROUP BY wpp.ID';\n   if ($result = $wpdb->get_results($query)){\n    $result = json_decode(json_encode($result), True);\n   \tforeach($result as $row){\n       $institution = $row[\"post_title\"];\n       $name = explode(\",\",$row[\"name\"]);\n       $taxonomy = explode(\",\",$row[\"taxonomy\"]);\n       $TRANSFORM = array();\n       for($i=0;$i<count($name);$i++){\n         $TRANSFORM[$taxonomy[$i]][] = $name[$i];\n       }\n       $region = \"Nacional\";\n       foreach ($TRANSFORM[\"acciones_grrd\"] as $accion) {\n         $DATA_AUX[$region][$accion][] = $institution;\n       }\n\n     }\n   }\n   foreach ($DATA_AUX as $region => $v1) {\n     $count = 10;\n     foreach ($DATA_AUX[$region] as $accion => $v2) {\n       foreach ($v2 as $institution) {\n         $count++;\n       }\n     }\n     $j = 0;\n     foreach ($DATA_AUX[$region] as $accion => $v2) {\n       $DATA[\"children\"][1][\"children\"][] = array(\"name\"=>linebreak($accion),\"symbolSize\"=>20+count($v2),\"label\"=>array(\"color\"=>\"#d17c2a\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.8,\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\"),\"children\"=>array());\n       foreach ($v2 as $institution) {\n         $DATA[\"children\"][1][\"children\"][$j][\"children\"][] = array(\"name\"=>linebreak($institution),\"label\"=>array(\"color\"=>\"#666666\"),\"node_data\"=>$META[\"node_data\"][$institution],\"symbolSize\"=>20,\"itemStyle\"=>array(\"color\"=>$META[\"color2\"][$institution],\"borderColor\"=>$META[\"color2\"][$institution]));\n       }\n       $j++;\n     }\n   }\n   return $DATA;\n }\n\n function sectores($META){\n   global $wpdb;\n   $prefix = $wpdb->prefix;\n   $COUNT = array(0=>1,1=>1,2=>1,3=>1);\n   $TAXONOMY = array(\"acciones_grrd\"=>1,\"sector\"=>2,\"Sectores\"=>3);\n   $DATA = array(\"name\"=>\"Sector\",\"symbolSize\"=>100,\"label\"=>array(\"color\"=>\"#d17c2a\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\"),\"children\"=>array());\n   $DATA_AUX = array();\n   $query = 'SELECT wpp.post_title, GROUP_CONCAT(wpt.name) name, GROUP_CONCAT(wptt.taxonomy) taxonomy, GROUP_CONCAT(wptt.parent) parent FROM '.$prefix.'term_taxonomy wptt, '.$prefix.'term_relationships wptr, '.$prefix.'posts wpp, '.$prefix.'terms wpt WHERE wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.taxonomy IN (\"tareas\" , \"sector\") AND wptr.object_id = wpp.ID AND wpt.term_id = wptt.term_id AND wpp.post_status = \"publish\" AND wpp.post_type = \"actor\" GROUP BY wpp.ID';\n   if ($result = $wpdb->get_results($query)){\n    $result = json_decode(json_encode($result), True);\n   \tforeach($result as $row){\n       $institution = $row[\"post_title\"];\n       $name = explode(\",\",$row[\"name\"]);\n       $taxonomy = explode(\",\",$row[\"taxonomy\"]);\n       $parent = explode(\",\",$row[\"parent\"]);\n       $TRANSFORM = array();\n       for($i=0;$i<count($name);$i++){\n         if($taxonomy[$i] == \"tareas\" || ($parent[$i]==0 && $taxonomy[$i] == \"sector\" ) ){\n           $TRANSFORM[$taxonomy[$i]][] = $name[$i];\n         }\n       }\n       foreach($TRANSFORM[\"sector\"] as $sector){\n         foreach ($TRANSFORM[\"tareas\"] as $accion) {\n           $DATA_AUX[$sector][$accion][] = $institution;\n         }\n       }\n     }\n   }\n   $i = 0;\n   foreach ($DATA_AUX as $sector => $v1) {\n     $count = 40;\n     foreach ($DATA_AUX[$sector] as $accion => $v2) {\n       foreach ($v2 as $institution) {\n         $count++;\n       }\n     }\n     $DATA[\"children\"][] = array(\"name\"=>$sector,\"symbolSize\"=>20+$count,\"label\"=>array(\"color\"=>\"#d17c2a\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.8,\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\"),\"children\"=>array());\n     $j = 0;\n     foreach ($DATA_AUX[$sector] as $accion => $v2) {\n       $DATA[\"children\"][$i][\"children\"][] = array(\"name\"=>linebreak($accion),\"symbol\"=>$META[\"symbol2\"][$accion],\"symbolSize\"=>20+count($v2),\"label\"=>array(\"show\"=>false,\"color\"=>\"#d17c2a\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.8,\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\"),\"children\"=>array());\n       foreach ($v2 as $institution) {\n         $DATA[\"children\"][$i][\"children\"][$j][\"children\"][] = array(\"name\"=>linebreak($institution),\"label\"=>array(\"color\"=>\"#666666\"),\"node_data\"=>$META[\"node_data\"][$institution],\"symbolSize\"=>20,\"itemStyle\"=>array(\"color\"=>$META[\"color2\"][$institution],\"borderColor\"=>$META[\"color2\"][$institution]),\"value\"=>100);\n       }\n       $j++;\n     }\n     $i++;\n   }\n   return $DATA;\n }\n\n function get_meta(){\n   global $wpdb;\n   $prefix = $wpdb->prefix;\n   $META = array('termmeta'=>array(),'node_data'=>array(),\"tipo\"=>array(),\"color2\"=>array(),\"category\"=>array(\"Estado\"=>1,\"Privados\"=>2,\"Academia\"=>3,\"Organizaciones sin fines de lucro\"=>4,\"Otro sector\"=>5),\"color\"=>array(\"Estado\"=>\"#00bbee\",\"Privados\"=>\"#fec035\",\"Academia\"=>\"#ef4853\",\"Organizaciones sin fines de lucro\"=>\"#732ad1\",\"Otro sector\"=>\"#00aea5\"),'symbol2'=>array(),'symbol'=>array(13=>\"path://M86.60254037844386,0L173.20508075688772,50L173.20508075688772,150L86.60254037844386,200L0,150L0,50Z\",14=>\"triangle\",15=>\"rect\",16=>\"diamond\"));\n   $query = 'SELECT term_id,meta_value FROM '.$prefix.'termmeta where meta_key = \"_itrend_nombre_oficial\"';\n   if ($result = $wpdb->get_results($query)){\n    $result = json_decode(json_encode($result), True);\n   \tforeach($result as $row){\n   \t\t$META[\"termmeta\"][$row[\"term_id\"]] = $row[\"meta_value\"];\n   \t}\n   }\n\n   $TERM_NAME = array();\n   $query = 'SELECT wpt.term_id,wpt.name, wptt.parent FROM '.$prefix.'term_taxonomy wptt, '.$prefix.'terms wpt WHERE wpt.term_id = wptt.term_id';\n   if ($result = $wpdb->get_results($query)){\n    $result = json_decode(json_encode($result), True);\n   \tforeach($result as $row){\n   \t\t$TERM_NAME[$row[\"term_id\"]] = array(\"name\"=>$row[\"name\"],\"parent\"=>$row[\"parent\"]);\n   \t}\n   }\n   foreach($TERM_NAME as $term => $name){\n     if ($term != 0){\n       $META[\"symbol2\"][$TERM_NAME[$term][\"name\"]] = $META[\"symbol\"][$TERM_NAME[$term][\"parent\"]];\n     }\n   }\n\n   $query = 'SELECT wpp.post_title, wpt.name FROM '.$prefix.'term_relationships wpr, '.$prefix.'posts wpp, '.$prefix.'term_taxonomy wptt, '.$prefix.'terms wpt WHERE wptt.term_id = wpt.term_id AND wpp.ID = wpr.object_id and wptt.term_taxonomy_id = wpr.term_taxonomy_id AND wpp.post_status = \"publish\" and wptt.taxonomy = \"sector\" and wptt.parent != 0';\n   if ($result = $wpdb->get_results($query)){\n    $result = json_decode(json_encode($result), True);\n   \tforeach($result as $row){\n       if(!array_search($row[\"post_title\"],$META[\"color2\"])){\n   \t\t    $META[\"color2\"][$row[\"post_title\"]] = \"#00aea5\";\n       }\n   \t}\n   }\n\n   $query = 'SELECT wpp.post_title, wpt.name FROM '.$prefix.'term_relationships wpr, '.$prefix.'posts wpp, '.$prefix.'term_taxonomy wptt, '.$prefix.'terms wpt WHERE wptt.term_id = wpt.term_id AND wpp.ID = wpr.object_id and wptt.term_taxonomy_id = wpr.term_taxonomy_id AND wpp.post_status = \"publish\" and wptt.taxonomy = \"sector\" and wptt.parent = 0';\n   if ($result = $wpdb->get_results($query)){\n    $result = json_decode(json_encode($result), True);\n   \tforeach($result as $row){\n      $META[\"tipo\"][$row[\"post_title\"]] = $row[\"name\"];\n   \t\t$META[\"color2\"][$row[\"post_title\"]] = $META[\"color\"][$row[\"name\"]];\n   \t}\n   }\n\n   $query = 'SELECT wpp.ID, wpp.post_title, wppm.meta_key, wppm.meta_value FROM '.$prefix.'posts wpp, '.$prefix.'postmeta wppm WHERE wppm.post_id = wpp.ID AND wpp.post_status = \"publish\" AND wpp.post_type = \"actor\" AND wppm.meta_key like \"_itrend%\"';\n   if ($result = $wpdb->get_results($query)){\n    $result = json_decode(json_encode($result), True);\n   \tforeach($result as $row){\n      $META[\"node_data\"][$row[\"post_title\"]][\"tipo\"] = $META[\"tipo\"][$row[\"post_title\"]];\n      $META[\"node_data\"][$row[\"post_title\"]][\"id\"] = $row[\"ID\"];\n      $META[\"node_data\"][$row[\"post_title\"]][\"link\"] = get_permalink($row[\"ID\"]);\n       if ($row[\"meta_key\"] != \"_itrend_contacto_correo\" && $row[\"meta_key\"] != \"_itrend_contacto_telefono\"){\n   \t\t    $META[\"node_data\"][$row[\"post_title\"]][$row[\"meta_key\"]] = $row[\"meta_value\"];\n       }else{\n           $META[\"node_data\"][$row[\"post_title\"]][$row[\"meta_key\"]] = explode('\"',explode(':\"',$row[\"meta_value\"])[1])[0];\n       }\n       $tarea = explode(\"_itrend_descripcion_relacion_tarea_\",$row[\"meta_key\"]);\n       if (count($tarea) == 2){\n         $tarea = ucfirst(str_replace(\"-\",\" \",$tarea[1]));\n         $META[\"node_data\"][$row[\"post_title\"]][\"tareas\"][] = $tarea;\n       }\n   \t}\n   }\n   return $META;\n }\n\n\n\n function network_visualizer(){\n\n   // CONSTANTES DE TEXTOS TOOLTIP\n   $CONSTANTES = array(\"tareas\"=>\"a\",\"grrd\"=>\"b\",\"sectores\"=>\"c\",\"tamano\"=>\"d\");\n\n   $META = get_meta();\n\n\n   //~ get relations\n   $TAREAS = tareas($META);\n   $TERRITORIAL = territorial($META);\n   $SECTORES = sectores($META);\n   echo '<style>\n   div.tooltip{\n     width:400px;\n     white-space: pre-line;\n     color: #aaa;\n     font-size:16px;\n     padding: 16px;\n   }\n   .visualizer{\n     height:800px;\n   }\n   div#data{\n     background-color: #f1f1f1;\n   }\n   .grey-itrend{\n     background-color:#f1f1f1 !important;\n   }\n   .blue-itrend-text{\n     color:#1a2c59 !important;\n     text-transform: capitalize !important;\n   }\n   .tabs{\n     text-align: center;\n   }\n   #collapsible{\n     position:absolute;\n     right:70px;\n     width:400px;\n     text-align: right;\n     z-index:9;\n   }\n\n   .text-grey-itrend{\n     color:#999;\n   }\n\n   #collapsible li{\n       list-style-type: none;\n   }\n   .collapsible-body{\n     text-align: left;\n     padding-top:5px !important;\n   }\n   .tabs .tab{\n     line-height:68px !important;\n   }\n   #container{\n     margin-top:15px;\n   }\n\n</style>\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css\">\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css\">\n\n<div id=\"data\">\n <div class=\"blue-itrend-text\" style=\"text-align:center;font-size:16px;font-weight:bold;\">Explorar por</div>\n<ul class=\"tabs grey-itrend\">\n  <li class=\"tab col s3\"><a class=\"active blue-itrend-text\" href=\"#container\">Tarea</a></li>\n  <li class=\"tab col s3\"><a class=\"blue-itrend-text\" href=\"#container2\">Alcance Territorial</a></li>\n  <li class=\"tab col s3\"><a class=\"blue-itrend-text\" href=\"#container3\">Sectorial</a></li>\n</ul>\n<div class=\"collapsible\" id=\"collapsible\">\n  <li class=\"active\">\n    <div class=\"collapsible-header blue-itrend-text grey-itrend\" style=\"font-weight:bold;text-align:center;\">Cómo leer el gráfico</div>\n    <div class=\"collapsible-body grey-itrend\">\n      <div class=\"blue-itrend-text\" style=\"border-bottom:solid 1px;border-color:1a2c59;font-size:16px;\">Tareas <i class=\"tooltipped fas fa-info-circle\" data-position=\"top\" data-tooltip=\"'.$CONSTANTES[\"tareas\"].'\"></i></div>\n      <div class=\"text-grey-itrend\" style=\"vertical-align:middle;\"><span style=\"text-align:center;display:inline-block;width:30px;\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/p1.png\"/></span>Dimensión social de la resilencia</div>\n      <div class=\"text-grey-itrend\"style=\"vertical-align:middle;\"><span style=\"text-align:center;display:inline-block;width:30px;\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/p2.png\"/></span>Dimensión de la proyección para el desarrollo</div>\n      <div class=\"text-grey-itrend\" style=\"vertical-align:middle;\"><span style=\"text-align:center;display:inline-block;width:30px;\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/p3.png\"/></span>Dimensión de simulación y gestión de riesgo</div>\n      <div class=\"text-grey-itrend\" style=\"vertical-align:middle;\"><span style=\"text-align:center;display:inline-block;width:30px;\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/p4.png\"/></span>Dimensión física de las amenazas naturales y exposición</div>\n      <div class=\"row\">\n        <div class=\"text-grey-itrend col s5\" >\n          <span class=\"blue-itrend-text\" style=\"border-bottom:solid 1px;border-color:1a2c59;font-size:16px;\">Sectores <i class=\"tooltipped fas fa-info-circle\" data-position=\"top\" data-tooltip=\"'.$CONSTANTES[\"sectores\"].'\"></i></span>\n          <div style=\"vertical-align:middle;\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s1.png\"/>Estado</div>\n          <div style=\"vertical-align:middle;\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s2.png\"/>Privado</div>\n          <div style=\"vertical-align:middle;\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s3.png\"/>Academia</div>\n          <div style=\"vertical-align:middle;\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s4.png\"/>Sociedad Civil</div>\n          <div style=\"vertical-align:middle;\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s5.png\"/>Otro</div>\n        </div>\n        <div class=\"text-grey-itrend col s7\" >\n          <span class=\"blue-itrend-text\" style=\"border-bottom:solid 1px;border-color:1a2c59;font-size:16px;\">Acciones de GRRD <i class=\"tooltipped fas fa-info-circle\" data-position=\"top\" data-tooltip=\"'.$CONSTANTES[\"grrd\"].'\"></i></span>\n          <div>Prevención</div>\n          <div>Respuesta</div>\n          <div>Recuperación</div>\n        </div>\n      </div>\n      <div class=\"blue-itrend-text\" style=\"border-bottom:solid 1px;border-color:1a2c59;font-size:16px;\">Tamaño <i class=\"tooltipped fas fa-info-circle\" data-position=\"top\" data-tooltip=\"'.$CONSTANTES[\"tamano\"].'\"></i></div>\n      <div><img src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/t.png\"/></div>\n    </div>\n  </li>\n</div>\n <div id=\"container\" class=\"col s12 visualizer\"></div>\n <div id=\"container2\" class=\"col s12 visualizer\"></div>\n <div id=\"container3\" class=\"col s12 visualizer\"></div>\n  <script\n   src=\"https://code.jquery.com/jquery-3.4.1.min.js\"\n   integrity=\"sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=\"\n   crossorigin=\"anonymous\"></script>\n  <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js\"></script>\n  <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js\"></script>\n  <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js\"></script>\n  <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js\"></script>\n  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>\n  <script type=\"text/javascript\">\n\n     function network(data){\n       var dom = document.getElementById(\"contheainer\");\n       var myChart = echarts.init(dom);\n       var app = {};\n       option = null;\n       myChart.showLoading();\n           myChart.hideLoading();\n\n           option = {\n             toolbox: {\n                   feature: {\n\n                       restore: {\n                           show: true,\n                           title: \"restaurar\"\n                       }\n                   }\n               },\n               backgroundColor: \"#f1f1f1\",\n               textStyle: {\n                 color:\"#d17c2a\",\n               },\n               legend: {\n                   data: [\"Estado\",\"Privado\",\"Academia\",\"Organizaciones sin fines de lucro\",\"Otro sector\"]\n               },\n               tooltip: {\n                 backgroundColor: \"#ffffff\",\n                 position:\"right\",\n                 borderColor: \"#ddd\",\n                 borderWidth: \"1px\",\n                 textStyle: {\n                   color:\"#333333\",\n                   width:\"600px\",\n                 },\n                 formatter: function (params, ticket, callback) {\n                     if (params.data.tareas){\n                       return params.data.name+\"<br>\"+params.data.tareas\n                     }else{\n                       if (params.data.node_data){\n                         div = \\'<div class=\"tooltip\"><span style=\"color:#732ad1;font-size:20px;font-weight:bold;\">\\'+params.data.name+\\'</span>\\'\n                         div += \\'<div style=\"color:#732ad1\">\\'+params.data.node_data._itrend_contacto_region+\\'</div>\\'\n                         div += \\'<div>Resumen Rol en GRRD</div>\\'\n                         div += \\'<div>\\'+params.data.node_data._itrend_resumen_rol+\\'</div>\\'\n                         div += \\'<div style=\"margin-top:10px;\">Tareas:</div>\\'\n                         div += \\'<ul>\\'\n                         for(i=0;i<params.data.node_data.tareas.length;i++){\n                           div += \\'<li>\\'+params.data.node_data.tareas[i]+\\'</li>\\'\n                         }\n                         div += \\'</ul>\\'\n                         div += \\'<center style=\"color:#732ad1\"><b>click para ver más</b></center>\\'\n                         div += \\'<center>\\'+params.data.node_data._itrend_contacto_web+\\'</center></span>\\'\n                         return div\n                       }else{\n                         return params.data.name\n                       }\n                     }\n                 }\n               },\n               animationDuration: 1500,\n               animationEasingUpdate: \\'quinticInOut\\',\n               series: [{\n                   type: \\'graph\\',\n                   layout: \\'none\\',\n                   roam:true,\n                   focusNodeAdjacency: true,\n                   label: {\n                       normal: {\n                           position: \\'right\\',\n                           formatter: \\'{b}\\'\n                       }\n                   },\n\n                   draggable: true,\n                   data: data.nodes.map(function (node, idx) {\n                       node.id = idx;\n                       return node;\n                   }),\n                   categories: data.categories,\n                   force: {\n                       // initLayout: \\'circular\\'\n                       // repulsion: 20,\n                       edgeLength: 5,\n                       repulsion: 20,\n                       gravity: 0.2\n                   },\n                   edges: data.links,\n                   lineStyle: {\n                           color: \\'source\\',\n                           curveness: 0.3\n                       },\n                   emphasis: {\n                       lineStyle: {\n                           width: 3\n                       }\n                   }\n               }]\n           };\n\n           myChart.setOption(option);\n\n       if (option && typeof option === \"object\") {\n           myChart.setOption(option, true);\n       }\n\n       myChart.on(\\'click\\',function(params){\n         if(params.data.node_data){\n          console.log(params.data);\n          window.open(params.data.node_data.link);\n         }else{\n           if(params.data.itemStyle.opacity == 1){\n             params.data.itemStyle.opacity = 0.8\n           }else{\n             params.data.itemStyle.opacity = 1\n           }\n           if (params.event.target.style.opacity == 1){\n             params.event.target.style.opacity = 0.8;\n           }else{\n             params.event.target.style.opacity = 1;\n           }\n\n         }\n       })\n     }\n\n     function tree(data,container){\n       var dom = document.getElementById(container);\n       var myChart = echarts.init(dom);\n       var app = {};\n       option = null;\n       myChart.showLoading();\n\n           myChart.hideLoading();\n\n           myChart.setOption(option = {\n                 toolbox: {\n                       feature: {\n\n                           restore: {\n                               show: true,\n                               title: \"restaurar\"\n                           }\n                       }\n                   },\n                 backgroundColor: \"#f1f1f1\",\n                 circular:{\n                   rotateLabel:false,\n                 },\n                 label:{\n                   rotate:0,\n                 },\n                 tooltip: {\n\n                     trigger: \"item\",\n                     triggerOn: \"mousemove\",\n                     backgroundColor: \"#ffffff\",\n                     position:\"right\",\n                     borderColor: \"#ddd\",\n                     borderWidth: \"1px\",\n                     textStyle: {\n                       color:\"#333333\",\n                       width:\"600px\",\n                     },\n                     formatter: function (params, ticket, callback) {\n                         if (params.data.tareas){\n                           return params.data.name+\"<br>\"+params.data.tareas\n                         }else{\n                           if (params.data.node_data){\n                             div = \\'<div class=\"tooltip\"><span style=\"color:#732ad1;font-size:20px;font-weight:bold;\">\\'+params.data.name+\\'</span>\\'\n                             div += \\'<div style=\"color:#732ad1\">\\'+params.data.node_data._itrend_contacto_region+\\'</div>\\'\n                             div += \\'<div>Resumen Rol en GRRD</div>\\'\n                             div += \\'<div>\\'+params.data.node_data._itrend_resumen_rol+\\'</div>\\'\n                             div += \\'<div style=\"margin-top:10px;\">Tareas:</div>\\'\n                             div += \\'<ul>\\'\n                             for(i=0;i<params.data.node_data.tareas.length;i++){\n                               div += \\'<li>\\'+params.data.node_data.tareas[i]+\\'</li>\\'\n                             }\n                             div += \\'</ul>\\'\n                             div += \\'<center style=\"color:#732ad1\"><b>click para ver más</b></center>\\'\n                             div += \\'<center>\\'+params.data.node_data._itrend_contacto_web+\\'</center></span>\\'\n                             return div\n                           }else{\n                             return params.data.name\n                           }\n                         }\n                     }\n                   },\n               series: [\n                   {\n                       type: \\'tree\\',\n\n                       data: [data],\n\n                       top: \\'18%\\',\n                       bottom: \\'14%\\',\n\n                       layout: \\'radial\\',\n\n                       symbol: \\'circle\\',\n                       symbolSize: 20,\n\n                       initialTreeDepth: 1,\n\n                       animationDurationUpdate: 750\n\n                   }\n               ]\n           });\n           myChart.on(\\'click\\',function(params){\n             if(params.data.node_data){\n                window.open(params.data.node_data.link);\n             }else{\n               if(params.data.itemStyle.opacity == 1){\n                 params.data.itemStyle.opacity = 0.8\n               }else{\n                 params.data.itemStyle.opacity = 1\n               }\n               if (params.event.target.style.opacity == 1){\n                 params.event.target.style.opacity = 0.8;\n               }else{\n                 params.event.target.style.opacity = 1;\n               }\n\n             }\n           })\n     }\n     var data ='.  json_encode($TAREAS) .';\n     network(data)\n     var data = '.  json_encode($TERRITORIAL).';\n     tree(data,\"container2\")\n     var data = '.  json_encode($SECTORES) .';\n     tree(data,\"container3\")\n     $(document).ready(function(){\n       $(\\'.tabs\\').tabs();\n       $(\\'.modal\\').modal();\n       $(\\'.collapsible\\').collapsible();\n       $(\\'.tooltipped\\').tooltip()\n\n     });\n  </script>\n      </div>';\n  }\n  add_shortcode(\"netviz\",\"network_visualizer\");\n\n\n?>\n",
+			"file": "/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer/network-visualizer.php",
+			"file_size": 32258,
+			"file_write_time": 132233995595585001,
+			"settings":
+			{
+				"buffer_size": 32241,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/scss/_custom-materialize.scss",
+			"settings":
+			{
+				"buffer_size": 2311,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -67,6 +163,18 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"comm",
+				"Toggle Comment"
+			],
+			[
+				"wrap",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
+				"add",
+				"Project: Add Folder"
+			],
 			[
 				"save proj",
 				"Project: Save As"
@@ -98,10 +206,6 @@
 			[
 				"ren",
 				"Rename File"
-			],
-			[
-				"wrap",
-				"Emmet: Wrap With Abbreviation"
 			],
 			[
 				"ww",
@@ -145,37 +249,41 @@
 	"expanded_folders":
 	[
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/js"
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer"
 	],
 	"file_history":
 	[
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-filters.php",
+		"/tmp/fz3temp-2/.htaccess",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/custom-materialize.css",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/network.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-custom-fields.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/itrend-actores.css",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer/network-visualizer.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-filters-frontend.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-filters.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-header.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/themes/itrend_plain/dploy.yaml",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/dploy.yaml",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer/dploy.yaml",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/itrend-actores.scss",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-public.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/_custom-typography.scss",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/_custom-variables.scss",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-ficha-actor.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/_itrend-ficha-actor.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/gulpfile.js",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/package.json",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/js/itrend-filters-scripts.js",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-public.php",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/network.php",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-custom-fields.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/custom-materialize.scss",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/_custom-variables.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/node_modules/materialize-css/sass/components/_typography.scss",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/itrend-actores.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/node_modules/materialize-css/sass/materialize.scss",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-ficha-actor.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/debug.log",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/node_modules/materialize-css/sass/components/_color-variables.scss",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/itrend-actores.css",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/itrend-filters-styles.css",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-template-functions.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-main.php",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-header.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/readme.md",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/dploy.yaml",
 		"/home/pabloselin/.gitignore",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/themes/itrend_plain/dploy.yaml",
 		"/tmp/fz3temp-2/wp-config.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-config.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/reunion_06012020.todo",
@@ -187,7 +295,7 @@
 	],
 	"find":
 	{
-		"height": 26.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
@@ -201,6 +309,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"svg",
+			"weight",
+			"strong",
+			"link",
+			"permalink",
+			"link",
+			"custom_content",
+			"data.id",
+			"id",
+			"data.id",
+			"var params",
+			"mysqli",
 			"sans-ser",
 			"open sans",
 			"components",
@@ -242,8 +362,300 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "css/scss/_custom-typography.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1593,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1205,
+								1205
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "css/scss/itrend-actores.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2035,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								200,
+								200
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "templates/itrend-ficha-actor.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5439,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2642,
+								2642
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1999.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "itrend-custom-fields.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 21420,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9240,
+								9240
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3111.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "css/scss/_itrend-ficha-actor.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1076,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								561,
+								561
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "itrend-public.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10099,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2239,
+								2239
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "templates/itrend-filters.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2804,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								933,
+								933
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "templates/itrend-filters-frontend.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 423,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer/network-visualizer.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 32241,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								24476,
+								24476
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 7973.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "css/scss/_custom-materialize.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2311,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								747,
+								747
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -296,11 +708,19 @@
 		"selected_items":
 		[
 			[
-				"itrend-ron",
+				"content-act",
+				"itrend_custom_content/templates/itrend-ficha-actor.php"
+			],
+			[
+				"net",
+				"itrend_network_visualizer/network-visualizer.php"
+			],
+			[
+				"fron",
 				"itrend_custom_content/templates/itrend-filters-frontend.php"
 			],
 			[
-				"filte",
+				"filt",
 				"itrend_custom_content/templates/itrend-filters.php"
 			],
 			[
@@ -308,8 +728,56 @@
 				"itrend_custom_content/itrend-public.php"
 			],
 			[
+				"ficha",
+				"itrend_custom_content/css/scss/_itrend-ficha-actor.scss"
+			],
+			[
+				"custom-mate",
+				"itrend_custom_content/css/custom-materialize.css"
+			],
+			[
+				"customtyp",
+				"itrend_custom_content/css/scss/_custom-typography.scss"
+			],
+			[
 				"custom-va",
 				"itrend_custom_content/css/scss/_custom-variables.scss"
+			],
+			[
+				"",
+				"itrend_custom_content/css/scss/itrend-ficha-actor.scss"
+			],
+			[
+				"head",
+				"itrend_custom_content/templates/itrend-header.php"
+			],
+			[
+				"dpl",
+				"itrend_network_visualizer/dploy.yaml"
+			],
+			[
+				"gulp",
+				"itrend_custom_content/gulpfile.js"
+			],
+			[
+				"custom-fi",
+				"itrend_custom_content/itrend-custom-fields.php"
+			],
+			[
+				"itrend-fi",
+				"itrend_custom_content/templates/itrend-filters.php"
+			],
+			[
+				"front",
+				"itrend_custom_content/templates/itrend-filters-frontend.php"
+			],
+			[
+				"itrend-ron",
+				"itrend_custom_content/templates/itrend-filters-frontend.php"
+			],
+			[
+				"filte",
+				"itrend_custom_content/templates/itrend-filters.php"
 			],
 			[
 				"custommat",
@@ -324,20 +792,8 @@
 				"itrend_custom_content/itrend-public.php"
 			],
 			[
-				"filt",
-				"itrend_custom_content/templates/itrend-filters.php"
-			],
-			[
 				"cuso",
 				"itrend_custom_content/itrend-custom-fields.php"
-			],
-			[
-				"",
-				"itrend_custom_content/templates/itrend-filters.php"
-			],
-			[
-				"net",
-				"itrend_custom_content/templates/network.php"
 			],
 			[
 				"itr",
@@ -354,10 +810,6 @@
 			[
 				"cu",
 				"itrend_custom_content/itrend-custom-fields.php"
-			],
-			[
-				"ficha",
-				"itrend_custom_content/templates/itrend-ficha-actor.php"
 			],
 			[
 				"custom",
@@ -380,20 +832,12 @@
 				"itrend_custom_content/js/itrend-filters-scripts.js"
 			],
 			[
-				"itrend-fi",
-				"itrend_custom_content/templates/itrend-filters.php"
-			],
-			[
 				"wp",
 				"/tmp/fz3temp-2/wp-config.php"
 			],
 			[
 				"dplo",
 				"itrend_custom_content/dploy.yaml"
-			],
-			[
-				"dpl",
-				"itrend_plain/dploy.yaml"
 			],
 			[
 				"pu",
@@ -418,14 +862,6 @@
 			[
 				"main",
 				"itrend_custom_content/itrend-main.php"
-			],
-			[
-				"head",
-				"itrend_custom_content/templates/itrend-header.php"
-			],
-			[
-				"fron",
-				"itrend_custom_content/templates/itrend-filters-frontend.php"
 			],
 			[
 				"netw",
@@ -490,7 +926,11 @@
 		[
 			[
 				"",
-				"~/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend.sublime-project"
+				"~/Documents/WebDev/local_sites/bitacora/app/public/wp-content/themes/prompt/prompt.sublime-project"
+			],
+			[
+				"prom",
+				"~/Documents/WebDev/local_sites/bitacora/app/public/wp-content/themes/prompt/prompt.sublime-project"
 			]
 		],
 		"width": 380.0

@@ -562,6 +562,13 @@ function itrend_register_theme_options_metabox() {
 		'type' => 'wysiwyg',
 	) );
 
+	$cmb_options->add_field( array(
+		'name' => __( 'Email de contacto para revisiones', 'itrend' ),
+		'desc' => __( 'E mail', 'itrend' ),
+		'id'   => 'itrend_email',
+		'type' => 'text_email',
+	) );
+
 }
 
 /**
