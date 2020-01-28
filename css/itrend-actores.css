@@ -5632,7 +5632,6 @@ body#itrend-vis {
     font-size: 36px; }
   body#itrend-vis .itrend-datos-contacto {
     color: #1E1F5A;
-    border: 1px dashed #1E1F5A;
     border-top: 0;
     padding-top: 24px;
     padding-bottom: 24px;
@@ -5655,12 +5654,19 @@ body#itrend-vis {
       padding: 0; }
   body#itrend-vis .fields-info-single {
     margin-bottom: 6px; }
+  body#itrend-vis .row .col.info-left {
+    padding: 0; }
   body#itrend-vis .info-left .sector {
     color: #1E1F5A;
     margin: 6px 0 24px 0; }
   body#itrend-vis .mision-content {
     color: #555;
     font-style: italic; }
+  body#itrend-vis .btn-volver {
+    float: right;
+    background-color: #1E1F5A; }
+    body#itrend-vis .btn-volver:hover {
+      background-color: #2b2c80; }
   body#itrend-vis .container-fluid {
     width: 100%;
     padding-right: 15px;

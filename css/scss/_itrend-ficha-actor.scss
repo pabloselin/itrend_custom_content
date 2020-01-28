@@ -36,7 +36,6 @@
 
 	.itrend-datos-contacto {
 		color: #1E1F5A;
-		border: 1px dashed #1E1F5A;
 		border-top: 0;
 		padding-top: 24px;
 		padding-bottom: 24px;
@@ -72,6 +71,10 @@
 		margin-bottom: 6px;
 	}
 
+	.row .col.info-left {
+		padding: 0;
+	}
+
 	.info-left .sector {
 		color: #1E1F5A;
 		margin: 6px 0 24px 0;
@@ -80,4 +83,12 @@
 	.mision-content {
 		color: #555;
 		font-style: italic;
+	}
+
+	.btn-volver {
+		float: right;
+		background-color: #1E1F5A;
+		&:hover {
+			background-color: lighten(#1E1F5A, 10%);
+		}
 	}
