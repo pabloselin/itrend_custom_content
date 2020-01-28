@@ -180,6 +180,23 @@ body#itrend-vis {
 		}
 	}
 
+	.notfound-actors {
+		padding: 24px;
+	}
+
+	.itrend-email-fixes {
+		text-align: center;
+		color: #333;
+		padding: 12px 24px;
+		margin: 32px 120px;
+		border: 1px dashed #555;
+		a {
+			color: #333;
+			text-decoration: underline;
+			font-weight: bold;
+		}
+	}
+
 	@import 'buttons';
 
 }

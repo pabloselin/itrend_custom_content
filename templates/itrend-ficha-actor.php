@@ -153,6 +153,9 @@
 		?>
 
 		<div class="link-archive">
+			<?php $options = get_option( 'itrend_options' );?>
+
+			<p class="itrend-email-fixes">Sugerencias y consultas a <a href="mailto:<?php echo $options['itrend_email'];?>"><?php echo $options['itrend_email'];?></a></p>
 			<p>
 				<a href="<?php echo add_query_arg('f', 'filtro', get_post_type_archive_link( 'actor' ) );?>" class="btn btn-block btn-primary">Volver al buscador de actores</a>
 			</p>

@@ -9,7 +9,7 @@
 	<?php $function = $_GET['f'];
 	switch($function) {
 		case('visualizacion'):
-		$title = 'Visualización de actores';
+		$title = 'Mapa de actores';
 		$introtextfield = 'itrend_vis_intro_text';
 		break;
 		case('filtro'):
@@ -38,7 +38,7 @@
 			<div class="col m6 push-m6">
 				<div class="itrend-tabs">
 
-					<a class="itrend-tab <?php echo ($function == 'visualizacion'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'visualizacion', get_post_type_archive_link( 'actor' ));?>">Visualización de actores</a>
+					<a class="itrend-tab <?php echo ($function == 'visualizacion'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'visualizacion', get_post_type_archive_link( 'actor' ));?>">Mapa de actores</a>
 
 
 					<a class="itrend-tab <?php echo ($function == 'filtro'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'filtro', get_post_type_archive_link( 'actor' ));?>">Buscador de actores</a>					

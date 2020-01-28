@@ -21,6 +21,8 @@ jQuery(document).ready(function($) {
 		})
 		infoZone.empty();
 		itrendHasFilters();
+		itrendScanCheckedFilters();
+		itrendBuildQuery();
 	});
 
 	$('#itrend-filters button[data-action="apply_filters"]').on('click', function(event) {
@@ -157,6 +159,8 @@ jQuery(document).ready(function($) {
 		var resultsCount = $('#itrend_results_count');
 		var messages = $('#itrend_messages');
 		
+		console.log(json.length);
+
 		if(json.length > 0) {
 			messages.empty();
 			table.empty();
@@ -164,12 +168,14 @@ jQuery(document).ready(function($) {
 
 			for(var i = 0; i < json.length; i++) {
 				table.append(itrendRenderRow(json[i]));
-				//console.log(itrendRenderRow(json[i]));
 			}
 		} else {
 
 			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando 0 actores');
-			messages.empty().append('<div class="alert alert-warning" role="alert">No se encontraron actores</div>');
+			
+			table.empty().append('<div class="notfound-actors" role="alert">No se encontraron actores</div>');
+
+			//table.empty();
 			
 		}
 	}

@@ -5611,8 +5611,10 @@ body#itrend-vis {
       margin-top: 1.2rem; } }
   body#itrend-vis .ficha-actor .info-right {
     text-align: right; }
+    body#itrend-vis .ficha-actor .info-right a {
+      color: #1E1F5A; }
   body#itrend-vis .ficha-actor h1, body#itrend-vis .ficha-actor h2, body#itrend-vis .ficha-actor h3, body#itrend-vis .ficha-actor .title-col {
-    color: #8900D4;
+    color: #1E1F5A;
     font-weight: bold; }
   body#itrend-vis .ficha-actor h4.accion-name {
     font-weight: bold; }
@@ -5623,11 +5625,14 @@ body#itrend-vis {
   body#itrend-vis .actor-header h1 {
     margin-top: 0;
     padding-bottom: 12px;
-    border-bottom: 1px solid #8900D4;
-    margin-bottom: 0; }
+    border-bottom: 1px solid #1E1F5A;
+    margin-bottom: 0;
+    font-size: 48px; }
+  body#itrend-vis h2 {
+    font-size: 36px; }
   body#itrend-vis .itrend-datos-contacto {
-    color: #8900D4;
-    border: 1px dashed #8900D4;
+    color: #1E1F5A;
+    border: 1px dashed #1E1F5A;
     border-top: 0;
     padding-top: 24px;
     padding-bottom: 24px;
@@ -5639,6 +5644,8 @@ body#itrend-vis {
     margin-bottom: 24px; }
     body#itrend-vis .info-private div.fields-info {
       display: inline; }
+      body#itrend-vis .info-private div.fields-info a {
+        color: #1E1F5A; }
       body#itrend-vis .info-private div.fields-info > div {
         display: inline-block; }
       body#itrend-vis .info-private div.fields-info strong {
@@ -5649,7 +5656,7 @@ body#itrend-vis {
   body#itrend-vis .fields-info-single {
     margin-bottom: 6px; }
   body#itrend-vis .info-left .sector {
-    color: #8900D4;
+    color: #1E1F5A;
     margin: 6px 0 24px 0; }
   body#itrend-vis .mision-content {
     color: #555;
@@ -5756,6 +5763,18 @@ body#itrend-vis {
     display: inline-block; }
   body#itrend-vis #itrend-home .row-buttons {
     margin-top: 48px; }
+  body#itrend-vis .notfound-actors {
+    padding: 24px; }
+  body#itrend-vis .itrend-email-fixes {
+    text-align: center;
+    color: #333;
+    padding: 12px 24px;
+    margin: 32px 120px;
+    border: 1px dashed #555; }
+    body#itrend-vis .itrend-email-fixes a {
+      color: #333;
+      text-decoration: underline;
+      font-weight: bold; }
   body#itrend-vis .btn-arrow {
     cursor: pointer;
     display: inline-block;
