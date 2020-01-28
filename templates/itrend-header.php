@@ -29,13 +29,13 @@
 </head>
 <body id="itrend-vis">
 	<header id="itrend-vis-main-header" class="container-fluid">
-		<div class="row">
+		<div class="row row-logo">
 			<div class="col m6">
 				<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/ConectaResiliencia.png" alt="Conecta Resiliencia">
 			</div>
 		</div>
 		<div class="row row-tabs">
-			<div class="col m6 push-m6">
+			<div class="col m6">
 				<div class="itrend-tabs">
 
 					<a class="itrend-tab <?php echo ($function == 'visualizacion'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'visualizacion', get_post_type_archive_link( 'actor' ));?>">Mapa de actores</a>
