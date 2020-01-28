@@ -14,7 +14,7 @@ switch($filter){
 		echo '.';
 	break;
 	default:
-		echo '.';
+		include( plugin_dir_path( __FILE__ ) . '/itrend-home.php');
 	};
 ?>
 

@@ -15,11 +15,43 @@ body#itrend-vis {
 		margin-left: auto;
 	}
 
-	.itrend-tabs a {
+	#itrend-vis-main-header {
+		padding-top: 24px;
+		background-color: white;
+	}
+
+
+	.row-tabs {
+		margin-bottom: 0;
+	}
+
+	.itrend-tabs {
+		text-align: right;
+	}
+
+	a.itrend-tab {
+		display: inline-block;
 		border-radius: 0;
-		background-color: #26a69a;
-		text-transform: uppercase;
+		padding: 12px 24px;
+		font-weight: bold;
 		font-size: 14px;
+		color: #373869;
+		&:visited {
+			color: #373869;
+		}
+		&.active {
+			background-color: #F1F1F1;
+		}
+	}
+
+	.itrend-subtabs {
+		a {
+			padding: 8px 24px;
+			margin-top: 16px;
+			&.first {
+				border-right: 2px solid #373869;
+			}
+		}
 	}
 
 	.right-section {
@@ -29,17 +61,16 @@ body#itrend-vis {
 	.itrend-section-title {
 		font-size: 36px;
 		font-weight: bold;
-		color: #8900D4;
-		margin: 15px;
+		color: #24255B;
+		margin: 15px 0;
 		padding-bottom: 12px;
-		border-bottom: 1px solid #8900D4;
-	}
-
-	.itrend-tabs a:visited {
-		color: white;
 	}
 
 	.introtext {
+		margin: 15px 0;
+	}
+
+	.visualizer {
 		margin: 15px;
 	}
 
@@ -77,6 +108,10 @@ body#itrend-vis {
 		font-weight: bold;
 	}
 
+	.logo-home {
+		margin: 32px 0;
+	}
+
 	#itrend-filters #accordion-filters .card-header.collapsed i {
 		transform: rotate(180deg);
 	}
@@ -110,7 +145,7 @@ body#itrend-vis {
 
 		.filter-item {
 			display: block;
-			background-color: color("indigo", "darken-1");
+			background-color: #373869;
 			color: white;
 			margin: 6px 0;
 			padding: 6px;
@@ -125,10 +160,6 @@ body#itrend-vis {
 		}
 	}
 
-	#itrend-vis-main-header {
-		margin-top: 24px;
-	}
-
 	.append-zone-filter .btn {
 		margin-bottom: 12px;
 		width: 100%;
@@ -139,9 +170,18 @@ body#itrend-vis {
 		font-weight: bold;
 	}
 
+	#itrend-home {
+		.itrend-section-title {
+			border-bottom: 1px solid #373869;
+			display: inline-block;
+		}
+		.row-buttons {
+			margin-top: 48px;
+		}
+	}
+
+	@import 'buttons';
+
 }
-
-
-
 
 

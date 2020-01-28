@@ -541,6 +541,13 @@ function itrend_register_theme_options_metabox() {
 	 */
 
 	$cmb_options->add_field( array(
+		'name' => __( 'Texto de presentación general (que sale al principio de la página)', 'itrend' ),
+		'desc' => __( 'Texto con formato', 'itrend' ),
+		'id'   => 'itrend_vis_mainintro_text',
+		'type' => 'wysiwyg',
+	) );
+
+	$cmb_options->add_field( array(
 		'name' => __( 'Texto de introduccion para Sección Visualización de Actores', 'itrend' ),
 		'desc' => __( 'Texto con formato', 'itrend' ),
 		'id'   => 'itrend_vis_intro_text',

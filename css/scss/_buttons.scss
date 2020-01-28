@@ -1,0 +1,58 @@
+.btn-arrow {
+  cursor: pointer;
+  display: inline-block;  
+  height: 60px;
+  margin-left: 60px;
+  margin-right: 60px;
+  position: relative;
+  line-height: 3.7em;
+  padding-left: 3.6em;
+  padding-right: 2em;
+  font-weight: bold;
+  color: white;
+   &:after {
+    // triangle hover color
+    border-left: 30px solid white;
+  }
+}
+
+.btn-arrow:after {
+  // the triangle
+  content: "";
+  position: absolute;
+  border-bottom: 30px solid transparent;
+  border-top: 30px solid transparent;
+  height: 0px;
+  width: 0px;
+  margin-right: -30px;
+  right: 0; 
+}
+
+.btn-arrow:hover, .btn-arrow:active {
+  background: yellow;
+  color: white;
+  &:after {
+    // triangle hover
+    border-left: 30px solid yellow;
+  }
+}
+
+.btn-arrow.btn-action-mapa {
+	background-color: #1E1F5A;
+  background-image: url('../img/mapicon_00.png');
+  background-position: left;
+  background-repeat: no-repeat;
+    &:after {
+        border-left: 30px solid #1E1F5A;
+    }
+}
+
+.btn-arrow.btn-action-buscador {
+  background-color:  #FF003A;
+  background-image: url('../img/buscaicon.png');
+  background-position: left;
+  background-repeat: no-repeat;
+    &:after {
+        border-left: 30px solid #FF003A;
+    }
+}

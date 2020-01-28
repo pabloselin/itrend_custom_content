@@ -5660,23 +5660,40 @@ body#itrend-vis {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto; }
-  body#itrend-vis .itrend-tabs a {
+  body#itrend-vis #itrend-vis-main-header {
+    padding-top: 24px;
+    background-color: white; }
+  body#itrend-vis .row-tabs {
+    margin-bottom: 0; }
+  body#itrend-vis .itrend-tabs {
+    text-align: right; }
+  body#itrend-vis a.itrend-tab {
+    display: inline-block;
     border-radius: 0;
-    background-color: #26a69a;
-    text-transform: uppercase;
-    font-size: 14px; }
+    padding: 12px 24px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #373869; }
+    body#itrend-vis a.itrend-tab:visited {
+      color: #373869; }
+    body#itrend-vis a.itrend-tab.active {
+      background-color: #F1F1F1; }
+  body#itrend-vis .itrend-subtabs a {
+    padding: 8px 24px;
+    margin-top: 16px; }
+    body#itrend-vis .itrend-subtabs a.first {
+      border-right: 2px solid #373869; }
   body#itrend-vis .right-section {
     text-align: right; }
   body#itrend-vis .itrend-section-title {
     font-size: 36px;
     font-weight: bold;
-    color: #8900D4;
-    margin: 15px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #8900D4; }
-  body#itrend-vis .itrend-tabs a:visited {
-    color: white; }
+    color: #24255B;
+    margin: 15px 0;
+    padding-bottom: 12px; }
   body#itrend-vis .introtext {
+    margin: 15px 0; }
+  body#itrend-vis .visualizer {
     margin: 15px; }
   body#itrend-vis .child-term {
     margin-left: 12px; }
@@ -5696,6 +5713,8 @@ body#itrend-vis {
     font-size: 20px;
     margin: 0;
     font-weight: bold; }
+  body#itrend-vis .logo-home {
+    margin: 32px 0; }
   body#itrend-vis #itrend-filters #accordion-filters .card-header.collapsed i {
     transform: rotate(180deg); }
   body#itrend-vis #itrend-filters .collapsible-body {
@@ -5718,7 +5737,7 @@ body#itrend-vis {
     background-color: #ccc; }
   body#itrend-vis #itrend-filters .filter-item {
     display: block;
-    background-color: #3949ab;
+    background-color: #373869;
     color: white;
     margin: 6px 0;
     padding: 6px; }
@@ -5726,11 +5745,56 @@ body#itrend-vis {
     margin-bottom: 6px; }
     body#itrend-vis .term-checkbox-wrap label {
       color: #333; }
-  body#itrend-vis #itrend-vis-main-header {
-    margin-top: 24px; }
   body#itrend-vis .append-zone-filter .btn, body#itrend-vis .append-zone-filter .btn-large, body#itrend-vis .append-zone-filter .btn-small {
     margin-bottom: 12px;
     width: 100%; }
   body#itrend-vis .orgs-filter-list h2 {
     font-size: 24px;
     font-weight: bold; }
+  body#itrend-vis #itrend-home .itrend-section-title {
+    border-bottom: 1px solid #373869;
+    display: inline-block; }
+  body#itrend-vis #itrend-home .row-buttons {
+    margin-top: 48px; }
+  body#itrend-vis .btn-arrow {
+    cursor: pointer;
+    display: inline-block;
+    height: 60px;
+    margin-left: 60px;
+    margin-right: 60px;
+    position: relative;
+    line-height: 3.7em;
+    padding-left: 3.6em;
+    padding-right: 2em;
+    font-weight: bold;
+    color: white; }
+    body#itrend-vis .btn-arrow:after {
+      border-left: 30px solid white; }
+  body#itrend-vis .btn-arrow:after {
+    content: "";
+    position: absolute;
+    border-bottom: 30px solid transparent;
+    border-top: 30px solid transparent;
+    height: 0px;
+    width: 0px;
+    margin-right: -30px;
+    right: 0; }
+  body#itrend-vis .btn-arrow:hover, body#itrend-vis .btn-arrow:active {
+    background: yellow;
+    color: white; }
+    body#itrend-vis .btn-arrow:hover:after, body#itrend-vis .btn-arrow:active:after {
+      border-left: 30px solid yellow; }
+  body#itrend-vis .btn-arrow.btn-action-mapa {
+    background-color: #1E1F5A;
+    background-image: url("../img/mapicon_00.png");
+    background-position: left;
+    background-repeat: no-repeat; }
+    body#itrend-vis .btn-arrow.btn-action-mapa:after {
+      border-left: 30px solid #1E1F5A; }
+  body#itrend-vis .btn-arrow.btn-action-buscador {
+    background-color: #FF003A;
+    background-image: url("../img/buscaicon.png");
+    background-position: left;
+    background-repeat: no-repeat; }
+    body#itrend-vis .btn-arrow.btn-action-buscador:after {
+      border-left: 30px solid #FF003A; }
