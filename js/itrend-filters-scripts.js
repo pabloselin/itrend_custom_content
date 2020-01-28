@@ -58,6 +58,8 @@ jQuery(document).ready(function($) {
             'X-WP-Nonce': itrend_filters.nonce
 		});
 
+		itrendDisplayLoading();
+
 		//console.log(searchTerm);
 
 		var encodedTerm = encodeURIComponent(searchTerm);
@@ -85,6 +87,8 @@ jQuery(document).ready(function($) {
 			'Content-Type': 'application/json',
             'X-WP-Nonce': itrend_filters.nonce
 		});
+
+		itrendDisplayLoading();
 
 		var ids = [];
 
@@ -114,6 +118,8 @@ jQuery(document).ready(function($) {
 			'Content-Type': 'application/json',
             'X-WP-Nonce': itrend_filters.nonce
 		});
+
+		itrendDisplayLoading();
 
 		var queryArray = [];
 
@@ -229,6 +235,11 @@ jQuery(document).ready(function($) {
 		} else {
 			removeFiltersBtn.show();
 		}
+	}
+
+	function itrendDisplayLoading() {
+		var table = $('#itrend_table_results > tbody.results');
+		table.empty().append('<p class="loadingmsg"><i class="fas fa-spinner fa-spin"></i> Buscando actores...</p>');
 	}
 
 	function itrendUglyRenderRow( data ) {
