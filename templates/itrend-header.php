@@ -31,7 +31,9 @@
 	<header id="itrend-vis-main-header" class="container-fluid">
 		<div class="row row-logo">
 			<div class="col m6">
-				<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/ConectaResiliencia.png" alt="Conecta Resiliencia">
+				<a href="<?php bloginfo('url');?>">
+					<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/ConectaResiliencia.png" alt="Conecta Resiliencia">
+				</a>
 			</div>
 		</div>
 		<div class="row row-tabs">
