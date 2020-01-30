@@ -5781,6 +5781,8 @@ body#itrend-vis {
     display: inline-block; }
   body#itrend-vis #itrend-home .row-buttons {
     margin-top: 48px; }
+    body#itrend-vis #itrend-home .row-buttons .col-m6 {
+      text-align: center; }
   body#itrend-vis .notfound-actors {
     padding: 24px; }
   body#itrend-vis .itrend-email-fixes {
