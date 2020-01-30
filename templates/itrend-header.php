@@ -30,20 +30,25 @@
 <body id="itrend-vis">
 	<header id="itrend-vis-main-header" class="container-fluid">
 		<div class="row row-logo">
-			<div class="col m6">
+			<div class="col m4">
 				<a href="<?php bloginfo('url');?>">
 					<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/ConectaResiliencia.png" alt="Conecta Resiliencia">
 				</a>
 			</div>
 		</div>
 		<div class="row row-tabs">
-			<div class="col m6">
+			<div class="col m8">
 				<div class="itrend-tabs">
 
 					<a class="itrend-tab <?php echo ($function == 'visualizacion'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'visualizacion', get_post_type_archive_link( 'actor' ));?>">Mapa de actores</a>
 
 
-					<a class="itrend-tab <?php echo ($function == 'filtro'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'filtro', get_post_type_archive_link( 'actor' ));?>">Buscador de actores</a>					
+					<a class="itrend-tab <?php echo ($function == 'filtro'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'filtro', get_post_type_archive_link( 'actor' ));?>">Buscador de actores</a>	
+
+					<a class="itrend-tab first <?php echo ($function == 'about'? 'active' : '');?>" href="#">Sobre el proyecto</a>
+
+					<a class="itrend-tab <?php echo ($function == 'metodologia'? 'active' : '');?>" href="#">Metodología</a>
+
 				</div>
 			</div>
 			
@@ -59,16 +64,6 @@
 					echo apply_filters( 'the_content', $intro );?>
 				</div>
 			</div>
-			<div class="col m6">
-
-				<div class="itrend-subtabs right-section">
-
-					<a class="itrend-tab first <?php echo ($function == 'about'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'about', get_post_type_archive_link( 'actor' ));?>">Sobre el proyecto</a>
-
-					<a class="itrend-tab <?php echo ($function == 'metodologia'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'metodologia', get_post_type_archive_link( 'actor' ));?>">Metodología</a>
-
-				</div>
-
-			</div>
+			
 		</div>
 	</div>

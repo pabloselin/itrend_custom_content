@@ -5730,7 +5730,10 @@ body#itrend-vis {
     margin: 0;
     font-weight: bold; }
   body#itrend-vis .logo-home {
-    margin: 56px 0; }
+    margin: 0 0 32px 0;
+    max-width: 300px;
+    display: block;
+    height: auto; }
   body#itrend-vis #itrend-filters #accordion-filters .card-header.collapsed i {
     transform: rotate(180deg); }
   body#itrend-vis #itrend-filters .collapsible-body {

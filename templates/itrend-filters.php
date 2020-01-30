@@ -28,8 +28,8 @@
 					
 				</div>
 				
-				<button class="btn red darken-4" data-action="clean_filters">Quitar filtros</button>
-				<button class="btn" data-action="apply_filters">Filtrar</button>
+				<button class="btn black" data-action="clean_filters">Quitar filtros</button>
+				<button class="btn red darken-3" data-action="apply_filters">Filtrar</button>
 
 			</div>
 
@@ -65,8 +65,8 @@
 			</div>
 			
 
-			<button class="btn red darken-4" data-action="clean_filters">Quitar filtros</button>
-			<button class="btn" data-action="apply_filters">Filtrar</button>
+			<button class="btn black" data-action="clean_filters">Quitar filtros</button>
+			<button class="btn red darken-3" data-action="apply_filters">Filtrar</button>
 
 		</div>
 

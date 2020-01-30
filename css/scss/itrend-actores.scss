@@ -113,8 +113,15 @@ body#itrend-vis {
 		font-weight: bold;
 	}
 
+	.logos-section {
+		//text-align: center;
+	}
+
 	.logo-home {
-		margin: 56px 0;
+		margin: 0 0 32px 0;
+		max-width: 300px;
+		display: block;
+		height: auto;
 	}
 
 	#itrend-filters #accordion-filters .card-header.collapsed i {

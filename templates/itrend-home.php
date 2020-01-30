@@ -10,7 +10,7 @@
 				<?php echo $options['itrend_vis_mainintro_text'];?>
 			</div>
 		</div>
-		<div class="col m6">
+		<div class="col m6 logos-section">
 			<img class="logo-home" src="<?php echo plugin_dir_url( __FILE__ );?>../img/ConectaResiliencia.png" alt="Conecta Resiliencia">
 			<img class="logo-home" src="<?php echo plugin_dir_url(__FILE__);?>../img/logo_itrend.png" alt="Itrend">
 		</div>	
