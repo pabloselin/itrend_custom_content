@@ -27,7 +27,7 @@
 	$intro =itrend_get_option($introtextfield);
 	?>
 </head>
-<body id="itrend-vis">
+<body id="itrend-vis" <?php body_class( '' );?> >
 	<header id="itrend-vis-main-header" class="container-fluid">
 		<div class="row row-logo">
 			<div class="col m4">

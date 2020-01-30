@@ -5679,6 +5679,8 @@ body#itrend-vis {
     right: 0; }
     body#itrend-vis .top-menusection a.itrend-tab {
       font-weight: normal; }
+  body#itrend-vis .admin-bar .top-menusection {
+    top: 32px; }
   body#itrend-vis #itrend-vis-main-header {
     padding-top: 24px;
     background-color: white; }
