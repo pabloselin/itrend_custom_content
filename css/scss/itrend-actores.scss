@@ -15,6 +15,15 @@ body#itrend-vis {
 		margin-left: auto;
 	}
 
+	.top-menusection {
+		position: absolute;
+		top: 0;
+		right: 0;
+		a.itrend-tab {
+			font-weight: normal;
+		}
+	}
+
 	#itrend-vis-main-header {
 		padding-top: 24px;
 		background-color: white;
@@ -118,7 +127,7 @@ body#itrend-vis {
 	}
 
 	.logo-home {
-		margin: 0 0 32px 0;
+		margin: 0 auto 32px auto;
 		max-width: 300px;
 		display: block;
 		height: auto;

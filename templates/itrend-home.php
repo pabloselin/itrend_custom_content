@@ -11,8 +11,8 @@
 			</div>
 		</div>
 		<div class="col m6 logos-section">
-			<img class="logo-home" src="<?php echo plugin_dir_url( __FILE__ );?>../img/ConectaResiliencia.png" alt="Conecta Resiliencia">
-			<img class="logo-home" src="<?php echo plugin_dir_url(__FILE__);?>../img/logo_itrend.png" alt="Itrend">
+			<img style="margin-top: 86px;" class="logo-home" src="<?php echo plugin_dir_url( __FILE__ );?>../img/ConectaResiliencia.png" alt="Conecta Resiliencia">
+			<img style="max-width: 240px;" class="logo-home" src="<?php echo plugin_dir_url(__FILE__);?>../img/logo_itrend.png" alt="Itrend">
 		</div>	
 	</div>
 	<div class="row row-buttons">

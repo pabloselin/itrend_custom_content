@@ -45,13 +45,14 @@
 
 					<a class="itrend-tab <?php echo ($function == 'filtro'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'filtro', get_post_type_archive_link( 'actor' ));?>">Buscador de actores</a>	
 
-					<a class="itrend-tab first <?php echo ($function == 'about'? 'active' : '');?>" href="#">Sobre el proyecto</a>
-
-					<a class="itrend-tab <?php echo ($function == 'metodologia'? 'active' : '');?>" href="#">Metodología</a>
-
 				</div>
 			</div>
 			
+		</div>
+		<div class="top-menusection">
+			<a class="itrend-tab first <?php echo ($function == 'about'? 'active' : '');?>" href="#">Sobre el proyecto</a>
+
+			<a class="itrend-tab <?php echo ($function == 'metodologia'? 'active' : '');?>" href="#">Metodología</a>
 		</div>
 	</header>
 
