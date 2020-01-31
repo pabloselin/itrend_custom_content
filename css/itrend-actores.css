@@ -5785,14 +5785,16 @@ body#itrend-vis {
   body#itrend-vis .orgs-filter-list h2 {
     font-size: 24px;
     font-weight: bold; }
-  body#itrend-vis #itrend-home .itrend-section-title {
-    border-bottom: 1px solid #373869;
-    display: inline-block; }
-  body#itrend-vis #itrend-home .row-buttons {
-    margin-top: 24px;
-    text-align: center; }
-    body#itrend-vis #itrend-home .row-buttons .col-m6 {
+  body#itrend-vis #itrend-home {
+    margin-top: 24px; }
+    body#itrend-vis #itrend-home .itrend-section-title {
+      border-bottom: 1px solid #373869;
+      display: inline-block; }
+    body#itrend-vis #itrend-home .row-buttons {
+      margin-top: 24px;
       text-align: center; }
+      body#itrend-vis #itrend-home .row-buttons .col-m6 {
+        text-align: center; }
   body#itrend-vis .notfound-actors {
     padding: 24px; }
   body#itrend-vis .itrend-email-fixes {
