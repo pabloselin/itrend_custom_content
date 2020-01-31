@@ -5629,7 +5629,7 @@ body#itrend-vis {
     margin-bottom: 0;
     font-size: 48px; }
   body#itrend-vis h2 {
-    font-size: 36px; }
+    font-size: 26px; }
   body#itrend-vis .itrend-datos-contacto {
     color: #1E1F5A;
     border-top: 0;
@@ -5789,7 +5789,7 @@ body#itrend-vis {
     border-bottom: 1px solid #373869;
     display: inline-block; }
   body#itrend-vis #itrend-home .row-buttons {
-    margin-top: 48px;
+    margin-top: 24px;
     text-align: center; }
     body#itrend-vis #itrend-home .row-buttons .col-m6 {
       text-align: center; }
