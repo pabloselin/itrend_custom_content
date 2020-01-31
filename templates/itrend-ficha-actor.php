@@ -77,6 +77,21 @@
 
 		</header>
 
+		<div class="row tax-row">
+			<div class="col-md-12">
+				<?php 
+					$tareas = itrend_plain_terms('tareas', $post->ID);
+					$acciones = itrend_plain_terms('acciones_grrd', $post->ID);
+				?>
+				<?php if($tareas):?>
+					<p><span class="label">Tareas: </span> <?php echo $tareas;?></p>
+				<?php endif?>
+				<?php if($acciones):?>
+					<p><span class="label">Acciones GRRD: </span> <?php echo $acciones;?></p>			
+				<?php endif;?>
+				</div>
+		</div>
+
 
 			<?php
 				$resumenrol = get_post_meta( $post->ID, ITREND_PREFIX . 'resumen_rol', true );

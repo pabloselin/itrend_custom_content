@@ -24,10 +24,6 @@ body#itrend-vis {
 		}
 	}
 
-	.admin-bar .top-menusection {
-		top: 32px;
-	}
-
 	#itrend-vis-main-header {
 		padding-top: 24px;
 		background-color: white;
@@ -202,6 +198,7 @@ body#itrend-vis {
 		}
 		.row-buttons {
 			margin-top: 48px;
+			text-align: center;
 			.col-m6 {
 				text-align: center;
 			}
@@ -230,3 +227,8 @@ body#itrend-vis {
 }
 
 
+body#itrend-vis {
+	&.admin-bar .top-menusection {
+		top: 32px;
+	}
+}

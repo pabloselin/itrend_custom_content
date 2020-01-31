@@ -5663,10 +5663,19 @@ body#itrend-vis {
     color: #555;
     font-style: italic; }
   body#itrend-vis .btn-volver {
-    float: right;
     background-color: #1E1F5A; }
     body#itrend-vis .btn-volver:hover {
       background-color: #2b2c80; }
+  body#itrend-vis .link-archive {
+    margin-bottom: 24px;
+    overflow: hidden;
+    text-align: center; }
+  body#itrend-vis .tax-row {
+    margin-bottom: 0; }
+    body#itrend-vis .tax-row p {
+      margin-bottom: 0; }
+    body#itrend-vis .tax-row .label {
+      font-weight: bold; }
   body#itrend-vis .container-fluid {
     width: 100%;
     padding-right: 15px;
@@ -5679,8 +5688,6 @@ body#itrend-vis {
     right: 0; }
     body#itrend-vis .top-menusection a.itrend-tab {
       font-weight: normal; }
-  body#itrend-vis .admin-bar .top-menusection {
-    top: 32px; }
   body#itrend-vis #itrend-vis-main-header {
     padding-top: 24px;
     background-color: white; }
@@ -5782,7 +5789,8 @@ body#itrend-vis {
     border-bottom: 1px solid #373869;
     display: inline-block; }
   body#itrend-vis #itrend-home .row-buttons {
-    margin-top: 48px; }
+    margin-top: 48px;
+    text-align: center; }
     body#itrend-vis #itrend-home .row-buttons .col-m6 {
       text-align: center; }
   body#itrend-vis .notfound-actors {
@@ -5839,3 +5847,6 @@ body#itrend-vis {
     background-repeat: no-repeat; }
     body#itrend-vis .btn-arrow.btn-action-buscador:after {
       border-left: 30px solid #FF003A; }
+
+body#itrend-vis.admin-bar .top-menusection {
+  top: 32px; }

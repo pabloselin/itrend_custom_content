@@ -136,3 +136,12 @@ function itrend_contact_fields_content( $content, $icon, $link ) {
 		return $content . '<i class="fa fa-fw ' . $icon . '"></i>';
 	endif;
 }
+
+function itrend_redirect_actoresurl() {
+	if(is_post_type_archive( 'actor' ) && !isset($_GET['f'])) {
+		wp_redirect( get_bloginfo('url'));
+		die;
+	}
+}
+
+add_action( 'template_redirect', 'itrend_redirect_actoresurl');

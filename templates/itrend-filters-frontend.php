@@ -1,6 +1,6 @@
 <?php include( plugin_dir_path( __FILE__ ) . '/itrend-header.php');?>
 
-<?php 
+<?php
 
 $filter = $_GET['f'];
 switch($filter){
@@ -13,7 +13,7 @@ switch($filter){
 	case('metodologia'):
 		echo '.';
 	break;
-	default:
+	case(''):
 		include( plugin_dir_path( __FILE__ ) . '/itrend-home.php');
 	};
 ?>

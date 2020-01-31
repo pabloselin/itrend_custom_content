@@ -7,7 +7,7 @@
 		<div class="col m6">
 			<h1 class="itrend-section-title">Mapa de Actores</h1>
 			<div class="introtext">
-				<?php echo $options['itrend_vis_mainintro_text'];?>
+				<?php echo apply_filters('the_content', $options['itrend_vis_mainintro_text']);?>
 			</div>
 		</div>
 		<div class="col m6 logos-section">
