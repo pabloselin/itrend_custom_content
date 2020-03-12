@@ -64,10 +64,19 @@
 	"buffers":
 	[
 		{
-			"file": "css/scss/itrend-actores.scss",
+			"file": "css/scss/_itrend-ficha-actor.scss",
 			"settings":
 			{
-				"buffer_size": 3154,
+				"buffer_size": 1403,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "itrend-custom-fields.php",
+			"settings":
+			{
+				"buffer_size": 21671,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -76,26 +85,24 @@
 			"file": "itrend-main.php",
 			"settings":
 			{
-				"buffer_size": 3918,
+				"buffer_size": 3920,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "templates/itrend-home.php",
+			"file": "itrend-public.php",
 			"settings":
 			{
-				"buffer_size": 1064,
-				"encoding": "UTF-8",
-				"line_ending": "Unix",
-				"name": "<div class=\"container\" id=\"itrend-home\">"
+				"buffer_size": 10099,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer/network-visualizer.php",
+			"file": "reuniones_itrend.todo",
 			"settings":
 			{
-				"buffer_size": 35542,
+				"buffer_size": 1116,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -104,25 +111,7 @@
 			"file": "/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer/network-visualizer.php",
 			"settings":
 			{
-				"buffer_size": 38703,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/itrend-header.php",
-			"settings":
-			{
-				"buffer_size": 2162,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "templates/itrend-filters.php",
-			"settings":
-			{
-				"buffer_size": 2816,
+				"buffer_size": 38561,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -131,7 +120,7 @@
 			"file": "templates/itrend-ficha-actor.php",
 			"settings":
 			{
-				"buffer_size": 5658,
+				"buffer_size": 6114,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -148,6 +137,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"rena",
+				"Rename File"
+			],
 			[
 				"rein",
 				"Indentation: Reindent Lines"
@@ -237,28 +230,31 @@
 	},
 	"expanded_folders":
 	[
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/js",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer"
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer/public",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer/public/css"
 	],
 	"file_history":
 	[
+		"/home/pabloselin/Desktop/hexagon.svg",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-header.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/info.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/itrend-actores.scss",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-filters-frontend.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer/network-visualizer.php",
+		"/tmp/fz3temp-2/network-visualizer.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-ficha-actor.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-filters.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer/network-visualizer.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-home.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-main.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-template-functions.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/_itrend-ficha-actor.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/_buttons.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/js/itrend-filters-scripts.js",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-filters.php",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-header.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-custom-fields.php",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-main.php",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-ficha-actor.php",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/_itrend-ficha-actor.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/_custom-typography.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-public.php",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-filters-frontend.php",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer/network-visualizer.php",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer/network-visualizer.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/_custom-materialize.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/network.php",
 		"/tmp/fz3temp-2/.htaccess",
@@ -267,7 +263,6 @@
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/themes/itrend_plain/dploy.yaml",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/dploy.yaml",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer/dploy.yaml",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/itrend-actores.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/scss/_custom-variables.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/gulpfile.js",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/package.json",
@@ -277,7 +272,6 @@
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/debug.log",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/node_modules/materialize-css/sass/components/_color-variables.scss",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/css/itrend-filters-styles.css",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-template-functions.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/readme.md",
 		"/home/pabloselin/.gitignore",
 		"/tmp/fz3temp-2/wp-config.php",
@@ -305,6 +299,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"symbol",
+			"shape",
+			"sans",
+			"h2",
+			"row-button",
+			"butt",
+			"link",
 			"tareas",
 			"logo",
 			"mail",
@@ -367,24 +368,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "css/scss/itrend-actores.scss",
+					"file": "css/scss/_itrend-ficha-actor.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3154,
+						"buffer_size": 1403,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								445,
-								445
+								1125,
+								1125
 							]
 						],
 						"settings":
@@ -393,27 +394,85 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 683.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "itrend-main.php",
+					"file": "itrend-custom-fields.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3918,
+						"buffer_size": 21671,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								648,
-								648
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "itrend-main.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3920,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1634,
+								1634
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "itrend-public.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10099,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2352,
+								2352
 							]
 						],
 						"settings":
@@ -429,80 +488,48 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "templates/itrend-home.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1064,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1064,
-								1064
-							]
-						],
-						"settings":
-						{
-							"auto_name": "<div class=\"container\" id=\"itrend-home\">",
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_network_visualizer/network-visualizer.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 35542,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
 					"buffer": 4,
+					"file": "reuniones_itrend.todo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1116,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1116,
+								1116
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer/network-visualizer.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 38703,
+						"buffer_size": 38561,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								28034,
-								28034
+								13966,
+								13966
 							]
 						],
 						"settings":
@@ -512,85 +539,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 9886.0,
+						"translation.y": 4205.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "templates/itrend-header.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2162,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								798,
-								798
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 277.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
 					"buffer": 6,
-					"file": "templates/itrend-filters.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2816,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2163,
-								2163
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 493.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
 					"file": "templates/itrend-ficha-actor.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5658,
+						"buffer_size": 6114,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5516,
-								5516
+								6114,
+								6114
 							]
 						],
 						"settings":
@@ -599,7 +568,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1934.0,
+						"translation.y": 2404.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
@@ -657,20 +626,80 @@
 		"selected_items":
 		[
 			[
+				"cus",
+				"itrend_custom_content/itrend-custom-fields.php"
+			],
+			[
+				"cust",
+				"itrend_custom_content/itrend-custom-fields.php"
+			],
+			[
+				"publ",
+				"itrend_custom_content/itrend-public.php"
+			],
+			[
+				"he",
+				"itrend_custom_content/templates/itrend-header.php"
+			],
+			[
+				"",
+				"itrend_custom_content/reuniones_itrend.todo"
+			],
+			[
 				"mai",
 				"itrend_custom_content/itrend-main.php"
+			],
+			[
+				"act",
+				"itrend_custom_content/css/scss/itrend-actores.scss"
+			],
+			[
+				"main",
+				"itrend_custom_content/itrend-main.php"
+			],
+			[
+				"actor",
+				"itrend_custom_content/css/scss/itrend-actores.scss"
+			],
+			[
+				"fch",
+				"itrend_custom_content/css/scss/_itrend-ficha-actor.scss"
 			],
 			[
 				"hea",
 				"itrend_custom_content/templates/itrend-header.php"
 			],
 			[
+				"front",
+				"itrend_custom_content/templates/itrend-filters-frontend.php"
+			],
+			[
+				"net",
+				"network-visualizer/network-visualizer.php"
+			],
+			[
+				"ficha",
+				"itrend_custom_content/templates/itrend-ficha-actor.php"
+			],
+			[
+				"filt",
+				"itrend_custom_content/templates/itrend-filters.php"
+			],
+			[
+				"itrentem",
+				"itrend_custom_content/itrend-template-functions.php"
+			],
+			[
+				"fil",
+				"itrend_custom_content/templates/itrend-filters-frontend.php"
+			],
+			[
 				"hom",
 				"itrend_custom_content/templates/itrend-home.php"
 			],
 			[
-				"main",
-				"itrend_custom_content/itrend-main.php"
+				"fun",
+				"itrend_custom_content/itrend-template-functions.php"
 			],
 			[
 				"acto",
@@ -685,32 +714,12 @@
 				"network-visualizer/network-visualizer.php"
 			],
 			[
-				"net",
-				"itrend_network_visualizer/network-visualizer.php"
-			],
-			[
-				"ficha",
-				"itrend_custom_content/templates/itrend-ficha-actor.php"
-			],
-			[
-				"filt",
-				"itrend_custom_content/templates/itrend-filters.php"
-			],
-			[
 				"ma",
 				"itrend_custom_content/itrend-main.php"
 			],
 			[
-				"cust",
-				"itrend_custom_content/itrend-custom-fields.php"
-			],
-			[
 				"fich",
 				"itrend_custom_content/templates/itrend-ficha-actor.php"
-			],
-			[
-				"front",
-				"itrend_custom_content/templates/itrend-filters-frontend.php"
 			],
 			[
 				"custom",
@@ -743,10 +752,6 @@
 			[
 				"custom-va",
 				"itrend_custom_content/css/scss/_custom-variables.scss"
-			],
-			[
-				"",
-				"itrend_custom_content/css/scss/itrend-ficha-actor.scss"
 			],
 			[
 				"dpl",
@@ -813,10 +818,6 @@
 				"itrend_custom_content/templates/itrend-filters-frontend.php"
 			],
 			[
-				"publ",
-				"itrend_custom_content/itrend-public.php"
-			],
-			[
 				"itrend-filt",
 				"itrend_custom_content/js/itrend-filters-scripts.js"
 			],
@@ -869,10 +870,6 @@
 				"itrend_custom_content/itrend-template-functions.php"
 			],
 			[
-				"actor",
-				"itrend_custom_content/templates/itrend-ficha-actor.php"
-			],
-			[
 				"templ",
 				"templates/itrend-filters-frontend.php"
 			],
@@ -890,9 +887,17 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "",
+		"last_filter": "bit",
 		"selected_items":
 		[
+			[
+				"bit",
+				"~/Documents/WebDev/local_sites/bitacora/app/public/wp-content/themes/prompt/prompt.sublime-project"
+			],
+			[
+				"bi",
+				"~/Documents/WebDev/local_sites/bitacora/app/public/wp-content/themes/prompt/prompt.sublime-project"
+			],
 			[
 				"",
 				"~/Documents/WebDev/local_sites/bitacora/app/public/wp-content/themes/prompt/prompt.sublime-project"

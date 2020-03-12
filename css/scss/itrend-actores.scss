@@ -25,22 +25,34 @@ body#itrend-vis {
 	}
 
 	#itrend-vis-main-header {
-		padding-top: 24px;
+		padding-top: 0;
 		background-color: white;
-	}
-
-
-	.row-tabs {
-		margin-bottom: 0;
-		margin-top: -18px;
 	}
 
 	.row-logo {
 		margin-bottom:0;
+		img {
+			width: 250px;
+			height: auto;
+			margin-top: 4px;
+		}
+		em {
+			font-size: 36px;
+			line-height: 24px;
+			vertical-align: 17px;
+			font-weight: bold;
+			color: #555;
+			margin-right: 24px;
+			font-family: 'Open Sans', sans-serif;
+			color: #C62828;
+			text-transform: uppercase;
+			display: none;
+		}
 	}
 
 	.itrend-tabs {
 		text-align: right;
+		margin-top: 2px;
 	}
 
 	a.itrend-tab {
@@ -55,6 +67,9 @@ body#itrend-vis {
 		}
 		&.active {
 			background-color: #F1F1F1;
+		}
+		&.muted {
+			font-weight: normal;
 		}
 	}
 
@@ -73,15 +88,18 @@ body#itrend-vis {
 	}
 
 	.itrend-section-title {
-		font-size: 36px;
+		font-size: 24px;
 		font-weight: bold;
 		color: #24255B;
-		margin: 15px 0;
-		padding-bottom: 12px;
+		margin: 15px 0 8px 0;
+		padding-bottom: 0;
 	}
 
 	.introtext {
-		margin: 15px 0;
+		margin: 0;
+		p {
+			margin: 3px 0;
+		}
 	}
 
 	.visualizer {
@@ -231,5 +249,19 @@ body#itrend-vis {
 body#itrend-vis {
 	&.admin-bar .top-menusection {
 		top: 32px;
+	}
+}
+
+body#itrend-vis {
+	#container {
+		canvas {
+			font-family: 'Open Sans', sans-serif;
+
+
+			.tooltip {
+				font-family: 'Open Sans', sans-serif;
+			}
+		}
+
 	}
 }

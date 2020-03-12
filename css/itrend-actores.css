@@ -5689,15 +5689,28 @@ body#itrend-vis {
     body#itrend-vis .top-menusection a.itrend-tab {
       font-weight: normal; }
   body#itrend-vis #itrend-vis-main-header {
-    padding-top: 24px;
+    padding-top: 0;
     background-color: white; }
-  body#itrend-vis .row-tabs {
-    margin-bottom: 0;
-    margin-top: -18px; }
   body#itrend-vis .row-logo {
     margin-bottom: 0; }
+    body#itrend-vis .row-logo img {
+      width: 250px;
+      height: auto;
+      margin-top: 4px; }
+    body#itrend-vis .row-logo em {
+      font-size: 36px;
+      line-height: 24px;
+      vertical-align: 17px;
+      font-weight: bold;
+      color: #555;
+      margin-right: 24px;
+      font-family: 'Open Sans', sans-serif;
+      color: #C62828;
+      text-transform: uppercase;
+      display: none; }
   body#itrend-vis .itrend-tabs {
-    text-align: right; }
+    text-align: right;
+    margin-top: 2px; }
   body#itrend-vis a.itrend-tab {
     display: inline-block;
     border-radius: 0;
@@ -5709,6 +5722,8 @@ body#itrend-vis {
       color: #373869; }
     body#itrend-vis a.itrend-tab.active {
       background-color: #F1F1F1; }
+    body#itrend-vis a.itrend-tab.muted {
+      font-weight: normal; }
   body#itrend-vis .itrend-subtabs a {
     padding: 8px 24px;
     margin-top: 16px; }
@@ -5717,13 +5732,15 @@ body#itrend-vis {
   body#itrend-vis .right-section {
     text-align: right; }
   body#itrend-vis .itrend-section-title {
-    font-size: 36px;
+    font-size: 24px;
     font-weight: bold;
     color: #24255B;
-    margin: 15px 0;
-    padding-bottom: 12px; }
+    margin: 15px 0 8px 0;
+    padding-bottom: 0; }
   body#itrend-vis .introtext {
-    margin: 15px 0; }
+    margin: 0; }
+    body#itrend-vis .introtext p {
+      margin: 3px 0; }
   body#itrend-vis .visualizer {
     margin: 15px; }
   body#itrend-vis .child-term {
@@ -5852,3 +5869,8 @@ body#itrend-vis {
 
 body#itrend-vis.admin-bar .top-menusection {
   top: 32px; }
+
+body#itrend-vis #container canvas {
+  font-family: 'Open Sans', sans-serif; }
+  body#itrend-vis #container canvas .tooltip {
+    font-family: 'Open Sans', sans-serif; }
