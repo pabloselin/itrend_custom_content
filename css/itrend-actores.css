@@ -5737,12 +5737,14 @@ body#itrend-vis {
     color: #24255B;
     margin: 15px 0 8px 0;
     padding-bottom: 0; }
+  body#itrend-vis .row-presentation-section {
+    margin-bottom: 6px; }
   body#itrend-vis .introtext {
     margin: 0; }
     body#itrend-vis .introtext p {
       margin: 3px 0; }
   body#itrend-vis .visualizer {
-    margin: 15px; }
+    margin: 0 15px; }
   body#itrend-vis .child-term {
     margin-left: 12px; }
   body#itrend-vis .status-row {

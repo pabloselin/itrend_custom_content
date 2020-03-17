@@ -30,12 +30,12 @@
 <body id="itrend-vis" <?php body_class( '' );?> >
 	<header id="itrend-vis-main-header" class="container-fluid">
 		<div class="row row-logo">
-			<div class="col m6">
+			<div class="col m5">
 				<a href="<?php bloginfo('url');?>">
 					<em>actores</em><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/ConectaResiliencia.png" alt="Conecta Resiliencia">
 				</a>
 			</div>
-			<div class="col m6">
+			<div class="col m7">
 				<div class="itrend-tabs">
 
 					<a class="itrend-tab <?php echo ($function == 'visualizacion'? 'active' : '');?>" href="<?php echo add_query_arg('f', 'visualizacion', get_post_type_archive_link( 'actor' ));?>">Mapa de actores</a>
@@ -55,8 +55,8 @@
 
 	<?php if(!is_home()):?>
 		<div class="container-fluid">
-			<div class="row">
-				<div class="col m6">
+			<div class="row row-presentation-section">
+				<div class="col m12">
 					<h1 class="itrend-section-title"><?php echo $title;?></h1>
 					<div class="introtext">
 						<?php 
