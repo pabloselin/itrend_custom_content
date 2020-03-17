@@ -1,0 +1,34 @@
+Reunión 1 Enero 2020
+====================
+
+Anotaciones sobre la ficha
+
+- En la ficha debería decir que la descripción es la MISIÓN que viene desde el mismo actor.
+- Revisar los campos 
+- Revisar la opacidad de las lineas en la visualización
+
+Filtros
+
+- El número de cada categoría superior no debería salir.
+- Dejar oculto la información detallada para más adelante 
+- Definir un campo checkbox para poder elegir si la info se oculta o no
+
+
+Reunión 6 Marzo 2020
+====================
+
+- Generar transients para las consultas y mejorar la velocidad.
+- Añadir un elemento que indique que se está cargando la visualización.
+
+- Visualización: 
+	- Desplegar nombre corto al aparecer un actor
+	- Desplegar radialmente hacia afuera
+	- Achicar la letra
+	- Zoom máximo y mínimo
+	- Optimizar altura de cabecera
+	- Arreglar al hacer clic en una línea se va a cualquier parte
+	- Reemplazar nombre de dimensión por nombre de la tarea
+	- Tipografía optimizada para que se pueda leer más pequeña
+	- Revisar tipografías
+	- Las líneas activas tienen que tener el mismo ancho y sin transparencia
+	- Opacidad de los circulos de sectores
