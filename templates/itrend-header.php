@@ -56,7 +56,7 @@
 	<?php if(!is_home()):?>
 		<div class="container-fluid">
 			<div class="row row-presentation-section">
-				<div class="col m12">
+				<div class="col m6">
 					<h1 class="itrend-section-title"><?php echo $title;?></h1>
 					<div class="introtext">
 						<?php 
