@@ -1,10 +1,14 @@
 <?php
 	$select_taxonomies = itrend_relevant_taxonomies();
+	$introtextfield = 'itrend_filtro_intro_text';
+	$intro =itrend_get_option($introtextfield);
 ?>
 <div class="container-fluid" id="itrend-filters">
 	<div class="row status-row">
-		<div class="col m3">
-			
+		<div class="col m3 intro-presentation">
+			<h1 class="itrend-section-title"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/logo_mapa.svg" alt="Mapa de Actores"></h1>
+			<?php echo apply_filters('the_content', $intro);?>
+			<span class="border"></span>
 		</div>
 		<div class="col m6">
 			<form id="itrend_search">
@@ -14,9 +18,6 @@
 				</div>
 			</form>
 		</div>
-		<!-- <div class="col m2 download-zone">
-			<i class="fas fa-download"></i> Descargar CSV
-		</div> -->
 	</div>
 	<div class="row">
 		<div class="col m3 orgs-filter-list">

@@ -3,6 +3,7 @@
 body#itrend-vis {
 	background-color: #F1F1F1;
 	font-family: 'Open Sans', sans-serif;
+	min-height: 100vh;
 	
 	@import 'custom-materialize.scss';
 	@import 'itrend-ficha-actor.scss';
@@ -13,6 +14,16 @@ body#itrend-vis {
 		padding-left: 15px;
 		margin-right: auto;
 		margin-left: auto;
+		&.maxfluid {
+			max-width: 1600px;
+		}
+	}
+
+	&.home {
+		background-image: url('../img/bg_mapa_60.jpg');
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: bottom center;
 	}
 
 	.top-menusection {
@@ -27,6 +38,33 @@ body#itrend-vis {
 	#itrend-vis-main-header {
 		padding-top: 0;
 		background-color: white;
+	}
+
+	.topnav-header {
+		.container-fluid {
+			background-color: #12004F;
+			color: white;
+			height: 42px;
+			text-align: right;
+			font-weight: bold;
+			position: relative;
+			box-shadow: none;
+			}
+
+			.top-links {
+				position: absolute;
+				right: 38px;
+				top: -12px;
+			}
+
+			a {
+				display: inline-block;
+				line-height: 22px;
+				padding: 12px;
+				font-size: 12px;
+				text-transform: uppercase;
+				margin: -12px 0 0 0;
+			}
 	}
 
 	.row-logo {
@@ -54,6 +92,8 @@ body#itrend-vis {
 		text-align: right;
 		margin-top: 2px;
 	}
+
+
 
 	a.itrend-tab {
 		display: inline-block;
@@ -115,7 +155,7 @@ body#itrend-vis {
 	}
 
 	.status-row {
-		margin-bottom: 24px;
+		margin-bottom: 0;
 	}
 
 	.form-check-input {
@@ -144,8 +184,44 @@ body#itrend-vis {
 		font-weight: bold;
 	}
 
-	.logos-section {
-		//text-align: center;
+	.flex-row {
+		display: flex;
+	}
+
+	.buttons-section {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+
+	.row-links-main,
+	.buttons-section {
+		a {
+			font-weight: bold;
+		}
+		
+		a.btn-action-mapa {
+			background-color: #12004F;
+		}
+		a.btn-action-buscador {
+			background-color: #FF0032;
+		}
+		a.btn-action-proyecto {
+			background-color: #878A8B;
+		}
+	}
+
+	.row-links-main {
+	
+		background-color: #F1F1F1;
+		text-align: right;
+		padding-top: 2px;
+
+		a.btn-large {
+			line-height: 42px;
+			height: 42px;
+			border-radius: 0;
+		}
 	}
 
 	.logo-home {
@@ -194,6 +270,32 @@ body#itrend-vis {
 			padding: 6px;
 			@extend .z-depth-2;
 		}
+
+		#itrend_search {
+			margin-top: 48px;
+			input {
+				background-color: white;
+				padding-left: 24px;
+				padding-right: 24px;
+			}
+
+			.input-field .prefix  {
+				top: 0;
+			}
+		}
+	}
+
+	.intro-presentation {
+		img {
+			max-width: 300px;
+			height: auto;
+		}
+		span.border {
+			display: block;
+			margin: 0 auto;
+			border-bottom: 1px solid #333;
+			width:90%;
+		}
 	}
 
 	.term-checkbox-wrap {
@@ -216,8 +318,21 @@ body#itrend-vis {
 	#itrend-home {
 		margin-top: 24px;
 		.itrend-section-title {
-			border-bottom: 1px solid #373869;
 			display: inline-block;
+			text-decoration: none;
+
+			.mapa {
+				color: #FF0032;
+				font-weight: 700;
+				text-transform: uppercase;
+				font-size: 42px;
+				display: block;
+				line-height:44px;
+			}
+			.deactores {
+				color: #424185;
+				font-size: 32px;
+			}
 		}
 		.row-buttons {
 			margin-top: 24px;
@@ -237,11 +352,11 @@ body#itrend-vis {
 		color: #333;
 		padding: 12px 24px;
 		margin: 32px 120px;
-		border: 1px dashed #555;
+		border-bottom: 1px solid #333;
+		font-weight: bold;
+		display: inline-block;
 		a {
 			color: #333;
-			text-decoration: underline;
-			font-weight: bold;
 		}
 	}
 

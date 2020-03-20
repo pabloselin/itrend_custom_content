@@ -131,9 +131,9 @@ function itrend_contact_field( $postid, $field, $icon, $single = true, $link = f
 
 function itrend_contact_fields_content( $content, $icon, $link ) {
 	if($link == true):
-		return '<a href="'. $content .'" target="_blank">' . $content . '<i class="fa fa-fw ' . $icon . '"></i></a>';
+		return '<a href="'. $content .'" target="_blank"><i class="fa fa-fw ' . $icon . '"></i>' . $content . '</a>';
 	else:
-		return $content . '<i class="fa fa-fw ' . $icon . '"></i>';
+		return '<i class="fa fa-fw ' . $icon . '"></i>' . $content;
 	endif;
 }
 

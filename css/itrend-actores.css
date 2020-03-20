@@ -1,6 +1,7 @@
 body#itrend-vis {
   background-color: #F1F1F1;
   font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
   /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
   /* Document
    ========================================================================== */
@@ -5610,9 +5611,13 @@ body#itrend-vis {
       text-align: center;
       margin-top: 1.2rem; } }
   body#itrend-vis .ficha-actor .info-right {
-    text-align: right; }
+    text-align: left; }
+    body#itrend-vis .ficha-actor .info-right > div {
+      margin: 18px 0 0 18px; }
     body#itrend-vis .ficha-actor .info-right a {
       color: #1E1F5A; }
+    body#itrend-vis .ficha-actor .info-right i {
+      margin-right: 12px; }
   body#itrend-vis .ficha-actor h1, body#itrend-vis .ficha-actor h2, body#itrend-vis .ficha-actor h3, body#itrend-vis .ficha-actor .title-col {
     color: #1E1F5A;
     font-weight: bold; }
@@ -5627,15 +5632,15 @@ body#itrend-vis {
     padding-bottom: 12px;
     border-bottom: 1px solid #1E1F5A;
     margin-bottom: 0;
-    font-size: 48px; }
+    font-size: 44px; }
   body#itrend-vis h2 {
     font-size: 26px; }
   body#itrend-vis .itrend-datos-contacto {
     color: #1E1F5A;
     border-top: 0;
-    padding-top: 24px;
+    padding-top: 48px;
     padding-bottom: 24px;
-    margin-top: 24px; }
+    border-left: 1px solid #333; }
   body#itrend-vis .info-private {
     background-color: #ccc;
     padding: 6px 24px 24px 12px;
@@ -5660,8 +5665,8 @@ body#itrend-vis {
     color: #1E1F5A;
     margin: 6px 0 24px 0; }
   body#itrend-vis .mision-content {
-    color: #555;
-    font-style: italic; }
+    color: #333;
+    font-style: normal; }
   body#itrend-vis .btn-volver {
     background-color: #1E1F5A; }
     body#itrend-vis .btn-volver:hover {
@@ -5682,6 +5687,13 @@ body#itrend-vis {
     padding-left: 15px;
     margin-right: auto;
     margin-left: auto; }
+    body#itrend-vis .container-fluid.maxfluid {
+      max-width: 1600px; }
+  body#itrend-vis.home {
+    background-image: url("../img/bg_mapa_60.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center; }
   body#itrend-vis .top-menusection {
     position: absolute;
     top: 0;
@@ -5691,6 +5703,25 @@ body#itrend-vis {
   body#itrend-vis #itrend-vis-main-header {
     padding-top: 0;
     background-color: white; }
+  body#itrend-vis .topnav-header .container-fluid {
+    background-color: #12004F;
+    color: white;
+    height: 42px;
+    text-align: right;
+    font-weight: bold;
+    position: relative;
+    box-shadow: none; }
+  body#itrend-vis .topnav-header .top-links {
+    position: absolute;
+    right: 38px;
+    top: -12px; }
+  body#itrend-vis .topnav-header a {
+    display: inline-block;
+    line-height: 22px;
+    padding: 12px;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin: -12px 0 0 0; }
   body#itrend-vis .row-logo {
     margin-bottom: 0; }
     body#itrend-vis .row-logo img {
@@ -5748,7 +5779,7 @@ body#itrend-vis {
   body#itrend-vis .child-term {
     margin-left: 12px; }
   body#itrend-vis .status-row {
-    margin-bottom: 24px; }
+    margin-bottom: 0; }
   body#itrend-vis .form-check-input {
     margin-right: 12px; }
   body#itrend-vis td.actor_name {
@@ -5763,6 +5794,32 @@ body#itrend-vis {
     font-size: 20px;
     margin: 0;
     font-weight: bold; }
+  body#itrend-vis .flex-row {
+    display: flex; }
+  body#itrend-vis .buttons-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+  body#itrend-vis .row-links-main a,
+  body#itrend-vis .buttons-section a {
+    font-weight: bold; }
+  body#itrend-vis .row-links-main a.btn-action-mapa,
+  body#itrend-vis .buttons-section a.btn-action-mapa {
+    background-color: #12004F; }
+  body#itrend-vis .row-links-main a.btn-action-buscador,
+  body#itrend-vis .buttons-section a.btn-action-buscador {
+    background-color: #FF0032; }
+  body#itrend-vis .row-links-main a.btn-action-proyecto,
+  body#itrend-vis .buttons-section a.btn-action-proyecto {
+    background-color: #878A8B; }
+  body#itrend-vis .row-links-main {
+    background-color: #F1F1F1;
+    text-align: right;
+    padding-top: 2px; }
+    body#itrend-vis .row-links-main a.btn-large {
+      line-height: 42px;
+      height: 42px;
+      border-radius: 0; }
   body#itrend-vis .logo-home {
     margin: 0 auto 32px auto;
     max-width: 300px;
@@ -5794,6 +5851,22 @@ body#itrend-vis {
     color: white;
     margin: 6px 0;
     padding: 6px; }
+  body#itrend-vis #itrend-filters #itrend_search {
+    margin-top: 48px; }
+    body#itrend-vis #itrend-filters #itrend_search input {
+      background-color: white;
+      padding-left: 24px;
+      padding-right: 24px; }
+    body#itrend-vis #itrend-filters #itrend_search .input-field .prefix {
+      top: 0; }
+  body#itrend-vis .intro-presentation img {
+    max-width: 300px;
+    height: auto; }
+  body#itrend-vis .intro-presentation span.border {
+    display: block;
+    margin: 0 auto;
+    border-bottom: 1px solid #333;
+    width: 90%; }
   body#itrend-vis .term-checkbox-wrap {
     margin-bottom: 6px; }
     body#itrend-vis .term-checkbox-wrap label {
@@ -5807,8 +5880,18 @@ body#itrend-vis {
   body#itrend-vis #itrend-home {
     margin-top: 24px; }
     body#itrend-vis #itrend-home .itrend-section-title {
-      border-bottom: 1px solid #373869;
-      display: inline-block; }
+      display: inline-block;
+      text-decoration: none; }
+      body#itrend-vis #itrend-home .itrend-section-title .mapa {
+        color: #FF0032;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 42px;
+        display: block;
+        line-height: 44px; }
+      body#itrend-vis #itrend-home .itrend-section-title .deactores {
+        color: #424185;
+        font-size: 32px; }
     body#itrend-vis #itrend-home .row-buttons {
       margin-top: 24px;
       text-align: center; }
@@ -5821,11 +5904,11 @@ body#itrend-vis {
     color: #333;
     padding: 12px 24px;
     margin: 32px 120px;
-    border: 1px dashed #555; }
+    border-bottom: 1px solid #333;
+    font-weight: bold;
+    display: inline-block; }
     body#itrend-vis .itrend-email-fixes a {
-      color: #333;
-      text-decoration: underline;
-      font-weight: bold; }
+      color: #333; }
   body#itrend-vis .btn-arrow {
     cursor: pointer;
     display: inline-block;
