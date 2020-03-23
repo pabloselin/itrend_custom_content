@@ -5877,9 +5877,13 @@ body#itrend-vis {
   body#itrend-vis .orgs-filter-list h2 {
     font-size: 24px;
     font-weight: bold; }
-  @media screen and (min-width: 993px) {
-    body#itrend-vis #itrend-home.container {
-      width: 95%; } }
+  body#itrend-vis #itrend-home.container {
+    display: flex;
+    min-height: 80vh;
+    align-items: center; }
+    @media screen and (min-width: 993px) {
+      body#itrend-vis #itrend-home.container {
+        width: 95%; } }
   body#itrend-vis #itrend-home {
     margin-top: 24px; }
     body#itrend-vis #itrend-home .itrend-section-title {

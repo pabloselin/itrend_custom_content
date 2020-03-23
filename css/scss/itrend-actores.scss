@@ -316,6 +316,9 @@ body#itrend-vis {
 	}
 
 	#itrend-home.container {
+		display: flex;
+		min-height: 80vh;
+		align-items: center;
 		@media screen and (min-width: 993px) {
 			width: 95%;
 		}
