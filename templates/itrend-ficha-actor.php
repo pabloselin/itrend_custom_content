@@ -7,7 +7,8 @@
 <div class="container-fluid maxfluid">
 	<div class="row">
 		<div class="col m3 intro-presentation">
-			<h1 class="itrend-section-title"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/logo_mapa.svg" alt="Mapa de Actores"></h1>
+			<h1 class="itrend-section-title">
+				<a href="<?php bloginfo('home');?>"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/logo_mapa.svg" alt="Mapa de Actores"></a></h1>
 			<div style="max-width: 80%">
 				<?php echo apply_filters('the_content', $intro);?>			
 			</div>

@@ -49,22 +49,22 @@ body#itrend-vis {
 			font-weight: bold;
 			position: relative;
 			box-shadow: none;
-			}
+		}
 
-			.top-links {
-				position: absolute;
-				right: 38px;
-				top: -12px;
-			}
+		.top-links {
+			position: absolute;
+			right: 38px;
+			top: -12px;
+		}
 
-			a {
-				display: inline-block;
-				line-height: 22px;
-				padding: 12px;
-				font-size: 12px;
-				text-transform: uppercase;
-				margin: -12px 0 0 0;
-			}
+		a {
+			display: inline-block;
+			line-height: 22px;
+			padding: 12px;
+			font-size: 12px;
+			text-transform: uppercase;
+			margin: -12px 0 0 0;
+		}
 	}
 
 	.row-logo {
@@ -212,7 +212,7 @@ body#itrend-vis {
 	}
 
 	.row-links-main {
-	
+
 		background-color: #F1F1F1;
 		text-align: right;
 		padding-top: 2px;
@@ -315,6 +315,12 @@ body#itrend-vis {
 		font-weight: bold;
 	}
 
+	#itrend-home.container {
+		@media screen and (min-width: 993px) {
+			width: 95%;
+		}
+	}
+
 	#itrend-home {
 		margin-top: 24px;
 		.itrend-section-title {
@@ -382,5 +388,67 @@ body#itrend-vis {
 			}
 		}
 
+	}
+}
+
+body#itrend-vis {
+	
+	#data {
+		position: relative;
+	}
+
+	.info-extra-vis {
+		position: absolute;
+		width: 300px;
+		z-index: 10;
+		left: 24px;
+		top: 0;
+
+		img {
+			max-width: 300px;
+			height: auto;
+		}
+	}
+}
+
+body#itrend-vis {
+	.links-stuff, 
+	.row-links-main {
+		a.btn-home,
+		a.btn-action {
+			padding: 0 12px 0 12px;
+			width: 260px;
+			display: inline-block;
+			margin: 0 5px;
+			color: white;
+			text-transform: uppercase;
+			font-weight: bold;
+			line-height: 46px;
+			vertical-align: middle;
+			box-shadow: 0 0 3px #333;
+			text-align: center;
+			img {
+				max-width: 32px;
+				height: auto;
+				vertical-align: middle;
+				margin-right: 6px;
+			}
+			&.btn-action-buscador {
+				img {
+					max-width: 32px;
+				}
+			}
+		}
+	}
+
+	.row-links-main {
+		a.btn-action {
+			margin: -1px -5px;
+			box-shadow: none;
+			line-height: 41px;
+			img {
+				margin-top: -2px;
+			}
+		}
 	}
 }

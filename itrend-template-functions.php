@@ -145,3 +145,25 @@ function itrend_redirect_actoresurl() {
 }
 
 add_action( 'template_redirect', 'itrend_redirect_actoresurl');
+
+function itrend_get_vislogo() {
+	return plugin_dir_url( __FILE__ ) . '/img/logo_mapa.svg';
+}
+
+function itrend_get_logointro() {
+	$introtextfield = 'itrend_vis_intro_text';
+  	$intro =itrend_get_option($introtextfield);
+
+
+	return '<div class="info-extra-vis">
+			  <h1 class="itrend-section-title">
+			    <a href="' . get_bloginfo('home') . '">
+			      <img src="' . itrend_get_vislogo() . '" alt="' . get_bloginfo('name') . '">
+			    </a>
+			  </h1>
+			    <div class="intro-vis-text">
+			    ' . $intro . '
+			    </div>
+			  
+			  </div>';
+}
