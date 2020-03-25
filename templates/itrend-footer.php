@@ -1,7 +1,7 @@
 <?php wp_footer(); ?>
 
 <div id="itrend_visualization_footer">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row flex-row">
 			<div class="col m4">
 				<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/ConectaResiliencia.png" alt="">
