@@ -6,21 +6,20 @@
 <div class="container-fluid" id="itrend-filters">
 	<div class="row status-row">
 		<div class="col m3 intro-presentation">
-			<h1 class="itrend-section-title"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/logo_mapa.svg" alt="Mapa de Actores"></h1>
-			<?php echo apply_filters('the_content', $intro);?>
-			<span class="border"></span>
+			
 		</div>
 		<div class="col m6">
-			<form id="itrend_search">
-				<div class="input-field">
-					<i class="prefix fas fa-search"></i>
-					<input type="search" id="search-field" name="q" data-action="search" placeholder="Buscar por actor, palabra clave, campo...">
-				</div>
-			</form>
+			
 		</div>
 	</div>
 	<div class="row">
 		<div class="col m3 orgs-filter-list">
+			
+			<div class="intro-presentation">
+				<h1 class="itrend-section-title"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/logo_mapa.svg" alt="Mapa de Actores"></h1>
+				<?php echo apply_filters('the_content', $intro);?>
+				<span class="border"></span>
+			</div>
 
 			<div class="filters-info-zone panel">
 				<h2>Tus filtros</h2>
@@ -72,6 +71,14 @@
 		</div>
 
 		<div class="col m9 orgs-table-list">
+			
+			<form id="itrend_search">
+				<div class="input-field">
+					<i class="prefix fas fa-search"></i>
+					<input type="search" id="search-field" name="q" data-action="search" placeholder="Buscar por actor, palabra clave, campo...">
+				</div>
+			</form>
+
 			<div id="itrend_results_count">
 				<!-- Numero de resultados -->
 			</div>

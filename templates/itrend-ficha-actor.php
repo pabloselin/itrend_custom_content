@@ -22,7 +22,11 @@
 							<div class="col m8 info-left">
 
 								<div class="sector">
-									Sector/es: <?php echo itrend_plain_terms('sector', $post->ID);?>
+									<span class="mainsector">
+										<?php echo itrend_colored_sector_class($post->ID);?>
+									</span>
+									<span class="sector-separator"></span>
+									<?php echo itrend_plain_terms('sector', $post->ID, true);?>
 								</div>
 
 								<?php 

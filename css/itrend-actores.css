@@ -5663,7 +5663,13 @@ body#itrend-vis {
     padding: 0; }
   body#itrend-vis .info-left .sector {
     color: #1E1F5A;
-    margin: 6px 0 24px 0; }
+    margin: 0 0 24px 0;
+    padding-top: 6px; }
+    body#itrend-vis .info-left .sector .sector-separator {
+      border-right: 1px solid #000;
+      margin: -6px 6px -4px 6px;
+      display: inline-block;
+      height: 26px; }
   body#itrend-vis .mision-content {
     color: #333;
     font-style: normal; }
@@ -5681,6 +5687,25 @@ body#itrend-vis {
       margin-bottom: 0; }
     body#itrend-vis .tax-row .label {
       font-weight: bold; }
+  body#itrend-vis .sector-ball {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 50%;
+    line-height: 24px;
+    vertical-align: sub;
+    margin: 0 6px 0 0; }
+    body#itrend-vis .sector-ball.organizaciones-sin-fines-de-lucro {
+      background-color: #732ad1; }
+    body#itrend-vis .sector-ball.privados {
+      background-color: #fec035; }
+    body#itrend-vis .sector-ball.academia {
+      background-color: #ef4853; }
+    body#itrend-vis .sector-ball.otro-sector {
+      background-color: #00aea5; }
+    body#itrend-vis .sector-ball.estado {
+      background-color: #00bbee; }
   body#itrend-vis .container-fluid {
     width: 100%;
     padding-right: 15px;
@@ -5692,7 +5717,7 @@ body#itrend-vis {
   body#itrend-vis.home {
     background-image: url("../img/bg_mapa_60.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: fit;
     background-position: bottom center; }
   body#itrend-vis .top-menusection {
     position: absolute;
@@ -5702,7 +5727,7 @@ body#itrend-vis {
       font-weight: normal; }
   body#itrend-vis #itrend-vis-main-header {
     padding-top: 0;
-    background-color: white; }
+    background-color: transparent; }
   body#itrend-vis .topnav-header .container-fluid {
     background-color: #12004F;
     color: white;
@@ -5852,7 +5877,9 @@ body#itrend-vis {
     margin: 6px 0;
     padding: 6px; }
   body#itrend-vis #itrend-filters #itrend_search {
-    margin-top: 48px; }
+    margin-top: 48px;
+    margin-bottom: 48px;
+    overflow: hidden; }
     body#itrend-vis #itrend-filters #itrend_search input {
       background-color: white;
       padding-left: 24px;
@@ -6015,3 +6042,15 @@ body#itrend-vis .row-links-main a.btn-action {
   line-height: 41px; }
   body#itrend-vis .row-links-main a.btn-action img {
     margin-top: -2px; }
+
+#itrend_visualization_footer {
+  margin-top: 24px;
+  background-color: #EBEAE8;
+  padding: 12px 0; }
+  #itrend_visualization_footer .row {
+    margin-bottom: 0; }
+  #itrend_visualization_footer .flex-row {
+    align-items: center; }
+  #itrend_visualization_footer .logos-footer img {
+    width: 100%;
+    margin-top: 24px; }

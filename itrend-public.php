@@ -282,15 +282,47 @@ function itrend_actor_postmeta( $postid ) {
 	return $fields_data;
 }
 
-function itrend_plain_terms( $taxonomy, $postid ) {
+function itrend_plain_terms( $taxonomy, $postid, $excludetop = false ) {
 	$terms = get_the_terms( $postid, $taxonomy );
 	$termArray = [];
 	
 	foreach($terms as $term) {
-		$termArray[] = $term->name;
+		if($excludetop == false) {
+			$termArray[] = $term->name;
+		} else {
+			if($term->parent != 0) {
+				$termArray[] = $term->name;
+			}
+		}
+		
 	}
 
 	return implode(', ', $termArray);
+}
+
+function itrend_colored_sector_class( $postid ) {
+	$terms = get_the_terms( $postid, 'sector' );
+	$termnames = [];
+
+	foreach($terms as $term) {
+		if($term->parent == 0) {
+			$termnames[] = '<span class="sector-ball ' . $term->slug.  ' "></span>' . $term->name;
+		
+		}
+	}
+
+	return implode(' ', $termnames);
+}
+
+function itrend_get_term_top_most_parent( $term, $taxonomy ) {
+    // Start from the current term
+    $parent  = get_term( $term, $taxonomy );
+    // Climb up the hierarchy until we reach a term with parent = '0'
+    while ( $parent->parent != '0' ) {
+        $term_id = $parent->parent;
+        $parent  = get_term( $term_id, $taxonomy);
+    }
+    return $parent;
 }
 
 function itrend_filter_actor_field( $field, $value ) {

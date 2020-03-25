@@ -1,4 +1,11 @@
 
+//Colores de sectores
+
+	$estado: #00bbee;
+	$privado: #fec035;
+	$academia: #ef4853;
+	$osfl: #732ad1;
+	$otro: #00aea5;
 
 body#itrend-vis {
 	background-color: #F1F1F1;
@@ -22,7 +29,7 @@ body#itrend-vis {
 	&.home {
 		background-image: url('../img/bg_mapa_60.jpg');
 		background-repeat: no-repeat;
-		background-size: cover;
+		background-size: fit;
 		background-position: bottom center;
 	}
 
@@ -37,7 +44,7 @@ body#itrend-vis {
 
 	#itrend-vis-main-header {
 		padding-top: 0;
-		background-color: white;
+		background-color: transparent;
 	}
 
 	.topnav-header {
@@ -273,6 +280,8 @@ body#itrend-vis {
 
 		#itrend_search {
 			margin-top: 48px;
+			margin-bottom: 48px;
+			overflow: hidden;
 			input {
 				background-color: white;
 				padding-left: 24px;
@@ -453,5 +462,24 @@ body#itrend-vis {
 				margin-top: -2px;
 			}
 		}
+	}
+}
+
+#itrend_visualization_footer {
+	margin-top: 24px;
+	background-color: #EBEAE8;
+	padding: 12px 0;
+
+	.row {
+		margin-bottom: 0;
+	}
+
+	.flex-row {
+		align-items: center;
+	}
+
+	.logos-footer img {
+		width: 100%;
+		margin-top: 24px;
 	}
 }
