@@ -6043,14 +6043,22 @@ body#itrend-vis .row-links-main a.btn-action {
   body#itrend-vis .row-links-main a.btn-action img {
     margin-top: -2px; }
 
-#itrend_visualization_footer {
+body#itrend-vis #itrend_visualization_footer {
   margin-top: 24px;
   background-color: #EBEAE8;
   padding: 12px 0; }
-  #itrend_visualization_footer .row {
+  body#itrend-vis #itrend_visualization_footer .container {
+    width: 95%;
+    max-width: 1280px; }
+  body#itrend-vis #itrend_visualization_footer .row {
     margin-bottom: 0; }
-  #itrend_visualization_footer .flex-row {
+  body#itrend-vis #itrend_visualization_footer .flex-row {
     align-items: center; }
-  #itrend_visualization_footer .logos-footer img {
+  body#itrend-vis #itrend_visualization_footer .logoconecta {
+    text-align: left; }
+    body#itrend-vis #itrend_visualization_footer .logoconecta img {
+      max-width: 300px;
+      margin-top: 24px; }
+  body#itrend-vis #itrend_visualization_footer .logos-footer img {
     width: 100%;
     margin-top: 24px; }

@@ -465,10 +465,15 @@ body#itrend-vis {
 	}
 }
 
-#itrend_visualization_footer {
+body#itrend-vis #itrend_visualization_footer {
 	margin-top: 24px;
 	background-color: #EBEAE8;
 	padding: 12px 0;
+
+	.container {
+		width:95%;
+		max-width: 1280px;
+	}
 
 	.row {
 		margin-bottom: 0;
@@ -476,6 +481,14 @@ body#itrend-vis {
 
 	.flex-row {
 		align-items: center;
+	}
+
+	.logoconecta {
+		text-align: left;
+			img {
+				max-width: 300px;
+				margin-top: 24px;
+			}
 	}
 
 	.logos-footer img {
