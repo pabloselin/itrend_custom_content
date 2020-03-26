@@ -5877,10 +5877,16 @@ body#itrend-vis {
     background-color: #ccc; }
   body#itrend-vis #itrend-filters .filter-item {
     display: block;
-    background-color: #373869;
-    color: white;
+    background-color: transparent;
+    color: #373869;
+    border: 1px solid #ccc;
     margin: 6px 0;
-    padding: 6px; }
+    padding: 6px;
+    box-shadow: none; }
+    body#itrend-vis #itrend-filters .filter-item i {
+      color: #555; }
+  body#itrend-vis #itrend-filters .filters-info-zone.panel {
+    margin-top: 16px; }
   body#itrend-vis #itrend-filters #itrend_search {
     margin-top: 48px;
     margin-bottom: 48px;

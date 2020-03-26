@@ -282,11 +282,20 @@ body#itrend-vis {
 
 		.filter-item {
 			display: block;
-			background-color: #373869;
-			color: white;
+			background-color: transparent;
+			color: #373869;
+			border: 1px solid #ccc;
 			margin: 6px 0;
 			padding: 6px;
+			box-shadow: none;
 			@extend .z-depth-2;
+			i {
+				color: #555;
+			}
+		}
+
+		.filters-info-zone.panel {
+			margin-top: 16px;
 		}
 
 		#itrend_search {
