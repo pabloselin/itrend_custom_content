@@ -5841,10 +5841,6 @@ body#itrend-vis {
     background-color: #F1F1F1;
     text-align: right;
     padding-top: 2px; }
-    body#itrend-vis .row-links-main a.btn-large {
-      line-height: 42px;
-      height: 42px;
-      border-radius: 0; }
   body#itrend-vis .logo-home {
     margin: 0 auto 32px auto;
     max-width: 300px;
@@ -5852,8 +5848,17 @@ body#itrend-vis {
     height: auto; }
   body#itrend-vis #itrend-filters #accordion-filters .card-header.collapsed i {
     transform: rotate(180deg); }
+  body#itrend-vis #itrend-filters h5 {
+    font-size: 16px; }
+  body#itrend-vis #itrend-filters h2 {
+    font-size: 20px; }
+  body#itrend-vis #itrend-filters [type="checkbox"] + span:not(.lever) {
+    font-size: 14px;
+    padding-left: 30px; }
   body#itrend-vis #itrend-filters .collapsible-body {
     padding: .5rem 1rem; }
+  body#itrend-vis #itrend-filters .collapsible-header i {
+    font-size: 18px; }
   body#itrend-vis #itrend-filters .parent-term {
     margin-top: 12px;
     padding-top: 12px;
@@ -6039,9 +6044,12 @@ body#itrend-vis .row-links-main a.btn-action {
 body#itrend-vis .row-links-main a.btn-action {
   margin: -1px -5px;
   box-shadow: none;
-  line-height: 41px; }
+  line-height: 36px;
+  font-size: 14px;
+  width: 210px; }
   body#itrend-vis .row-links-main a.btn-action img {
-    margin-top: -2px; }
+    margin-top: -2px;
+    max-width: 28px; }
 
 body#itrend-vis #itrend_visualization_footer {
   margin-top: 24px;
@@ -6062,3 +6070,13 @@ body#itrend-vis #itrend_visualization_footer {
   body#itrend-vis #itrend_visualization_footer .logos-footer img {
     width: 100%;
     margin-top: 24px; }
+
+body#itrend-vis #itrend_table_results td.actor_name {
+  min-width: 260px; }
+
+body#itrend-vis #itrend_table_results td.sector {
+  font-size: 14px;
+  min-width: 200px; }
+
+body#itrend-vis #itrend_table_results td.alcance, body#itrend-vis #itrend_table_results td.tareas, body#itrend-vis #itrend_table_results td.acciones {
+  font-size: 14px; }

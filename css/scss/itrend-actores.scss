@@ -216,19 +216,12 @@ body#itrend-vis {
 		a.btn-action-proyecto {
 			background-color: #878A8B;
 		}
-	}
+	}	
 
 	.row-links-main {
-
 		background-color: #F1F1F1;
 		text-align: right;
 		padding-top: 2px;
-
-		a.btn-large {
-			line-height: 42px;
-			height: 42px;
-			border-radius: 0;
-		}
 	}
 
 	.logo-home {
@@ -243,8 +236,26 @@ body#itrend-vis {
 	}
 
 	#itrend-filters {
+
+		h5 {
+			font-size: 16px;
+		}
+
+		h2 {
+			font-size: 20px;
+		}
+
+		[type="checkbox"] + span:not(.lever) {
+			font-size: 14px;
+			padding-left: 30px;
+		}
+
 		.collapsible-body {
 			padding: .5rem 1rem;
+		}
+
+		.collapsible-header i {
+			font-size: 18px;
 		}
 
 		.parent-term {
@@ -457,9 +468,12 @@ body#itrend-vis {
 		a.btn-action {
 			margin: -1px -5px;
 			box-shadow: none;
-			line-height: 41px;
+			line-height: 36px;
+			font-size: 14px;
+			width: 210px;
 			img {
 				margin-top: -2px;
+				max-width:28px;
 			}
 		}
 	}
@@ -494,5 +508,18 @@ body#itrend-vis #itrend_visualization_footer {
 	.logos-footer img {
 		width: 100%;
 		margin-top: 24px;
+	}
+}
+
+body#itrend-vis #itrend_table_results {
+	td.actor_name {
+		min-width: 260px;
+	}
+	td.sector {
+		font-size: 14px;
+		min-width: 200px
+	}
+	td.alcance, td.tareas, td.acciones {
+		font-size: 14px;
 	}
 }

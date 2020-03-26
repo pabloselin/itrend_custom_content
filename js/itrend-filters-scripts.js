@@ -197,16 +197,16 @@ jQuery(document).ready(function($) {
 										<span class="title">{{post_title}}</span>
 										</a>
 									</td>
-									<td>
+									<td class="sector">
 										{{sector}}
 									</td>
-									<td>
+									<td class="alcance">
 										{{alcance_territorial}}
 									</td>
-									<td>
+									<td class="tareas">
 										{{tareas}}
 									</td>
-									<td>
+									<td class="acciones">
 										{{acciones_grrd}}
 									</td>
 								</tr>`;
