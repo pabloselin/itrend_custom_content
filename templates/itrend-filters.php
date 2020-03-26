@@ -22,14 +22,13 @@
 			</div>
 
 			<div class="filters-info-zone panel">
-				<h2>Tus filtros</h2>
 				
 				<div class="append-zone-filter">
 					
 				</div>
 				
-				<button class="btn black" data-action="clean_filters">Quitar filtros</button>
-				<button class="btn red darken-3" data-action="apply_filters">Filtrar</button>
+				<!-- <button class="btn black" data-action="clean_filters">Quitar filtros</button>
+				<button class="btn red darken-3" data-action="apply_filters">Filtrar</button> -->
 
 			</div>
 
