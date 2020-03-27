@@ -563,6 +563,13 @@ function itrend_register_theme_options_metabox() {
 	) );
 
 	$cmb_options->add_field( array(
+		'name' => __( 'Texto de introduccion para Ficha de Actores', 'itrend' ),
+		'desc' => __( 'Texto con formato', 'itrend' ),
+		'id'   => 'itrend_filtro_ficha_text',
+		'type' => 'wysiwyg',
+	) );
+
+	$cmb_options->add_field( array(
 		'name' => __( 'Texto para sección Metodología', 'itrend' ),
 		'desc' => __( 'Texto con formato', 'itrend' ),
 		'id'   => 'itrend_metodologia_intro_text',

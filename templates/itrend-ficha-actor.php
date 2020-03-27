@@ -1,6 +1,6 @@
 <?php include( plugin_dir_path( __FILE__ ) . '/itrend-header.php');
 
-		$introtextfield = 'itrend_filtro_intro_text';
+		$introtextfield = 'itrend_filtro_ficha_text';
 		$intro =itrend_get_option($introtextfield);
 ?>
 
@@ -9,9 +9,13 @@
 		<div class="col m3 intro-presentation">
 			<h1 class="itrend-section-title">
 				<a href="<?php bloginfo('home');?>"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/logo_mapa.svg" alt="Mapa de Actores"></a></h1>
-			<div style="max-width: 80%">
-				<?php echo apply_filters('the_content', $intro);?>			
-			</div>
+				<div style="max-width: 80%">
+					<?php 
+						$codigo = get_post_meta($post->ID, ITREND_PREFIX . 'codigo', true);
+						$parsed = str_replace('[actorcode]', '<strong>' . $codigo . '</strong>', $intro);
+					?>
+					<?php echo apply_filters('the_content', $parsed);?>			
+				</div>
 		</div>
 		<div class="col m9">
 			<article id="ficha-actor-<?php the_ID();?>" class="ficha-actor">

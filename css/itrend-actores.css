@@ -5672,7 +5672,8 @@ body#itrend-vis {
       height: 26px; }
   body#itrend-vis .mision-content {
     color: #333;
-    font-style: normal; }
+    font-style: normal;
+    padding: 0 24px 0 0; }
   body#itrend-vis .btn-volver {
     background-color: #1E1F5A; }
     body#itrend-vis .btn-volver:hover {
@@ -5714,7 +5715,7 @@ body#itrend-vis {
     margin-left: auto; }
     body#itrend-vis .container-fluid.maxfluid {
       max-width: 1600px; }
-  body#itrend-vis.home {
+  body#itrend-vis.home-mapa {
     background-image: url("../img/bg_mapa_60.jpg");
     background-repeat: no-repeat;
     background-size: fit;

@@ -6,7 +6,7 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 
 	<?php wp_head(); ?>
-	<?php $function = $_GET['f'];
+	<?php $function = get_query_var( 'funcion');
 	switch($function) {
 		case('visualizacion'):
 		$title = 'Mapa de actores';
@@ -27,7 +27,7 @@
 	$intro =itrend_get_option($introtextfield);
 	?>
 </head>
-<body id="itrend-vis" <?php body_class( '' );?> >
+<body id="itrend-vis" class="<?php echo itrend_body_class();?>" >
 	<div class="topnav-header">
 		<nav class="container-fluid">
 			<div class="top-links">
@@ -39,12 +39,12 @@
 		</nav>
 	</div>
 	<header id="itrend-vis-main-header" class="container-fluid">
-		<?php if(!is_home()):?>
+		<?php if(!empty(get_query_var( 'funcion' ))):?>
 		
 		<div class="row row-links-main">
-			<a href="<?php echo add_query_arg('f', 'visualizacion', get_post_type_archive_link( 'actor' ));?>" class="btn-action btn-action-mapa"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/red-01.svg" alt=""> Visualiza la red</a>
-			<a href="<?php echo add_query_arg('f', 'filtro', get_post_type_archive_link( 'actor' ));?>" class="btn-action btn-action-buscador"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/buscador-02.svg" alt=""> Busca un actor</a>
-			<a href="<?php echo add_query_arg('f', 'visualizacion', get_post_type_archive_link( 'actor' ));?>" class="btn-action btn-action-proyecto"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/i-04.svg" alt=""> El proyecto</a>
+			<a href="<?php echo get_post_type_archive_link( 'actor' )?>/visualizacion" class="btn-action btn-action-mapa"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/red-01.svg" alt=""> Visualiza la red</a>
+			<a href="<?php echo get_post_type_archive_link( 'actor' )?>/buscador" class="btn-action btn-action-buscador"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/buscador-02.svg" alt=""> Busca un actor</a>
+			<a href="<?php echo get_post_type_archive_link( 'actor' )?>" class="btn-action btn-action-proyecto"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/i-04.svg" alt=""> El proyecto</a>
 		</div>
 		
 		<?php endif;?>

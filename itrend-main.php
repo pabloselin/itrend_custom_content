@@ -14,7 +14,7 @@
  * Domain Path:       	/lang
  */
 
-define( 'ITREND_PLUGIN_VERSION', '0.4.1' );
+define( 'ITREND_PLUGIN_VERSION', '0.4.2' );
 define( 'ITREND_PREFIX', '_itrend_');
 
 $pluginurl = plugin_dir_url(__FILE__);
@@ -113,4 +113,22 @@ function itrend_relevant_taxonomies() {
 	);
 }
 
+
+function itrend_register_query_vars( $vars ) {
+	$vars[] = 'funcion';
+	return $vars;
+}
+
+add_filter( 'query_vars', 'itrend_register_query_vars' );
+
+
 add_filter( 'gettext', 'itrend_translate_attached_posts_fields', 20, 3 );
+
+function itrend_rewrites() {
+	add_rewrite_tag( '%visualizacion%', '([^&]+)' );
+	add_rewrite_tag( '%buscador%', '([^&]+)' );
+	add_rewrite_rule( '^actores/visualizacion', 'index.php?funcion=visualizacion', 'top' );
+	add_rewrite_rule( '^actores/buscador', 'index.php?funcion=filtro', 'top' );
+}
+
+add_action('init', 'itrend_rewrites', 10, 0);

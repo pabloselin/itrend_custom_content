@@ -2,7 +2,7 @@
 
 <?php
 
-$filter = $_GET['f'];
+$filter = get_query_var( 'funcion' );
 switch($filter){
 	case('filtro'):
 		include( plugin_dir_path( __FILE__ ) . '/itrend-filters.php');

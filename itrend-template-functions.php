@@ -138,13 +138,13 @@ function itrend_contact_fields_content( $content, $icon, $link ) {
 }
 
 function itrend_redirect_actoresurl() {
-	if(is_post_type_archive( 'actor' ) && !isset($_GET['f'])) {
-		wp_redirect( get_bloginfo('url'));
+	if(is_home()) {
+		wp_redirect( get_post_type_archive_link( 'actor' ));
 		die;
 	}
 }
 
-add_action( 'template_redirect', 'itrend_redirect_actoresurl');
+//add_action( 'template_redirect', 'itrend_redirect_actoresurl');
 
 function itrend_get_vislogo() {
 	return plugin_dir_url( __FILE__ ) . '/img/logo_mapa.svg';
@@ -166,4 +166,12 @@ function itrend_get_logointro() {
 			    </div>
 			  
 			  </div>';
+}
+
+function itrend_body_class() {
+	if(empty(get_query_var( 'funcion')) & !is_singular('actor')) {
+		return 'home-mapa';
+	} else {
+		return get_query_var( 'funcion' );
+	}
 }

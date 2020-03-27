@@ -3,38 +3,41 @@
 
 function itrend_enqueue_filters_js() {
 	global $post;
-	if( is_a( $post, 'WP_Post') && has_shortcode( $post->post_content, 'itrend_actor_filters' ) || is_a( $post, 'WP_Post') && is_singular('actor') || is_post_type_archive('actor') || is_home() ) {
+	$funcion = get_query_var('funcion');
+	//var_dump($funcion);
+	if(is_post_type_archive('actor') || !empty('funcion')) {
 		wp_deregister_script( 'jquery' );
 		wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.4.1.slim.min.js', array(), '3.4.1', false );
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_style( 'itrend_filters_styles', plugin_dir_url( __FILE__ ) . 'css/itrend-actores.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 		wp_enqueue_style( 'opensans', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,700&display=swap', array(), false, 'all' );
 		//wp_enqueue_style( 'itrend_bootstrap_grid', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
-		if($_GET['f'] != 'visualizacion'):
+		
 			//wp_enqueue_style( 'itrend_bootstrap_css', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 			//wp_enqueue_style( 'materialize', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css', array(), false, 'all' );
+			if($funcion == 'filtro') {
+				
+					wp_enqueue_script( 'itrend_materialize', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', array(), ITREND_PLUGIN_VERSION, false );
+					wp_enqueue_script( 'itrend_filters_scripts', plugin_dir_url(__FILE__) . 'js/itrend-filters-scripts.js' , array('squirrely'), ITREND_PLUGIN_VERSION, false );
+					wp_enqueue_script( 'itrend_bootstrap_js', plugin_dir_url(__FILE__) . 'vendor/bootstrap-4.4.1-dist/js/bootstrap.min.js' , array('jquery', 'popper'), ITREND_PLUGIN_VERSION, false );
+					wp_enqueue_script( 'squirrely', 'https://cdn.jsdelivr.net/npm/squirrelly@7.5.0/dist/squirrelly.min.js', array(), false, false );
+					wp_localize_script( 'itrend_filters_scripts', 'itrend_filters', array(
+						'taxonomies' 	=> itrend_relevant_taxonomies(),
+						'nonce'	  		=> wp_create_nonce( 'wp_rest' ),
+						'rest_url'	  	=> rest_url( 'itrend/v1/actores' ),
+						'search_url'	=> rest_url('relevanssi/v1/search'),
+						'ids_url'		=> rest_url('itrend/v1/ids')
+					));
+				
+			}
 
-			if(has_shortcode( $post->post_content, 'itrend_actor_filters' ) || is_post_type_archive('actor') ):
-				wp_enqueue_script( 'itrend_materialize', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', array(), ITREND_PLUGIN_VERSION, false );
-				wp_enqueue_script( 'itrend_filters_scripts', plugin_dir_url(__FILE__) . 'js/itrend-filters-scripts.js' , array('squirrely'), ITREND_PLUGIN_VERSION, false );
-				wp_enqueue_script( 'itrend_bootstrap_js', plugin_dir_url(__FILE__) . 'vendor/bootstrap-4.4.1-dist/js/bootstrap.min.js' , array('jquery', 'popper'), ITREND_PLUGIN_VERSION, false );
-				wp_enqueue_script( 'squirrely', 'https://cdn.jsdelivr.net/npm/squirrelly@7.5.0/dist/squirrelly.min.js', array(), false, false );
-				wp_localize_script( 'itrend_filters_scripts', 'itrend_filters', array(
-					'taxonomies' 	=> itrend_relevant_taxonomies(),
-					'nonce'	  		=> wp_create_nonce( 'wp_rest' ),
-					'rest_url'	  	=> rest_url( 'itrend/v1/actores' ),
-					'search_url'	=> rest_url('relevanssi/v1/search'),
-					'ids_url'		=> rest_url('itrend/v1/ids')
-				));
-			
-			endif;
-
-		endif;
+		
 
 		wp_enqueue_script( 'fontawesome', 'https://kit.fontawesome.com/14643ca681.js', array(), '5', false );
 		wp_enqueue_script( 'popper', 'https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js', array(), false, false );
 		
-	}
+		}
+	
 }
 
 add_action( 'wp_enqueue_scripts', 'itrend_enqueue_filters_js', 10, 0 );
