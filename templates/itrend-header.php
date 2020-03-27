@@ -39,7 +39,7 @@
 		</nav>
 	</div>
 	<header id="itrend-vis-main-header" class="container-fluid">
-		<?php if(!empty(get_query_var( 'funcion' ))):?>
+		<?php if(!empty(get_query_var( 'funcion' )) || is_singular('actor')):?>
 		
 		<div class="row row-links-main">
 			<a href="<?php echo get_post_type_archive_link( 'actor' )?>visualizacion" class="btn-action btn-action-mapa"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/red-01.svg" alt=""> Visualiza la red</a>

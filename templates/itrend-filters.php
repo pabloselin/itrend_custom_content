@@ -16,7 +16,7 @@
 		<div class="col m3 orgs-filter-list">
 			
 			<div class="intro-presentation">
-				<h1 class="itrend-section-title"><a href="<?php bloginfo('url');?>"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/logo_mapa.svg" alt="Mapa de Actores"></a></h1>
+				<h1 class="itrend-section-title"><a href="<?php echo get_post_type_archive_link( 'actor' );?>"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/logo_mapa.svg" alt="Mapa de Actores"></a></h1>
 				<?php echo apply_filters('the_content', $intro);?>
 				<span class="border"></span>
 			</div>

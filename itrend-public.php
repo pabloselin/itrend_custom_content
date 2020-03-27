@@ -11,13 +11,14 @@ function itrend_enqueue_filters_js() {
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_style( 'itrend_filters_styles', plugin_dir_url( __FILE__ ) . 'css/itrend-actores.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 		wp_enqueue_style( 'opensans', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,500,700&display=swap', array(), false, 'all' );
+		wp_enqueue_script( 'itrend_materialize', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', array(), ITREND_PLUGIN_VERSION, false );
 		//wp_enqueue_style( 'itrend_bootstrap_grid', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 		
 			//wp_enqueue_style( 'itrend_bootstrap_css', plugin_dir_url( __FILE__ ) . 'vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css' , array(), ITREND_PLUGIN_VERSION, 'screen' );
 			//wp_enqueue_style( 'materialize', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css', array(), false, 'all' );
 			if($funcion == 'filtro') {
 				
-					wp_enqueue_script( 'itrend_materialize', 'https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js', array(), ITREND_PLUGIN_VERSION, false );
+					
 					wp_enqueue_script( 'itrend_filters_scripts', plugin_dir_url(__FILE__) . 'js/itrend-filters-scripts.js' , array('squirrely'), ITREND_PLUGIN_VERSION, false );
 					wp_enqueue_script( 'itrend_bootstrap_js', plugin_dir_url(__FILE__) . 'vendor/bootstrap-4.4.1-dist/js/bootstrap.min.js' , array('jquery', 'popper'), ITREND_PLUGIN_VERSION, false );
 					wp_enqueue_script( 'squirrely', 'https://cdn.jsdelivr.net/npm/squirrelly@7.5.0/dist/squirrelly.min.js', array(), false, false );

@@ -157,7 +157,7 @@ function itrend_get_logointro() {
 
 	return '<div class="info-extra-vis">
 			  <h1 class="itrend-section-title">
-			    <a href="' . get_bloginfo('home') . '">
+			    <a href="' . get_post_type_archive_link('actor') . '">
 			      <img src="' . itrend_get_vislogo() . '" alt="' . get_bloginfo('name') . '">
 			    </a>
 			  </h1>

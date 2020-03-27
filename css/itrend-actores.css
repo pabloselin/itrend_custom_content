@@ -6087,3 +6087,35 @@ body#itrend-vis #itrend_table_results td.sector {
 
 body#itrend-vis #itrend_table_results td.alcance, body#itrend-vis #itrend_table_results td.tareas, body#itrend-vis #itrend_table_results td.acciones {
   font-size: 14px; }
+
+body#itrend-vis #modal-instrucciones {
+  width: 80%;
+  border-radius: 65px;
+  border: 4px solid #A6A4A0;
+  overflow: hidden;
+  background-color: #A6A4A0; }
+  body#itrend-vis #modal-instrucciones h4 {
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 24px;
+    padding: 12px;
+    margin-bottom: 0; }
+  body#itrend-vis #modal-instrucciones .modal-content {
+    text-align: center;
+    font-style: italic;
+    background-color: #A6A4A0;
+    padding: 0; }
+    body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper {
+      background-color: white;
+      min-height: 280px;
+      padding: 24px; }
+    body#itrend-vis #modal-instrucciones .modal-content img {
+      max-width: 150px;
+      height: auto; }
+  body#itrend-vis #modal-instrucciones .modal-footer {
+    text-align: center;
+    height: auto; }
+    body#itrend-vis #modal-instrucciones .modal-footer .btn, body#itrend-vis #modal-instrucciones .modal-footer .btn-large, body#itrend-vis #modal-instrucciones .modal-footer .btn-small {
+      font-weight: bold;
+      margin: 24px 0; }

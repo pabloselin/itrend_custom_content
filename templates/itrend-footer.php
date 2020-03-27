@@ -12,6 +12,18 @@
 		</div>
 	</div>
 </div>
+<script>
+	jQuery(document).ready(function(){
+		var key = 'hadModal';
+        hadModal = localStorage.getItem(key);
 
+        $('#modal-instrucciones').modal('open');
+
+        if(!hadModal) {
+			$('#modal-instrucciones').modal('open');
+			localStorage.setItem(key, true);
+		}
+	});
+</script>
 </body>
 </html>

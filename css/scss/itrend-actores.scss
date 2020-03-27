@@ -532,3 +532,47 @@ body#itrend-vis #itrend_table_results {
 		font-size: 14px;
 	}
 }
+
+body#itrend-vis #modal-instrucciones {
+	width: 80%;
+	border-radius: 65px;
+	border: 4px solid #A6A4A0;
+	overflow: hidden;
+	background-color: #A6A4A0;
+
+	h4 {
+    	font-style: normal;
+    	font-weight: bold;
+    	text-transform: uppercase;
+    	font-size: 24px;
+    	padding: 12px;
+    	margin-bottom: 0;
+	}
+
+	.modal-content {
+		text-align: center;
+		font-style: italic;
+		background-color: #A6A4A0;
+		padding: 0;
+
+		div.modal-content-wrapper {
+			background-color: white;
+			min-height: 280px;
+			padding: 24px;
+		}
+
+		img {
+			max-width: 150px;
+			height: auto;
+		}
+	}
+
+	.modal-footer {
+		text-align: center;
+		height: auto;
+		.btn {
+			font-weight: bold;
+			margin: 24px 0;
+		}
+	}
+}

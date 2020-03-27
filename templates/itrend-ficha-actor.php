@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col m3 intro-presentation">
 			<h1 class="itrend-section-title">
-				<a href="<?php bloginfo('home');?>"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/logo_mapa.svg" alt="Mapa de Actores"></a></h1>
+				<a href="<?php echo get_post_type_archive_link( 'actor' );?>"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/logo_mapa.svg" alt="Mapa de Actores"></a></h1>
 				<div style="max-width: 80%">
 					<?php 
 						$codigo = get_post_meta($post->ID, ITREND_PREFIX . 'codigo', true);
