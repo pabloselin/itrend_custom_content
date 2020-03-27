@@ -42,8 +42,8 @@
 		<?php if(!empty(get_query_var( 'funcion' ))):?>
 		
 		<div class="row row-links-main">
-			<a href="<?php echo get_post_type_archive_link( 'actor' )?>/visualizacion" class="btn-action btn-action-mapa"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/red-01.svg" alt=""> Visualiza la red</a>
-			<a href="<?php echo get_post_type_archive_link( 'actor' )?>/buscador" class="btn-action btn-action-buscador"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/buscador-02.svg" alt=""> Busca un actor</a>
+			<a href="<?php echo get_post_type_archive_link( 'actor' )?>visualizacion" class="btn-action btn-action-mapa"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/red-01.svg" alt=""> Visualiza la red</a>
+			<a href="<?php echo get_post_type_archive_link( 'actor' )?>buscador" class="btn-action btn-action-buscador"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/buscador-02.svg" alt=""> Busca un actor</a>
 			<a href="<?php echo get_post_type_archive_link( 'actor' )?>" class="btn-action btn-action-proyecto"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/i-04.svg" alt=""> El proyecto</a>
 		</div>
 		

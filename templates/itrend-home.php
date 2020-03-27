@@ -13,8 +13,8 @@
 		<div class="col m8 buttons-section">
 			
 			<div class="links-stuff">
-				<a href="<?php echo get_post_type_archive_link( 'actor' )?>/visualizacion" class="btn-home btn-action-mapa"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/red-01.svg" alt=""> Visualiza la red</a>
-				<a href="<?php echo get_post_type_archive_link( 'actor' )?>/buscador" class="btn-home btn-action-buscador"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/buscador-02.svg" alt=""> Busca un actor</a>
+				<a href="<?php echo get_post_type_archive_link( 'actor' )?>visualizacion" class="btn-home btn-action-mapa"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/red-01.svg" alt=""> Visualiza la red</a>
+				<a href="<?php echo get_post_type_archive_link( 'actor' )?>buscador" class="btn-home btn-action-buscador"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/buscador-02.svg" alt=""> Busca un actor</a>
 				<a href="<?php echo get_post_type_archive_link( 'actor' )?>" class="btn-home btn-action-proyecto"><img src="<?php echo plugin_dir_url( __FILE__ );?>../img/i-04.svg" alt=""> El proyecto</a>
 			</div>
 
