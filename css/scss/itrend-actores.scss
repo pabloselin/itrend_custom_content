@@ -534,7 +534,7 @@ body#itrend-vis #itrend_table_results {
 }
 
 body#itrend-vis #modal-instrucciones {
-	width: 80%;
+	width: 60%;
 	border-radius: 65px;
 	border: 4px solid #A6A4A0;
 	overflow: hidden;
@@ -544,8 +544,8 @@ body#itrend-vis #modal-instrucciones {
     	font-style: normal;
     	font-weight: bold;
     	text-transform: uppercase;
-    	font-size: 24px;
-    	padding: 12px;
+    	font-size: 18px;
+    	padding: 8px;
     	margin-bottom: 0;
 	}
 
@@ -558,7 +558,11 @@ body#itrend-vis #modal-instrucciones {
 		div.modal-content-wrapper {
 			background-color: white;
 			min-height: 280px;
-			padding: 24px;
+			padding: 24px 24px 0 24px;
+
+			p {
+				margin-bottom: 6px;
+			}
 		}
 
 		img {
