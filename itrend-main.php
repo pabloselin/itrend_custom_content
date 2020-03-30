@@ -127,8 +127,10 @@ add_filter( 'gettext', 'itrend_translate_attached_posts_fields', 20, 3 );
 function itrend_rewrites() {
 	add_rewrite_tag( '%visualizacion%', '([^&]+)' );
 	add_rewrite_tag( '%buscador%', '([^&]+)' );
+	add_rewrite_tag( '%el-proyecto%', '([^&]+)' );
 	add_rewrite_rule( '^actores/visualizacion', 'index.php?funcion=visualizacion', 'top' );
 	add_rewrite_rule( '^actores/buscador', 'index.php?funcion=filtro', 'top' );
+	add_rewrite_rule( '^actores/el-proyecto', 'index.php?funcion=proyecto', 'top' );
 }
 
 add_action('init', 'itrend_rewrites', 10, 0);

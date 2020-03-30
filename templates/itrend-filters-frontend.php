@@ -68,12 +68,15 @@ switch($filter){
 
 echo do_shortcode( '[netviz]', false );
 break;
-case('metodologia'):
-echo '.';
+
+case('proyecto'):
+	include( plugin_dir_path( __FILE__ ) . '/itrend-proyecto.php');
 break;
+
 case(''):
-include( plugin_dir_path( __FILE__ ) . '/itrend-home.php');
+	include( plugin_dir_path( __FILE__ ) . '/itrend-home.php');
 };
+
 ?>
 
 <?php include( plugin_dir_path( __FILE__ ) . '/itrend-footer.php');?>
