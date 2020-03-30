@@ -5799,7 +5799,7 @@ body#itrend-vis {
   body#itrend-vis .introtext {
     margin: 0; }
     body#itrend-vis .introtext p {
-      margin: 3px 0; }
+      margin: 3px 0 12px 0; }
   body#itrend-vis .visualizer {
     margin: 0 15px; }
   body#itrend-vis .child-term {
