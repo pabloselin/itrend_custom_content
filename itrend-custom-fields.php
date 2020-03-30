@@ -598,8 +598,8 @@ function itrend_register_theme_options_metabox() {
 	) );
 
 	$cmb_options->add_field( array(
-		'name' => __( 'Texto ayuda leyenda Acciones', 'itrend' ),
-		'desc' => __( 'Acciones leyenda', 'itrend' ),
+		'name' => __( 'Texto ayuda leyenda Acciones GRRD', 'itrend' ),
+		'desc' => __( 'Acciones GRRD leyenda', 'itrend' ),
 		'id'   => 'itrend_acciones_leyenda',
 		'type' => 'textarea',
 	) );
