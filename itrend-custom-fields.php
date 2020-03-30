@@ -583,6 +583,28 @@ function itrend_register_theme_options_metabox() {
 		'type' => 'text_email',
 	) );
 
+	$cmb_options->add_field( array(
+		'name' => __( 'Texto ayuda leyenda Tareas', 'itrend' ),
+		'desc' => __( 'Tareas leyenda', 'itrend' ),
+		'id'   => 'itrend_tareas_leyenda',
+		'type' => 'textarea',
+	) );
+
+	$cmb_options->add_field( array(
+		'name' => __( 'Texto ayuda leyenda Sectores', 'itrend' ),
+		'desc' => __( 'Sectores leyenda', 'itrend' ),
+		'id'   => 'itrend_sectores_leyenda',
+		'type' => 'textarea',
+	) );
+
+	$cmb_options->add_field( array(
+		'name' => __( 'Texto ayuda leyenda Acciones', 'itrend' ),
+		'desc' => __( 'Acciones leyenda', 'itrend' ),
+		'id'   => 'itrend_acciones_leyenda',
+		'type' => 'textarea',
+	) );
+
+
 }
 
 /**
