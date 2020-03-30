@@ -570,9 +570,9 @@ function itrend_register_theme_options_metabox() {
 	) );
 
 	$cmb_options->add_field( array(
-		'name' => __( 'Texto para sección Metodología', 'itrend' ),
+		'name' => __( 'Texto para sección el proyecto', 'itrend' ),
 		'desc' => __( 'Texto con formato', 'itrend' ),
-		'id'   => 'itrend_metodologia_intro_text',
+		'id'   => 'itrend_elproyecto_intro_text',
 		'type' => 'wysiwyg',
 	) );
 
