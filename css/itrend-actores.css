@@ -6089,7 +6089,9 @@ body#itrend-vis #itrend_table_results td.alcance, body#itrend-vis #itrend_table_
   font-size: 14px; }
 
 body#itrend-vis #modal-instrucciones {
-  width: 60%;
+  width: 70%;
+  max-height: 90%;
+  top: 5% !important;
   border-radius: 65px;
   border: 4px solid #A6A4A0;
   overflow: hidden;
@@ -6108,13 +6110,27 @@ body#itrend-vis #modal-instrucciones {
     padding: 0; }
     body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper {
       background-color: white;
-      min-height: 280px;
-      padding: 24px 24px 0 24px; }
+      min-height: 440px;
+      padding: 24px 48px 0 48px; }
+      body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper div.instruccion {
+        overflow: hidden;
+        margin-bottom: 18px;
+        text-align: left; }
+      body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper h5 {
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 16px;
+        font-style: normal;
+        text-transform: uppercase;
+        font-size: 18px;
+        text-align: left; }
       body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper p {
         margin-bottom: 6px; }
     body#itrend-vis #modal-instrucciones .modal-content img {
-      max-width: 150px;
-      height: auto; }
+      height: 100px;
+      width: auto;
+      float: left;
+      margin-right: 12px; }
   body#itrend-vis #modal-instrucciones .modal-footer {
     text-align: center;
     height: auto; }

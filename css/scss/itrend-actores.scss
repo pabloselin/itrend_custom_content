@@ -534,7 +534,9 @@ body#itrend-vis #itrend_table_results {
 }
 
 body#itrend-vis #modal-instrucciones {
-	width: 60%;
+	width: 70%;
+	max-height: 90%;
+	top: 5% !important;
 	border-radius: 65px;
 	border: 4px solid #A6A4A0;
 	overflow: hidden;
@@ -557,8 +559,24 @@ body#itrend-vis #modal-instrucciones {
 
 		div.modal-content-wrapper {
 			background-color: white;
-			min-height: 280px;
-			padding: 24px 24px 0 24px;
+			min-height: 440px;
+			padding: 24px 48px 0 48px;
+
+			div.instruccion {
+				overflow: hidden;
+				margin-bottom: 18px;
+				text-align: left;
+			}
+
+			h5 {
+				font-weight: bold;
+				margin-top: 0;
+				margin-bottom: 16px;
+				font-style: normal;
+				text-transform: uppercase;
+				font-size: 18px;
+				text-align: left;
+			}
 
 			p {
 				margin-bottom: 6px;
@@ -566,8 +584,10 @@ body#itrend-vis #modal-instrucciones {
 		}
 
 		img {
-			max-width: 150px;
-			height: auto;
+			height: 100px;
+			width: auto;
+			float: left;
+			margin-right: 12px;
 		}
 	}
 

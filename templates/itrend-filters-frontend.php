@@ -20,17 +20,41 @@ switch($filter){
 		<h4>Navegación</h4>
 		<div class="modal-content-wrapper">
 			<div class="row">
-				<div class="col m4">
-					<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/zoom.gif" alt="">
-					<p>Haz scroll para hacer zoom en la red</p>
+				<div class="col m6">
+					<h5>Tareas</h5>
+					
+					<div class="instruccion">
+						<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/zoom.gif" alt="">
+						<p>Haz scroll para hacer zoom en la red</p>
+					</div>
+					
+					<div class="instruccion">
+						<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/click1.gif" alt="">
+						<p>Haz click en una tarea para conocer los actores asociados</p>
+					</div>
+					
+					<div class="instruccion">
+						<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/click_ir.gif" alt="">
+						<p>Haz click en un actor para ver la ficha completa</p>
+					</div>
 				</div>
-				<div class="col m4">
-					<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/click1.gif" alt="">
-					<p>Haz click en una tarea para conocer los actores asociados</p>
-				</div>
-				<div class="col m4">
-					<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/click_ir.gif" alt="">
-					<p>Haz click en un actor para ver la ficha completa</p>
+				<div class="col m6">
+					<h5>Alcance Territorial / Sectorial</h5>
+
+					<div class="instruccion">
+						<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/open.gif" alt="">
+						<p>Haz click en un nodo para abrir la red</p>
+					</div>
+					
+					<div class="instruccion">
+						<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/close.gif" alt="">
+						<p>Haz click en un nodo para cerrar la red</p>
+					</div>
+					
+					<div class="instruccion">
+						<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/click_actor.gif" alt="">
+						<p>Haz click en un actor para ver la ficha completa</p>
+					</div>
 				</div>
 			</div>
 		</div>
