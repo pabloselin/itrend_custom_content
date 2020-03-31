@@ -371,3 +371,51 @@ function itrend_endpoint() {
 }
 
 add_action( 'rest_api_init', 'itrend_endpoint' );
+
+function itrend_title($title_parts) {
+	$funcion = get_query_var( 'funcion' );
+
+	switch($funcion) {
+		case('visualizacion'):
+			$title_parts['title'] = "Mapa de actores";	
+		break;
+		case('filtro'):
+			$title_parts['title'] = "Buscador de actores";
+		break;
+		case('proyecto'):
+			$title_parts['title'] = "El proyecto";
+		break;
+	}
+	
+	return $title_parts;
+}
+
+add_filter( 'document_title_parts', 'itrend_title' );
+
+function itrend_meta() {
+	$funcion = get_query_var( 'funcion' );
+	$options = get_option('itrend_options');
+
+	if(is_post_type_archive('actor') && !get_query_var('funcion')) {
+		$desc = strip_tags($options['itrend_vis_mainintro_text']);
+	} else {	
+		switch($funcion) {
+		case('visualizacion'):
+			$desc = strip_tags($options['itrend_vis_intro_text']);
+		break;
+		case('filtro'):
+			$desc = strip_tags($options['itrend_filtro_intro_text']);
+		break;
+		case('proyecto'):
+			$desc = strip_tags($options['itrend_elproyecto_intro_text']);
+		break;
+		}	
+	}
+	
+
+	$meta = '<meta name="description" content="' . $desc . '">';
+
+	echo $meta;
+}
+
+add_action( 'wp_head', 'itrend_meta', 10, 0 );

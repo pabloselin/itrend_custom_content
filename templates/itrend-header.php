@@ -4,28 +4,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
 	<?php wp_head(); ?>
-	<?php $function = get_query_var( 'funcion');
-	switch($function) {
-		case('visualizacion'):
-		$title = 'Mapa de actores';
-		$introtextfield = 'itrend_vis_intro_text';
-		break;
-		case('filtro'):
-		$title = 'Buscador de actores';
-		$introtextfield = 'itrend_filtro_intro_text';
-		break;
-		case('metodologia'):
-		$title = 'Metodología';
-		$introtextfield = 'itrend_metodologia_intro_text';
-		break;
-		default:
-		$title = '';
-		$introtextfield = null;
-	}
-	$intro =itrend_get_option($introtextfield);
-	?>
 </head>
 <body id="itrend-vis" class="<?php echo itrend_body_class();?>" >
 	<div class="topnav-header">

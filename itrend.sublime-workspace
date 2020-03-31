@@ -84,7 +84,45 @@
 			"file": "/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer/network-visualizer.php",
 			"settings":
 			{
-				"buffer_size": 48123,
+				"buffer_size": 48122,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "itrend-custom-fields.php",
+			"settings":
+			{
+				"buffer_size": 22535,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nWordPress Completions\n---------------------\n\n  Version 5.3.2+1.0\n  -----------------------------------------\n  \n  WordPress 5.3.2\n",
+			"settings":
+			{
+				"buffer_size": 181,
+				"line_ending": "Unix",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "templates/itrend-filters-frontend.php",
+			"settings":
+			{
+				"buffer_size": 2149,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/itrend-proyecto.php",
+			"settings":
+			{
+				"buffer_size": 861,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -93,7 +131,7 @@
 			"file": "css/scss/itrend-actores.scss",
 			"settings":
 			{
-				"buffer_size": 8336,
+				"buffer_size": 8755,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -102,7 +140,34 @@
 			"file": "itrend-main.php",
 			"settings":
 			{
-				"buffer_size": 4406,
+				"buffer_size": 4538,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/itrend-ficha-actor.php",
+			"settings":
+			{
+				"buffer_size": 7353,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/itrend-header.php",
+			"settings":
+			{
+				"buffer_size": 3321,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/itrend-home.php",
+			"settings":
+			{
+				"buffer_size": 1146,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -120,16 +185,16 @@
 		"selected_items":
 		[
 			[
+				"wrap",
+				"Emmet: Wrap With Abbreviation"
+			],
+			[
 				"comm",
 				"Toggle Comment"
 			],
 			[
 				"rein",
 				"Indentation: Reindent Lines"
-			],
-			[
-				"wrap",
-				"Emmet: Wrap With Abbreviation"
 			],
 			[
 				"com",
@@ -283,7 +348,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 26.0
 	},
 	"find_in_files":
 	{
@@ -298,6 +363,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"home",
+			"Dimensiones",
+			"zoom",
+			"<div>",
+			"img",
 			"get_transient",
 			"itrend_body_class",
 			"home",
@@ -422,7 +492,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -438,8 +508,8 @@
 						"selection":
 						[
 							[
-								1036,
-								1036
+								2152,
+								2152
 							]
 						],
 						"settings":
@@ -451,7 +521,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -460,15 +530,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 48123,
+						"buffer_size": 48122,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13603,
-								13603
+								15395,
+								15395
 							]
 						],
 						"settings":
@@ -478,56 +548,115 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5304.0,
+						"translation.y": 4791.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "itrend-custom-fields.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22535,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								21649,
+								21649
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 9855.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 181,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								181,
+								181
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "css/scss/itrend-actores.scss",
+					"buffer": 4,
+					"file": "templates/itrend-filters-frontend.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8336,
+						"buffer_size": 2149,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8158,
-								8158
+								1985,
+								1985
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 8900.0,
+						"translation.y": 714.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "itrend-main.php",
+					"buffer": 5,
+					"file": "templates/itrend-proyecto.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4406,
+						"buffer_size": 861,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								648,
-								648
+								102,
+								102
 							]
 						],
 						"settings":
@@ -539,7 +668,152 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "css/scss/itrend-actores.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8755,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7948,
+								7948
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/SCSS.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 8905.0,
+						"zoom_level": 1.0
+					},
 					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "itrend-main.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4538,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								774,
+								774
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "templates/itrend-ficha-actor.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7353,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								956,
+								956
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "templates/itrend-header.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3321,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1811,
+								1811
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "templates/itrend-home.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1146,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								878,
+								878
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -594,6 +868,54 @@
 		"selected_items":
 		[
 			[
+				"actore",
+				"itrend_custom_content/css/scss/itrend-actores.scss"
+			],
+			[
+				"main",
+				"itrend_custom_content/itrend-main.php"
+			],
+			[
+				"hom",
+				"itrend_custom_content/templates/itrend-home.php"
+			],
+			[
+				"act",
+				"itrend_custom_content/css/scss/itrend-actores.scss"
+			],
+			[
+				"head",
+				"itrend_custom_content/templates/itrend-header.php"
+			],
+			[
+				"fich",
+				"itrend_custom_content/templates/itrend-ficha-actor.php"
+			],
+			[
+				"pu",
+				"itrend_custom_content/itrend-public.php"
+			],
+			[
+				"front",
+				"itrend_custom_content/templates/itrend-filters-frontend.php"
+			],
+			[
+				"custom",
+				"itrend_custom_content/itrend-custom-fields.php"
+			],
+			[
+				"netw",
+				"network-visualizer/network-visualizer.php"
+			],
+			[
+				"ficha",
+				"itrend_custom_content/templates/itrend-ficha-actor.php"
+			],
+			[
+				"fil",
+				"itrend_custom_content/templates/itrend-filters-frontend.php"
+			],
+			[
 				"publi",
 				"itrend_custom_content/itrend-public.php"
 			],
@@ -610,24 +932,12 @@
 				"network-visualizer/network-visualizer.php"
 			],
 			[
-				"netw",
-				"network-visualizer/network-visualizer.php"
-			],
-			[
 				"netwo",
 				"itrend_network_visualizer/network-visualizer.php"
 			],
 			[
-				"main",
-				"itrend_custom_content/itrend-main.php"
-			],
-			[
 				"itrend-he",
 				"itrend_custom_content/templates/itrend-header.php"
-			],
-			[
-				"ficha",
-				"itrend_custom_content/templates/itrend-ficha-actor.php"
 			],
 			[
 				"filt",
@@ -642,23 +952,11 @@
 				"itrend_plain/inc/template-functions.php"
 			],
 			[
-				"front",
-				"itrend_custom_content/templates/itrend-filters-frontend.php"
-			],
-			[
 				"foot",
 				"itrend_custom_content/templates/itrend-footer.php"
 			],
 			[
 				"itrendhe",
-				"itrend_custom_content/templates/itrend-header.php"
-			],
-			[
-				"hom",
-				"itrend_custom_content/templates/itrend-home.php"
-			],
-			[
-				"head",
 				"itrend_custom_content/templates/itrend-header.php"
 			],
 			[
@@ -668,10 +966,6 @@
 			[
 				"tep",
 				"itrend_custom_content/itrend-template-functions.php"
-			],
-			[
-				"pu",
-				"itrend_custom_content/itrend-public.php"
 			],
 			[
 				"heade",
@@ -724,14 +1018,6 @@
 			[
 				"phpl",
 				"itrend_custom_content/phploy.ini"
-			],
-			[
-				"fich",
-				"itrend_custom_content/templates/itrend-ficha-actor.php"
-			],
-			[
-				"act",
-				"itrend_custom_content/css/scss/itrend-actores.scss"
 			],
 			[
 				"itrendf",
@@ -822,16 +1108,8 @@
 				"itrend_custom_content/itrend-template-functions.php"
 			],
 			[
-				"fil",
-				"itrend_custom_content/templates/itrend-filters-frontend.php"
-			],
-			[
 				"fun",
 				"itrend_custom_content/itrend-template-functions.php"
-			],
-			[
-				"custom",
-				"itrend_custom_content/itrend-custom-fields.php"
 			],
 			[
 				"fi",
@@ -967,9 +1245,13 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "bitac",
+		"last_filter": "c80",
 		"selected_items":
 		[
+			[
+				"c80",
+				"~/Documents/WebDev/local_sites/c80/app/public/wp-content/themes/c80-template/c80.sublime-project"
+			],
 			[
 				"bitac",
 				"~/Documents/WebDev/local_sites/bitacora/app/public/wp-content/themes/prompt/prompt.sublime-project"
@@ -977,10 +1259,6 @@
 			[
 				"automark",
 				"~/Documents/WebDev/local_sites/automark/app/public/wp-content/themes/automark/automark.sublime-project"
-			],
-			[
-				"c80",
-				"~/Documents/WebDev/local_sites/c80/app/public/wp-content/themes/c80-template/c80.sublime-project"
 			],
 			[
 				"auto",
