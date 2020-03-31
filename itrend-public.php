@@ -375,17 +375,29 @@ add_action( 'rest_api_init', 'itrend_endpoint' );
 function itrend_title($title_parts) {
 	$funcion = get_query_var( 'funcion' );
 
-	switch($funcion) {
-		case('visualizacion'):
-			$title_parts['title'] = "Mapa de actores";	
-		break;
-		case('filtro'):
-			$title_parts['title'] = "Buscador de actores";
-		break;
-		case('proyecto'):
-			$title_parts['title'] = "El proyecto";
-		break;
-	}
+	if(is_post_type_archive('actor')):
+
+		$title_parts['title'] = '';
+
+	else:
+
+		switch($funcion) {
+			case('visualizacion'):
+				$title_parts['title'] = "Visualiza la Red - " . get_bloginfo('name');
+				$title_parts['tagline']  = '';
+			break;
+			case('filtro'):
+				$title_parts['title'] = "Busca un actor - "  . get_bloginfo('name');
+				$title_parts['tagline']  = '';
+			break;
+			case('proyecto'):
+				$title_parts['title'] = "El proyecto - " . get_bloginfo('name');
+				$title_parts['tagline']  = '';
+			break;
+
+		}
+
+	endif;
 	
 	return $title_parts;
 }

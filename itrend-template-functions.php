@@ -138,13 +138,13 @@ function itrend_contact_fields_content( $content, $icon, $link ) {
 }
 
 function itrend_redirect_actoresurl() {
-	if(is_home()) {
+	if(is_home() && !get_query_var('funcion')) {
 		wp_redirect( get_post_type_archive_link( 'actor' ));
 		die;
 	}
 }
 
-//add_action( 'template_redirect', 'itrend_redirect_actoresurl');
+add_action( 'template_redirect', 'itrend_redirect_actoresurl');
 
 function itrend_get_vislogo() {
 	return plugin_dir_url( __FILE__ ) . '/img/logo_mapa.svg';
