@@ -1,3 +1,7 @@
+<?php if(!is_user_logged_in()) {
+	wp_redirect( wp_login_url(), 302 );
+	die();
+}?>
 <?php include( plugin_dir_path( __FILE__ ) . '/itrend-header.php');
 
 		$introtextfield = 'itrend_filtro_ficha_text';
