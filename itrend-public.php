@@ -155,8 +155,11 @@ add_shortcode( 'itrend_actor_filters', 'itrend_actor_filters_output_shortcode' )
 
 function itrend_actor_archive_filter( $archive_template ) {
 
-	if(is_post_type_archive('actor')) {
+	if(is_post_type_archive('actor') && is_user_logged_in()) {
 		$archive_template = plugin_dir_path( __FILE__ ) . 'templates/itrend-filters-frontend.php';
+	} else {
+		wp_redirect( wp_login_url(), 302, 'WordPress' );
+		die();
 	}
 
 	return $archive_template;

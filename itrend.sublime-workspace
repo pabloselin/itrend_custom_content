@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"strip",
+				"strip_tags"
+			],
+			[
 				"get_query",
 				"get_query_var\tWP Function"
 			],
@@ -75,17 +79,19 @@
 			"file": "itrend-public.php",
 			"settings":
 			{
-				"buffer_size": 10738,
+				"buffer_size": 12106,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"contents": "<?php\n/*\nPlugin Name: Network Visualizer\nPlugin URI: http://www.net-works.cl\nDescription: Genera las visualizaciones a través de la librería echarts.\nVersion: 1.0\nAuthor: Gastón Olivares\nAuthor URI: https://www.researchgate.net/profile/Gaston_Olivares_Fernandez\n*/\n\n\n\n\n\n  if ( !defined('ABSPATH') )\n      define('ABSPATH', dirname(__FILE__) . '/');\n  require_once(ABSPATH . 'wp-config.php');\n\n\n function linspace($i,$f,$n) {\n      $step = ($f-$i)/($n-1);\n      return range ($i,$f,$step);\n }\n\n function theta($data){\n \tfor($i=0;$i< count($data);$i++){\n \t\t$data[$i] = $data[$i] *2*pi();\n \t}\n \treturn $data;\n }\n\n function coords($theta,$div) {\n \t$coords = array();\n \tfor($i=0;$i< count($theta);$i++){\n \t\tarray_push($coords,array(cos($theta[$i])/$div,sin($theta[$i])/$div));\n \t}\n \treturn $coords;\n }\n\n function linebreak($name) {\n   $aux = explode(\" \",$name);\n   $new_name = \"\";\n   foreach($aux as $i => $t){\n     if($i == 4){\n       $new_name .= $t.\"\\n\";\n     }else{\n       $new_name .= $t.\" \";\n     }\n   }\n   return $new_name;\n }\n\n function tareas($META) {\n   global $wpdb;\n   delete_transient('redes_tareas');\n   $DATA = get_transient(\"redes_tareas\");\n   if (false === $DATA){\n     $prefix = $wpdb->prefix;\n     $COUNT = array(0=>1,1=>1);\n     $ACTOR = array();\n     $SIZE = array();\n     $DATA = array(\"type\"=>\"force\",\"nodes\"=>array(),\"links\"=>array(),\"categories\"=>array(array(\"name\"=>\"Tareas\",\"itemStyle\"=>array(\"color\"=>\"#1a2c59\")),array(\"name\"=>\"Estado\",\"itemStyle\"=>array(\"color\"=>\"#00bbee\")),array(\"name\"=>\"Privado\",\"itemStyle\"=>array(\"color\"=>\"#fec035\")),array(\"name\"=>\"Academia\",\"itemStyle\"=>array(\"color\"=>\"#ef4853\")),array(\"name\"=>\"Org. sin fines de lucro\",\"itemStyle\"=>array(\"color\"=>\"#732ad1\")),array(\"name\"=>\"Otro sector\",\"itemStyle\"=>array(\"color\"=>\"#00aea5\"))));\n     $query = 'SELECT wpp.post_title, wpt.name, wptt.parent FROM '.$prefix.'term_taxonomy wptt, '.$prefix.'term_relationships wptr, '.$prefix.'posts wpp, '.$prefix.'terms wpt WHERE wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.taxonomy = \"tareas\" AND wptr.object_id = wpp.ID AND wpt.term_id = wptt.term_id AND wpp.post_status = \"publish\" AND wpp.post_type = \"actor\"';\n     if ($result = $wpdb->get_results($query)){\n      $result = json_decode(json_encode($result), True);\n     \tforeach($result as $row){\n     \t\tif(!in_array($row[\"post_title\"],$ACTOR)){\n     \t\t\t$COUNT[0]++;\n     \t\t\tarray_push($ACTOR,$row[\"post_title\"]);\n          $category = $META[\"category\"][$META[\"node_data\"][$row[\"post_title\"]][\"tipo\"]];\n          if (!$category){\n            $category = 5;\n          }\n     \t\t\tarray_push($DATA[\"nodes\"],array(\"name\"=>linebreak($row[\"post_title\"]),\"label\"=>array(\"color\"=>\"#666666\"),\"node_data\"=>$META[\"node_data\"][$row[\"post_title\"]],\"symbolSize\"=>10,\"category\"=>$category,\"symbol\"=>\"circle\",\"itemStyle\"=>array(\"color\"=>$META[\"color2\"][$row[\"post_title\"]],\"borderColor\"=>$META[\"color2\"][$row[\"post_title\"]])));\n     \t\t}else{\n     \t\t\t$node = array_search($row[\"post_title\"],$ACTOR);\n     \t\t\t$DATA[\"nodes\"][$node][\"symbolSize\"] = $DATA[\"nodes\"][$node][\"symbolSize\"] + 3;\n     \t\t}\n     \t\tif(!in_array($row[\"name\"],$ACTOR)){\n     \t\t\t$COUNT[1]++;\n     \t\t\tarray_push($ACTOR,$row[\"name\"]);\n     \t\t\tarray_push($DATA[\"nodes\"],array(\"name\"=>linebreak($row[\"name\"]),\"symbolSize\"=>10,\"category\"=>0,\"symbol\"=>$META[\"symbol\"][$row[\"parent\"]],\"tareas\"=>$META[\"termmeta\"][$row[\"parent\"]],\"itemStyle\"=>array(\"color\"=>\"#1a2c59\",\"borderColor\"=>\"#1a2c59\")));\n     \t\t}else{\n     \t\t\t$node = array_search($row[\"name\"],$ACTOR);\n     \t\t\t$DATA[\"nodes\"][$node][\"symbolSize\"] = $DATA[\"nodes\"][$node][\"symbolSize\"] + 3;\n     \t\t}\n     \t\t$source = array_search($row[\"post_title\"],$ACTOR);\n     \t\t$target = array_search($row[\"name\"],$ACTOR);\n     \t\tarray_push($DATA[\"links\"],array(\"source\"=>$source,\"target\"=>$target));\n     \t}\n     \t$coords_0 = coords(theta(linspace(0,1,$COUNT[0])),1);\n     \t$coords_1 = coords(theta(linspace(0,1,$COUNT[1])),2);\n     \t$i_0 = 0;\n     \t$i_1 = 0;\n      $max = 0;\n     \tfor($i=0;$i<count($DATA[\"nodes\"]);$i++){\n        $DATA[\"nodes\"][$i][\"name2\"] = $DATA[\"nodes\"][$i][\"name\"];\n        $DATA[\"nodes\"][$i][\"name\"] =$DATA[\"nodes\"][$i][\"node_data\"][\"_itrend_codigo\"];\n        if ($max < $DATA[\"nodes\"][$i][\"symbolSize\"]){\n          $max = $DATA[\"nodes\"][$i][\"symbolSize\"];\n        }\n     \t\tif ($DATA[\"nodes\"][$i][\"category\"]>0){\n     \t\t\t$DATA[\"nodes\"][$i][\"x\"] = $coords_0[$i_0][0];\n     \t\t\t$DATA[\"nodes\"][$i][\"y\"] = $coords_0[$i_0][1];\n     \t\t\t$i_0++;\n     \t\t}else{\n     \t\t\t$DATA[\"nodes\"][$i][\"x\"] = $coords_1[$i_1][0];\n     \t\t\t$DATA[\"nodes\"][$i][\"y\"] = $coords_1[$i_1][1];\n     \t\t\t$i_1++;\n     \t\t}\n     \t}\n      for($i=0;$i<count($DATA[\"nodes\"]);$i++){\n        $DATA[\"nodes\"][$i][\"symbolSize\"] = 5+75*$DATA[\"nodes\"][$i][\"symbolSize\"]/$max;\n      }\n\n     }\n     set_transient('redes_tareas',$DATA,DAY_IN_SECONDS);\n   }\n   return $DATA;\n }\n\n function territorial($META) {\n   global $wpdb;\n   // delete_transient('redes_territorial');\n   $DATA = get_transient(\"redes_territorial\");\n   if (false === $DATA){\n\n     $prefix = $wpdb->prefix;\n     $COUNT = array(0=>1,1=>1,2=>1,3=>1);\n     $TAXONOMY = array(\"acciones_grrd\"=>1,\"alcance_territorial\"=>2,\"Regional\"=>3);\n     $DATA = array(\"name\"=>\"Alcance Territorial\",\"symbolSize\"=>0,\"label\"=>array(\"color\"=>\"none\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"color\"=>\"none\",\"borderColor\"=>\"none\"), \"children\"=> array(array(\"name\"=>\"REGIONAL\",\"lineStyle\"=>array(\"color\"=>\"none\",\"width\"=>0),\"symbolSize\"=>100,\"label\"=>array(\"color\"=>\"#fff\",\"fontWeight\"=>\"bold\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.5,\"color\"=>\"#555\",\"borderColor\"=>\"#555\"),\"children\"=>array()),array(\"name\"=>\"NACIONAL\",\"lineStyle\"=>array(\"color\"=>\"none\",\"width\"=>0),\"symbolSize\"=>100,\"label\"=>array(\"color\"=>\"#fff\",\"fontWeight\"=>\"bold\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.5,\"color\"=>\"#555\",\"borderColor\"=>\"#555\"),\"children\"=>array())));\n     $DATA_AUX = array();\n     $query = 'SELECT wpp.post_title, GROUP_CONCAT(wpt.name) name, GROUP_CONCAT(wptt.taxonomy) taxonomy FROM '.$prefix.'term_taxonomy wptt, '.$prefix.'term_relationships wptr, '.$prefix.'posts wpp, '.$prefix.'terms wpt WHERE wpt.name NOT IN (\"Regional\") AND wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.taxonomy IN (\"acciones_grrd\" , \"alcance_territorial\") AND wptr.object_id = wpp.ID AND wpt.term_id = wptt.term_id AND wpp.post_status = \"publish\" AND wpp.post_type = \"actor\" AND wpp.ID in (SELECT wptr.object_id FROM '.$prefix.'term_relationships wptr, '.$prefix.'term_taxonomy wptt, '.$prefix.'terms wpt WHERE wpt.name = \"Regional\" AND wptt.taxonomy = \"alcance_territorial\" AND wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.term_id = wpt.term_id) GROUP BY wpp.ID';\n     if ($result = $wpdb->get_results($query)){\n      $result = json_decode(json_encode($result), True);\n     \tforeach($result as $row){\n         $institution = $row[\"post_title\"];\n         $name = explode(\",\",$row[\"name\"]);\n         $taxonomy = explode(\",\",$row[\"taxonomy\"]);\n         $TRANSFORM = array();\n         for($i=0;$i<count($name);$i++){\n           $TRANSFORM[$taxonomy[$i]][] = $name[$i];\n         }\n         foreach($TRANSFORM[\"alcance_territorial\"] as $region){\n           foreach ($TRANSFORM[\"acciones_grrd\"] as $accion) {\n             $DATA_AUX[$region][$accion][] = $institution;\n           }\n         }\n       }\n     }\n     $i = 0;\n     foreach ($DATA_AUX as $region => $v1) {\n       $count = 40;\n       foreach ($DATA_AUX[$region] as $accion => $v2) {\n         foreach ($v2 as $institution) {\n           $count++;\n         }\n       }\n       $DATA[\"children\"][0][\"children\"][] = array(\"name\"=>$region,\"tipo\"=>\"Alcance \",\"symbolSize\"=>$count,\"label\"=>array(\"color\"=>\"#000\",\"backgroundColor\"=>\"#fff\",\"fontWeight\"=>\"bold\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.5,\"color\"=>\"#555\",\"borderColor\"=>\"#555\"),\"children\"=>array());\n       $j = 0;\n       foreach ($DATA_AUX[$region] as $accion => $v2) {\n         $DATA[\"children\"][0][\"children\"][$i][\"children\"][] = array(\"name\"=>linebreak($accion),\"tipo\"=>\"Acción: \",\"symbolSize\"=>20+count($v2),\"label\"=>array(\"color\"=>\"#d17c2a\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.5,\"color\"=>\"#555\",\"borderColor\"=>\"#555\"),\"children\"=>array());\n         foreach ($v2 as $institution) {\n           $DATA[\"children\"][0][\"children\"][$i][\"children\"][$j][\"children\"][] = array(\"name\"=>$META[\"node_data\"][$institution][\"_itrend_codigo\"],\"name2\"=>linebreak($institution),\"label\"=>array(\"color\"=>\"#666666\"),\"node_data\"=>$META[\"node_data\"][$institution],\"symbolSize\"=>20,\"itemStyle\"=>array(\"color\"=>$META[\"color2\"][$institution],\"borderColor\"=>$META[\"color2\"][$institution]));\n         }\n         $j++;\n       }\n       $i++;\n     }\n     $COUNT = array();\n     $TAXONOMY = array(\"acciones_grrd\"=>1,\"alcance_territorial\"=>2,\"Nacional\"=>3);\n     $DATA_AUX = array();\n     $query = 'SELECT wpp.post_title, GROUP_CONCAT(wpt.name) name, GROUP_CONCAT(wptt.taxonomy) taxonomy FROM '.$prefix.'term_taxonomy wptt, '.$prefix.'term_relationships wptr, '.$prefix.'posts wpp, '.$prefix.'terms wpt WHERE wpt.name NOT IN (\"Nacional\") AND wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.taxonomy IN (\"acciones_grrd\" , \"alcance_territorial\") AND wptr.object_id = wpp.ID AND wpt.term_id = wptt.term_id AND wpp.post_status = \"publish\" AND wpp.post_type = \"actor\" AND wpp.ID in (SELECT wptr.object_id FROM '.$prefix.'term_relationships wptr, '.$prefix.'term_taxonomy wptt, '.$prefix.'terms wpt WHERE wpt.name = \"Nacional\" AND wptt.taxonomy = \"alcance_territorial\" AND wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.term_id = wpt.term_id) GROUP BY wpp.ID';\n     if ($result = $wpdb->get_results($query)){\n      $result = json_decode(json_encode($result), True);\n     \tforeach($result as $row){\n         $institution = $row[\"post_title\"];\n         $name = explode(\",\",$row[\"name\"]);\n         $taxonomy = explode(\",\",$row[\"taxonomy\"]);\n         $TRANSFORM = array();\n         for($i=0;$i<count($name);$i++){\n           $TRANSFORM[$taxonomy[$i]][] = $name[$i];\n         }\n         $region = \"Nacional\";\n         foreach ($TRANSFORM[\"acciones_grrd\"] as $accion) {\n           $DATA_AUX[$region][$accion][] = $institution;\n         }\n\n       }\n     }\n     foreach ($DATA_AUX as $region => $v1) {\n       $count = 10;\n       foreach ($DATA_AUX[$region] as $accion => $v2) {\n         foreach ($v2 as $institution) {\n           $count++;\n         }\n       }\n       $j = 0;\n       foreach ($DATA_AUX[$region] as $accion => $v2) {\n         $DATA[\"children\"][1][\"children\"][] = array(\"name\"=>linebreak($accion),\"tipo\"=>\"Acción: \",\"symbolSize\"=>20+count($v2),\"label\"=>array(\"color\"=>\"#000\",\"backgroundColor\"=>\"#fff\",\"fontWeight\"=>\"bold\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity\"=>0.5,\"color\"=>\"#555\",\"borderColor\"=>\"#555\"),\"children\"=>array());\n         foreach ($v2 as $institution) {\n           $DATA[\"children\"][1][\"children\"][$j][\"children\"][] = array(\"name\"=>$META[\"node_data\"][$institution][\"_itrend_codigo\"],\"name2\"=>linebreak($institution),\"label\"=>array(\"color\"=>\"#666666\"),\"node_data\"=>$META[\"node_data\"][$institution],\"symbolSize\"=>20,\"itemStyle\"=>array(\"color\"=>$META[\"color2\"][$institution],\"borderColor\"=>$META[\"color2\"][$institution]));\n         }\n         $j++;\n       }\n     }\n     set_transient('redes_territorial',$DATA,DAY_IN_SECONDS);\n   }\n   return $DATA;\n }\n\n function sectores($META){\n   global $wpdb;\n   // delete_transient('redes_sectores');\n   $DATA = get_transient(\"redes_sectores\");\n   if (false === $DATA){\n     $prefix = $wpdb->prefix;\n     $COUNT = array(0=>1,1=>1,2=>1,3=>1);\n     $TAXONOMY = array(\"acciones_grrd\"=>1,\"sector\"=>2,\"Sectores\"=>3);\n     $DATA = array(\"name\"=>\"Sector\",\"symbolSize\"=>0,\"label\"=>array(\"color\"=>\"none\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"color\"=>\"none\",\"borderColor\"=>\"none\"),\"children\"=>array());\n     $DATA_AUX = array();\n     $query = 'SELECT wpp.post_title, GROUP_CONCAT(wpt.name) name, GROUP_CONCAT(wptt.taxonomy) taxonomy, GROUP_CONCAT(wptt.parent) parent FROM '.$prefix.'term_taxonomy wptt, '.$prefix.'term_relationships wptr, '.$prefix.'posts wpp, '.$prefix.'terms wpt WHERE wptt.term_taxonomy_id = wptr.term_taxonomy_id AND wptt.taxonomy IN (\"tareas\" , \"sector\") AND wptr.object_id = wpp.ID AND wpt.term_id = wptt.term_id AND wpp.post_status = \"publish\" AND wpp.post_type = \"actor\" GROUP BY wpp.ID';\n     if ($result = $wpdb->get_results($query)){\n      $result = json_decode(json_encode($result), True);\n     \tforeach($result as $row){\n         $institution = $row[\"post_title\"];\n         $name = str_replace(\"Organizaciones sin fines de lucro\",\"ORG\",explode(\",\",$row[\"name\"]));\n         // $name = str_replace(\"Otro sector\",\"OTRO\",explode(\",\",$row[\"name\"]));\n         $taxonomy = explode(\",\",$row[\"taxonomy\"]);\n         $parent = explode(\",\",$row[\"parent\"]);\n         $TRANSFORM = array();\n         for($i=0;$i<count($name);$i++){\n           if($taxonomy[$i] == \"tareas\" || ($parent[$i]==0 && $taxonomy[$i] == \"sector\" ) ){\n             $TRANSFORM[$taxonomy[$i]][] = $name[$i];\n           }\n         }\n         foreach($TRANSFORM[\"sector\"] as $sector){\n           foreach ($TRANSFORM[\"tareas\"] as $accion) {\n             $DATA_AUX[$sector][$accion][] = $institution;\n           }\n         }\n       }\n     }\n     $i = 0;\n     foreach ($DATA_AUX as $sector => $v1) {\n       $count = 40;\n       foreach ($DATA_AUX[$sector] as $accion => $v2) {\n         foreach ($v2 as $institution) {\n           $count++;\n         }\n       }\n       $DATA[\"children\"][] = array(\"name\"=>strtoupper(str_replace(\"Otro sector\",\"OTRO\",$sector)),\"lineStyle\"=>array(\"color\"=>\"none\",\"width\"=>0),\"symbolSize\"=>20+$count,\"label\"=>array(\"color\"=>\"#000\",\"backgroundColor\"=>\"#fff\",\"fontWeight\"=>\"bold\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity_min\"=>0.2,\"opacity\"=>0.2,\"color\"=>$META[\"color\"][$sector],\"borderColor\"=>$META[\"color\"][$sector]),\"children\"=>array());\n       $j = 0;\n       foreach ($DATA_AUX[$sector] as $accion => $v2) {\n         $DATA[\"children\"][$i][\"children\"][] = array(\"name\"=>linebreak($accion),\"tipo\"=>\"Tarea: \",\"symbol\"=>$META[\"symbol2\"][$accion],\"symbolSize\"=>20+count($v2),\"label\"=>array(\"show\"=>false,\"color\"=>\"#444\",\"position\"=>\"inside\",\"verticalAlign\"=>\"middle\",\"align\"=>\"center\"),\"itemStyle\"=>array(\"opacity_min\"=>0.2,\"opacity\"=>0.2,\"color\"=>$META[\"color\"][$sector],\"borderColor\"=>$META[\"color\"][$sector]),\"children\"=>array());\n         foreach ($v2 as $institution) {\n           $DATA[\"children\"][$i][\"children\"][$j][\"children\"][] = array(\"name\"=>$META[\"node_data\"][$institution][\"_itrend_codigo\"],\"name2\"=>linebreak($institution),\"label\"=>array(\"color\"=>\"#666666\"),\"node_data\"=>$META[\"node_data\"][$institution],\"symbolSize\"=>20,\"itemStyle\"=>array(\"color\"=>$META[\"color2\"][$institution],\"borderColor\"=>$META[\"color2\"][$institution]),\"value\"=>100);\n         }\n         $j++;\n       }\n       $i++;\n     }\n     set_transient('redes_sectores',$DATA,DAY_IN_SECONDS);\n   }\n   return $DATA;\n }\n\n function get_meta(){\n   global $wpdb;\n   // delete_transient(\"redes_meta\");\n   $META = get_transient(\"redes_meta\");\n   if (false === $META){\n     $prefix = $wpdb->prefix;\n     $META = array('termmeta'=>array(),'node_data'=>array(),\"tipo\"=>array(),\"color2\"=>array(),\"category\"=>array(\"Estado\"=>1,\"Privados\"=>2,\"Academia\"=>3,\"Organizaciones sin fines de lucro\"=>4,\"Otro sector\"=>5),\"color\"=>array(\"ESTADO\"=>\"#00bbee\",\"Estado\"=>\"#00bbee\",\"PRIVADOS\"=>\"#fec035\",\"Privados\"=>\"#fec035\",\"ACADEMIA\"=>\"#ef4853\",\"Academia\"=>\"#ef4853\",\"Organizaciones sin fines de lucro\"=>\"#732ad1\",\"Org. sin fines de lucro\"=>\"#732ad1\",\"ORG\"=>\"#732ad1\",\"Otro sector\"=>\"#00aea5\",\"OTRO\"=>\"#00aea5\"),'symbol2'=>array(),'symbol'=>array(13=>\"path://M0 78029L45050 0L135150 0L180200 78029L135150 156058L45050 156058Z\",14=>\"triangle\",15=>\"rect\",16=>\"diamond\"));\n     $query = 'SELECT term_id,meta_value FROM '.$prefix.'termmeta where meta_key = \"_itrend_nombre_oficial\"';\n     if ($result = $wpdb->get_results($query)){\n      $result = json_decode(json_encode($result), True);\n     \tforeach($result as $row){\n     \t\t$META[\"termmeta\"][$row[\"term_id\"]] = $row[\"meta_value\"];\n     \t}\n     }\n\n     $TERM_NAME = array();\n     $query = 'SELECT wpt.term_id,wpt.name, wptt.parent FROM '.$prefix.'term_taxonomy wptt, '.$prefix.'terms wpt WHERE wpt.term_id = wptt.term_id';\n     if ($result = $wpdb->get_results($query)){\n      $result = json_decode(json_encode($result), True);\n     \tforeach($result as $row){\n     \t\t$TERM_NAME[$row[\"term_id\"]] = array(\"name\"=>$row[\"name\"],\"parent\"=>$row[\"parent\"]);\n     \t}\n     }\n     foreach($TERM_NAME as $term => $name){\n       if ($term != 0){\n         $META[\"symbol2\"][$TERM_NAME[$term][\"name\"]] = $META[\"symbol\"][$TERM_NAME[$term][\"parent\"]];\n       }\n     }\n\n     $query = 'SELECT wpp.post_title, wpt.name FROM '.$prefix.'term_relationships wpr, '.$prefix.'posts wpp, '.$prefix.'term_taxonomy wptt, '.$prefix.'terms wpt WHERE wptt.term_id = wpt.term_id AND wpp.ID = wpr.object_id and wptt.term_taxonomy_id = wpr.term_taxonomy_id AND wpp.post_status = \"publish\" and wptt.taxonomy = \"sector\" and wptt.parent != 0';\n     if ($result = $wpdb->get_results($query)){\n      $result = json_decode(json_encode($result), True);\n     \tforeach($result as $row){\n         if(!array_search($row[\"post_title\"],$META[\"color2\"])){\n     \t\t    $META[\"color2\"][$row[\"post_title\"]] = \"#00aea5\";\n         }\n     \t}\n     }\n\n     $query = 'SELECT wpp.post_title, wpt.name FROM '.$prefix.'term_relationships wpr, '.$prefix.'posts wpp, '.$prefix.'term_taxonomy wptt, '.$prefix.'terms wpt WHERE wptt.term_id = wpt.term_id AND wpp.ID = wpr.object_id and wptt.term_taxonomy_id = wpr.term_taxonomy_id AND wpp.post_status = \"publish\" and wptt.taxonomy = \"sector\" and wptt.parent = 0';\n     if ($result = $wpdb->get_results($query)){\n      $result = json_decode(json_encode($result), True);\n     \tforeach($result as $row){\n        $META[\"tipo\"][$row[\"post_title\"]] = $row[\"name\"];\n     \t\t$META[\"color2\"][$row[\"post_title\"]] = $META[\"color\"][$row[\"name\"]];\n     \t}\n     }\n\n     $SLUG = array();\n     $query = 'SELECT name, slug FROM '.$prefix.'terms';\n     if ($result = $wpdb->get_results($query)){\n      $result = json_decode(json_encode($result), True);\n     \tforeach($result as $row){\n        $SLUG[$row[\"slug\"]] = $row[\"name\"];\n     \t}\n     }\n\n     $query = 'SELECT wpp.ID, wpp.post_title, wppm.meta_key, wppm.meta_value FROM '.$prefix.'posts wpp, '.$prefix.'postmeta wppm WHERE wppm.post_id = wpp.ID AND wpp.post_status = \"publish\" AND wpp.post_type = \"actor\" AND wppm.meta_key like \"_itrend%\"';\n     if ($result = $wpdb->get_results($query)){\n      $result = json_decode(json_encode($result), True);\n     \tforeach($result as $row){\n        $META[\"node_data\"][$row[\"post_title\"]][\"color\"] = $META[\"color2\"][$row[\"post_title\"]];\n        $META[\"node_data\"][$row[\"post_title\"]][\"tipo\"] = $META[\"tipo\"][$row[\"post_title\"]];\n        $META[\"node_data\"][$row[\"post_title\"]][\"id\"] = $row[\"ID\"];\n        $META[\"node_data\"][$row[\"post_title\"]][\"link\"] = get_permalink($row[\"ID\"]);\n         if ($row[\"meta_key\"] != \"_itrend_contacto_correo\" && $row[\"meta_key\"] != \"_itrend_contacto_telefono\"){\n     \t\t    $META[\"node_data\"][$row[\"post_title\"]][$row[\"meta_key\"]] = $row[\"meta_value\"];\n         }else{\n             $META[\"node_data\"][$row[\"post_title\"]][$row[\"meta_key\"]] = explode('\"',explode(':\"',$row[\"meta_value\"])[1])[0];\n         }\n         $tarea = explode(\"_itrend_descripcion_relacion_tarea_\",$row[\"meta_key\"]);\n         if (count($tarea) == 2){\n           $META[\"node_data\"][$row[\"post_title\"]][\"tareas\"][] = $SLUG[$tarea[1]];\n         }\n         $accion = explode(\"_itrend_descripcion_relacion_accion_\",$row[\"meta_key\"]);\n         if (count($accion) == 2){\n           $META[\"node_data\"][$row[\"post_title\"]][\"acciones\"][] = $SLUG[$accion[1]];\n         }\n     \t}\n     }\n     set_transient('redes_meta',$META,DAY_IN_SECONDS);\n   }\n   return $META;\n }\n\n\n\n function network_visualizer(){\n\n   // CONSTANTES DE TEXTOS TOOLTIP\n   $CONSTANTES = array(\"dimensiones\"=>\"dim\",\"tareas\"=>\"a\",\"grrd\"=>\"b\",\"sectores\"=>\"c\",\"tamano\"=>\"d\");\n\n   $META = get_meta();\n\n\n\n   //~ get relations\n   $TAREAS = tareas($META);\n   $TERRITORIAL = territorial($META);\n   $SECTORES = sectores($META);\n   $opensans = \"'Open Sans', sans-serif\";\n   echo '<style>\n   div.tooltip:parent{\n     border-style:none !important;\n   }\n   div.tooltip{\n     width:250px;\n     white-space: pre-line;\n     color: #333;\n     font-size:12px;\n     padding: 6px;\n     background-color:#fff;\n\n   }\n   .visualizer{\n     height:800px;\n   }\n   div#data{\n     background-color: #f1f1f1;\n   }\n   .grey-itrend{\n     background-color:#f1f1f1 !important;\n   }\n   .blue-itrend-text{\n     color:#1a2c59 !important;\n     text-transform: capitalize !important;\n   }\n   .tabs{\n     text-align: center;\n     height:30px !important;\n   }\n   #collapsible{\n     position:absolute;\n     right:10px;\n     width:290px;\n     text-align: right;\n     z-index:9;\n     border-radius:25px;\n     box-shadow: none !important;\n     border: 1px;\n     border-color:#000;\n   }\n\n   #help{\n     font-size:14px;\n     background-color:#CCC !important;\n     border-top-left-radius:10px;\n     border-top-right-radius:10px;\n     height:40px;\n   }\n\n   #help-body{\n     background-color:#fff !important;\n     padding-bottom: 15px !important;\n     border-bottom-left-radius: 15px;\n     border-bottom-right-radius: 15px;\n   }\n\n   #arrow{\n     margin-top:-4px\n   }\n\n   .collapsible{\n     margin-top:0px !important;\n   }\n   .collapsible-header{\n     padding: 0.6rem !important;\n     padding-left: 10px !important;\n\n   }\n\n   .text-grey-itrend{\n     color:#999;\n   }\n\n   #collapsible li{\n       list-style-type: none;\n       border-radius:25px;\n   }\n   .collapsible-body{\n     text-align: left;\n     padding-top:5px !important;\n     padding-left:10px !important;\n     padding-right:10px !important;\n     padding-bottom:5px !important;\n   }\n\n   .collapsible-body span img{\n     width: 14px;\n     height: 14px;\n   }\n\n   .tabs .tab{\n     line-height:38px !important;\n   }\n   #container{\n     margin-top:15px;\n   }\n\n   #border-top{\n     height:1px;\n     width: 200px;\n     border-top: 1px #BBB solid;\n     position: absolute;\n     left: 15px;\n     margin-top: 240px;\n     z-index: 5;\n     display: none;\n   }\n   #border-bottom{\n     height:1px;\n     width: 200px;\n     border-bottom: 1px #BBB solid;\n     position: absolute;\n     left: 15px;\n     margin-top: 275px;\n     z-index: 5;\n     display: none;\n   }\n\n   #background-spinner{\n     position:fixed;\n     z-index:10300;\n     width:100%;\n     height:100%;\n     background-color:#DDD;\n     opacity:0.9;\n     top:0;\n   }\n   #spinner{\n     position:fixed !important;\n     z-index:10310;\n     top: 50%;\n     right:50%;\n   }\n   .left-row{\n     width:30px;\n   }\n   .left-row2{\n     width:26px;\n     height:26px;\n   }\n\n   .right-row3{\n     font-weight:bold;\n   }\n\n   .help-table td{\n     padding:5px !important;\n     color:#666;\n     font-size:12px;\n   }\n\n\n\n</style>\n\n<div id=\"data\" style=\"font-family: ' . $opensans . '\">\n\n  ' . itrend_get_logointro() . '\n\n\n <div class=\"blue-itrend-text\" style=\"text-align:center;font-size:16px;font-weight:bold;height:40px;padding-top:10px;\">Explorar por</div>\n<ul class=\"tabs grey-itrend\">\n  <li id=\"tarea\" class=\"tab col s3\"><a class=\"active blue-itrend-text\" href=\"#container\">Tarea</a></li>\n  <li id=\"alcance_territorial\" class=\"tab col s3\"><a class=\"blue-itrend-text\" href=\"#container2\">Alcance Territorial</a></li>\n  <li id=\"sectorial\" class=\"tab col s3\"><a class=\"blue-itrend-text\" href=\"#container3\">Sectorial</a></li>\n</ul>\n<div class=\"collapsible\" id=\"collapsible\">\n  <li class=\"active\">\n    <div class=\"collapsible-header grey-itrend-text grey-itrend\" id=\"help\"  style=\"font-weight:bold;text-align:center;\">CÓMO LEER LA VISUALIZACIÓN&nbsp; <i id=\"arrow\" class=\"fas fa-chevron-up\" style=\"font-size:20px;\"></i></div>\n    <div class=\"collapsible-body\" id=\"help-body\">\n      <div class=\"grey-itrend-text tarea\" style=\"font-weight:bold;border-bottom:solid 1px;border-color:1a2c59;font-size:12px;\">DIMENSIONES <i class=\"tooltipped fas fa-info-circle\" data-position=\"top\" data-tooltip=\"'.$CONSTANTES[\"dimensiones\"].'\"> </i> &nbsp;DE TAREAS  <i class=\"tooltipped fas fa-info-circle\" data-position=\"top\" data-tooltip=\"'.$CONSTANTES[\"tareas\"].'\"></i></div>\n      <div class=\"text-grey-itrend tarea\" style=\"vertical-align:middle;margin-top:2px;font-size:12px;\">\n        <table>\n          <tbody>\n            <tr class=\"help-table\">\n              <td class=\"left-row\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/p1.png\"/></td>\n              <td class=\"right-row\">Dimensión social de la resiliencia<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"left-row\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/p2.png\"/></td>\n              <td class=\"right-row\">Dimensión de la proyección para el desarrollo<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"left-row\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/p3.png\"/></td>\n              <td class=\"right-row\">Dimensión de simulación y gestión de riesgo<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"left-row\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/p4.png\"/></td>\n              <td class=\"right-row\">Dimensión física de las amenazas naturales y exposición<td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n\n      <div class=\"text-grey-itrend col s5 sectorial\" style=\"padding:0!important;\">\n        <div style=\"color:#404040;font-weight:bold;border-bottom:solid 1px;border-color:1a2c59;font-size:12px;\">SECTORES  <i class=\"tooltipped fas fa-info-circle\" data-position=\"top\" data-tooltip=\"'.$CONSTANTES[\"sectores\"].'\"></i></div>\n        <table>\n        <tbody>\n          <tr class=\"help-table\">\n            <td class=\"left-row2\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s1.png\"/></td>\n            <td class=\"right-row\">Estado<td>\n          </tr>\n          <tr class=\"help-table\">\n            <td class=\"left-row2\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s2.png\"/></td>\n            <td class=\"right-row\">Privado<td>\n          </tr>\n          <tr class=\"help-table\">\n            <td class=\"left-row2\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s3.png\"/></td>\n            <td class=\"right-row\">Academia<td>\n          </tr>\n          <tr class=\"help-table\">\n            <td class=\"left-row2\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s4.png\"/></td>\n            <td class=\"right-row\">Org. sin fines de lucro<td>\n          </tr>\n          <tr class=\"help-table\">\n            <td class=\"left-row2\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s5.png\"/></td>\n            <td class=\"right-row\">Otro<td>\n          </tr>\n        </tbody>\n        </table>\n      </div>\n      <div class=\"text-grey-itrend col s5 territorial\" style=\"padding:0!important;\">\n        <div style=\"color:#404040;font-weight:bold;border-bottom:solid 1px;border-color:1a2c59;font-size:12px;\">SECTORES  <i class=\"tooltipped fas fa-info-circle\" data-position=\"top\" data-tooltip=\"'.$CONSTANTES[\"sectores\"].'\"></i></div>\n        <table>\n          <tbody>\n            <tr class=\"help-table\">\n              <td class=\"left-row2\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s1.png\"/></td>\n              <td class=\"right-row\">Estado<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"left-row2\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s2.png\"/></td>\n              <td class=\"right-row\">Privado<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"left-row2\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s3.png\"/></td>\n              <td class=\"right-row\">Academia<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"left-row2\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s4.png\"/></td>\n              <td class=\"right-row\">Org. sin fines de lucro<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"left-row2\"><img style=\"vertical-align:middle;\" src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/s5.png\"/></td>\n              <td class=\"right-row\">Otro<td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div class=\"text-grey-itrend col s7 territorial\" style=\"padding:0!important;\">\n      <div style=\"color:#404040;font-weight:bold;border-bottom:solid 1px;border-color:1a2c59;font-size:12px;\">ACCIONES DE GRRD  <i class=\"tooltipped fas fa-info-circle\" data-position=\"top\" data-tooltip=\"'.$CONSTANTES[\"grrd\"].'\"></i></div>\n        <table>\n          <tbody>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Prevención<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Respuesta<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Recuperación<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Anticipación<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Mitigación<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Preparación<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Alerta<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Alarma<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Operaciones de emergencia<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Rehabilitación<td>\n            </tr>\n            <tr class=\"help-table\">\n              <td class=\"right-row2\">Reconstrucción<td>\n            </tr>\n\n          </tbody>\n        </table>\n      </div>\n      <div style=\"color:#404040;font-weight:bold;border-bottom:solid 1px;border-color:1a2c59;font-size:12px;\"><center><img src=\"'.plugin_dir_url( __FILE__ ) .'/include/img/t.png\"/></center></div>\n      <div style=\"height:40px;\">\n        <table>\n          <tbody>\n            <tr class=\"help-table\">\n              <td class=\"left-row\"><i style=\"font-size:20px;\" class=\"fas fa-hand-pointer\"></td>\n              <td class=\"right-row3\">CLICK PARA MÁS DETALLES<td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n      <div style=\"height:40px;\">\n        <table>\n          <tbody>\n            <tr class=\"help-table\">\n              <td class=\"left-row\"><i style=\"font-size:20px;\" class=\"fas fa-arrows-alt\"></i></td>\n              <td class=\"right-row3\">CLICK PARA ZOOM<td>\n            </tr>\n          </tbody>\n        </table>\n      </div>\n    </div>\n  </li>\n</div>\n<div id=\"border-top\" ></div><div id=\"border-bottom\" ></div>\n <div id=\"container\" class=\"col s12 visualizer\"></div>\n <div id=\"container2\" class=\"col s12 visualizer\"></div>\n <div id=\"container3\" class=\"col s12 visualizer\"></div>\n <div id=\"background-spinner\">\n   <div id=\"spinner\" class=\"preloader-wrapper big active\">\n      <div class=\"spinner-layer spinner-blue-only\">\n        <div class=\"circle-clipper left\">\n          <div class=\"circle\"></div>\n        </div><div class=\"gap-patch\">\n          <div class=\"circle\"></div>\n        </div><div class=\"circle-clipper right\">\n          <div class=\"circle\"></div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <script\n   src=\"https://code.jquery.com/jquery-3.4.1.min.js\"\n   integrity=\"sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=\"\n   crossorigin=\"anonymous\"></script>\n  <script type=\"text/javascript\" src=\"'.plugin_dir_url( __FILE__ ) .'/public/js/echarts.js\"></script>\n  <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js\"></script>\n  <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js\"></script>\n  <script type=\"text/javascript\" src=\"https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js\"></script>\n  <script src=\"https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js\"></script>\n  <script type=\"text/javascript\">\n     var previousNode = null\n     var opensans = \"Open Sans\";\n     function network(data){\n       var dom = document.getElementById(\"container\");\n       var myChart = echarts.init(dom);\n       var app = {};\n       option = null;\n       myChart.showLoading();\n           myChart.hideLoading();\n\n           option = {\n             title:{\n               text:\"Filtrar por:\",\n               textStyle:{\n                 fontSize:14,\n                 fontFamily: \"Open Sans\",\n                 color: \"#1a2c59\",\n               },\n               left: \"10px\",\n               top:\"220px\",\n             },\n             toolbox: {\n                   left: \"10px\",\n                   top: \"243px\",\n                   showTitle: true,\n                   feature: {\n                       restore: {\n                           show: true,\n                           iconStyle:{\n                             textPosition: \"right\",\n                             borderColor:\"#555\"\n                           },\n                           textStyle:{\n                             fontSize: \"16px\",\n                             fontFamily: \"Open Sans\"\n                           },\n                           title: \"Restaurar\",\n                           emphasis: {\n                             iconStyle:{\n                               textPosition: \"right\",\n                               borderColor:\"#d17c2a\"\n                             }\n                           },\n\n                       }\n                   }\n               },\n               backgroundColor: \"#f1f1f1\",\n               textStyle: {\n                 color:\"#d17c2a\",\n               },\n               label:{\n                 rotate:0,\n               },\n               legend: {\n                   orient: \"vertical\",\n                   left: \"10px\",\n                   top: \"280px\",\n                   icon: \"circle\",\n                   data: [\"Estado\",\"Privado\",\"Academia\",\"Org. sin fines de lucro\",\"Otro sector\"]\n               },\n               tooltip: {\n                 backgroundColor: \"none\",\n                 position: function (pos, params, dom, rect, size) {\n                   if(params.data.tareas){\n                     return \"left\"\n                   }\n                   if (pos[1] > size.viewSize[1]*0.7){\n                     return \"top\";\n                   }else{\n                      if (pos[0] < size.viewSize[0] / 2){\n                        return \"right\";\n                      }else{\n                        return \"left\";\n                      }\n                    }\n\n                },\n                 borderColor: \"none\",\n                 textStyle: {\n                   color:\"#333333\",\n                   width:\"400px\"\n                 },\n                 formatter: function (params, ticket, callback) {\n                     if (params.data.tareas){\n                       return \\'<div style=\"background-color:#fff;padding:5px;\">\\'+params.data.name2+\\'</div>\\'\n                     }else{\n                       if (params.data.node_data){\n                         div = \\'<div class=\"tooltip\" style=\"font-family:\\' + opensans + \\', sans-serif;\">\\'\n                         if (params.data.node_data._itrend_codigo){\n                           div += \\'<div><span style=\"color:\\'+params.color+\\';font-size:14px;font-family:\\' + opensans + \\', sans-serif;\">\\'+params.data.node_data._itrend_codigo+\\'</span></div>\\'\n                         }\n                         div += \\'<div><span style=\"color:\\'+params.color+\\';font-size:16px;font-weight:bold;text-decoration:underline;font-family:\\' + opensans + \\', sans-serif;\">\\'+params.data.name2+\\'</span></div>\\'\n\n                         div += \\'<div style=\"color:#000;font-weight:bold;\">TAREAS</div>\\'\n                         div += \\'<ul>\\'\n                         for(i=0;i<params.data.node_data.tareas.length;i++){\n                           div += \\'<li style=\"list-style-type: circle !important; font-family:\\' + opensans + \\', sans-serif;color:#000;font-weight:bold;\">\\'+params.data.node_data.tareas[i]+\\'</li>\\'\n                         }\n                         div += \\'</ul>\\'\n\n                         div += \\'<div style=\"color:#000;font-weight:bold;\">ACCIONES GRRD</div>\\'\n                         div += \\'<ul>\\'\n                         for(i=0;i<params.data.node_data.acciones.length;i++){\n                           div += \\'<li style=\"list-style-type: circle !important; font-family:\\' + opensans + \\', sans-serif;color:#000;font-weight:bold;\">\\'+params.data.node_data.acciones[i]+\\'</li>\\'\n                         }\n                         div += \\'</ul>\\'\n\n                         div += \\'<div style=\"font-size:12px;color:#000;\"><center>Click en el círculo para ir a ficha completa</center></div>\\'\n                         return div\n                       }else{\n                         return \"<div></div>\"\n                       }\n                     }\n                 }\n               },\n               animationDuration: 1500,\n               animationEasingUpdate: \\'quinticInOut\\',\n               series: [{\n                   type: \\'graph\\',\n                   layout: \\'none\\',\n                   roam:true,\n                   focusNodeAdjacency: false,\n                   label: {\n                       normal: {\n                           position: \\'right\\',\n                           formatter: \\'{b}\\'\n                       }\n                   },\n\n                   draggable: true,\n                   data: data.nodes.map(function (node, idx) {\n                       node.id = idx;\n                       return node;\n                   }),\n                   categories: data.categories,\n                   force: {\n                       // initLayout: \\'circular\\'\n                       // repulsion: 20,\n                       edgeLength: 5,\n                       repulsion: 20,\n                       gravity: 0.2\n                   },\n                   edges: data.links,\n                   lineStyle: {\n                           color: \\'source\\',\n                           curveness: 0.3\n                       },\n                   emphasis: {\n                       lineStyle: {\n                           width: 3\n                       }\n                   }\n               }]\n           };\n\n           myChart.setOption(option);\n\n       if (option && typeof option === \"object\") {\n           myChart.setOption(option, true);\n       }\n\n       myChart.on(\\'click\\',function(params){\n         if(params.data.node_data){\n          window.open(params.data.node_data.link)\n        }else{\n          if (params.dataType == \"node\"){\n            if(previousNode == params.name){\n              this.dispatchAction({\n                type:\"unfocusNodeAdjacency\",\n                seriesIndex:0,\n                dataIndex: params.dataIndex,\n              })\n              previousNode = null\n            }else{\n              this.dispatchAction({\n                type:\"focusNodeAdjacency\",\n                seriesIndex:0,\n                dataIndex: params.dataIndex,\n              })\n              previousNode = params.name\n            }\n          }\n        }\n       })\n     }\n\n     function tree(data,container){\n       var dom = document.getElementById(container);\n       var myChart = echarts.init(dom);\n       var app = {};\n       option = null;\n       myChart.showLoading();\n\n           myChart.hideLoading();\n\n           myChart.setOption(option = {\n             title:{\n               text:\"Visualización:\",\n               textStyle:{\n                 fontSize:14,\n                 fontFamily: \"Open Sans\",\n                 color: \"#1a2c59\",\n               },\n               left: \"10px\",\n               top:\"220px\",\n             },\n             toolbox: {\n                   left: \"10px\",\n                   top: \"243px\",\n                   showTitle: true,\n                   feature: {\n                       restore: {\n                           show: true,\n                           iconStyle:{\n                             textPosition: \"right\",\n                             borderColor:\"#555\"\n                           },\n                           title: \"Restaurar\",\n                           emphasis: {\n                             iconStyle:{\n                               textPosition: \"right\",\n                               borderColor:\"#d17c2a\"\n                             }\n                           },\n\n                        }\n                   }\n               },\n                 backgroundColor: \"#f1f1f1\",\n                 circular:{\n                   rotateLabel:true,\n                 },\n                 label:{\n                   rotate:0,\n                 },\n                 tooltip: {\n\n                     trigger: \"item\",\n                     triggerOn: \"mousemove\",\n                     backgroundColor: \"none\",\n                     position: function (pos, params, dom, rect, size) {\n                       if (pos[1] > size.viewSize[0] / 2){\n                         return \"top\";\n                       }\n                        if (pos[0] < size.viewSize[0] / 2){\n                          return \"right\";\n                        }else{\n                          return \"left\";\n                        }\n                     },\n                     borderColor: \"none\",\n                     textStyle: {\n                       color:\"#333333\",\n                       width:\"400px\",\n                     },\n                     formatter: function (params, ticket, callback) {\n                         if (params.data.tareas){\n                           return params.data.name+\"<br>\"+params.data.tareas\n                         }else{\n                           if (params.data.node_data){\n                             div = \\'<div class=\"tooltip\" style=\"font-family:\\' + opensans + \\', sans-serif;\">\\'\n                             if (params.data.node_data._itrend_codigo){\n                               div += \\'<div><span style=\"color:\\'+params.color+\\';font-size:14px;font-family:\\' + opensans + \\', sans-serif;\">\\'+params.data.node_data._itrend_codigo+\\'</span></div>\\'\n                             }\n                             div += \\'<div><span style=\"color:\\'+params.color+\\';font-size:16px;font-weight:bold;text-decoration:underline;font-family:\\' + opensans + \\', sans-serif;\">\\'+params.data.name2+\\'</span></div>\\'\n\n                             div += \\'<div style=\"color:#000;font-weight:bold;\">TAREAS</div>\\'\n                             div += \\'<ul>\\'\n                             for(i=0;i<params.data.node_data.tareas.length;i++){\n                               div += \\'<li style=\"list-style-type: circle !important; font-family:\\' + opensans + \\', sans-serif;color:#000;font-weight:bold;\">\\'+params.data.node_data.tareas[i]+\\'</li>\\'\n                             }\n                             div += \\'</ul>\\'\n\n                             div += \\'<div style=\"color:#000;font-weight:bold;\">ACCIONES GRRD</div>\\'\n                             div += \\'<ul>\\'\n                             for(i=0;i<params.data.node_data.acciones.length;i++){\n                               div += \\'<li style=\"list-style-type: circle !important; font-family:\\' + opensans + \\', sans-serif;color:#000;font-weight:bold;\">\\'+params.data.node_data.acciones[i]+\\'</li>\\'\n                             }\n                             div += \\'</ul>\\'\n\n                             div += \\'<div style=\"font-size:12px;color:#000;\"><center>Click en el círculo para ir a ficha completa</center></div>\\'\n                             return div\n                           }else{\n                             return \"<div></div>\"\n                           }\n                         }\n                     }\n                   },\n               series: [\n                   {\n                       type: \\'tree\\',\n\n                       data: [data],\n\n                       top: \\'18%\\',\n                       bottom: \\'14%\\',\n\n                       layout: \\'radial\\',\n\n                       symbol: \\'circle\\',\n                       symbolSize: 20,\n\n                       initialTreeDepth: 1,\n\n                       animationDurationUpdate: 750\n\n                   }\n               ]\n           });\n           myChart.on(\\'click\\',function(params){\n\n            color = params.data.itemStyle.color\n            color2 = color\n\n            opacity = 0.5\n            if (params.data.itemStyle.opacity_min){\n              opacity = 0.2\n            }\n            if (color == \"#1a2c59\" || color == \"#B0C4DE\"){\n              color = \"#1a2c59\"\n              color2 = \"#B0C4DE\"\n              opacity = 0.5\n              if (params.data.itemStyle.opacity_min){\n                opacity = 0.2\n              }\n            }\n\n             if(params.data.node_data){\n                window.open(params.data.node_data.link)\n             }else{\n               if(params.data.itemStyle.opacity == 1){\n\n                 params.data.itemStyle.opacity = opacity\n                 params.data.itemStyle.color = color2\n                 params.data.itemStyle.borderColor = color2\n                 params.event.target.style.opacity = opacity\n                 params.event.target.style.fill = color2\n                 params.event.target.style.stroke = color2\n               }else{\n\n                 params.data.itemStyle.opacity = 1\n                 params.data.itemStyle.color = color\n                 params.data.itemStyle.borderColor = color\n                 params.event.target.style.opacity = 1\n                 params.event.target.style.fill = color\n                 params.event.target.style.stroke = color\n\n               }\n               this.dispatchAction({\n                 type:\"dataZoom\"\n               })\n\n             }\n           })\n           $(\"#background-spinner\").hide();\n     }\n     var data ='.  json_encode($TAREAS) .';\n     network(data)\n\n\n     var data ='.  json_encode($TERRITORIAL) .';\n     tree(data,\"container2\")\n\n     var data ='.  json_encode($SECTORES) .';\n     tree(data,\"container3\")\n     $(document).ready(function(){\n       $(\\'.tabs\\').tabs();\n       $(\\'.modal\\').modal();\n       $(\\'.collapsible\\').collapsible();\n       $(\\'.tooltipped\\').tooltip()\n       $(\".sectorial\").hide()\n       $(\".territorial\").hide()\n       $(\"#alcance_territorial\").click(function(){\n         $(\".tarea\").hide()\n         $(\".sectorial\").hide()\n         $(\".territorial\").show()\n       })\n       $(\"#tarea\").click(function(){\n         $(\".tarea\").show()\n         $(\".sectorial\").hide()\n         $(\".territorial\").hide()\n       })\n       $(\"#sectorial\").click(function(){\n         $(\".tarea\").show()\n         $(\".territorial\").hide()\n         $(\".sectorial\").show()\n       })\n       $(\"#border-top\").show()\n       $(\"#border-bottom\").show()\n       $(\"#help\").click(function(){\n         if($(\"#arrow\")[0].classList[1] == \"fa-chevron-up\"){\n           $(\"#arrow\").removeClass(\"fa-chevron-up\");\n           $(\"#arrow\").addClass(\"fa-chevron-down\");\n         }else{\n           $(\"#arrow\").removeClass(\"fa-chevron-down\");\n           $(\"#arrow\").addClass(\"fa-chevron-up\");\n         }\n\n       })\n\n     });\n  </script>\n      </div>';\n  }\n  add_shortcode(\"netviz\",\"network_visualizer\");\n\n\n?>\n",
 			"file": "/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer/network-visualizer.php",
+			"file_size": 48149,
+			"file_write_time": 132300710862320338,
 			"settings":
 			{
 				"buffer_size": 48122,
-				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -158,7 +164,7 @@
 			"file": "templates/itrend-header.php",
 			"settings":
 			{
-				"buffer_size": 3321,
+				"buffer_size": 2820,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -167,7 +173,52 @@
 			"file": "templates/itrend-home.php",
 			"settings":
 			{
-				"buffer_size": 1146,
+				"buffer_size": 1154,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "dploy.yaml",
+			"settings":
+			{
+				"buffer_size": 467,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Searching 116 files for \"redirect\"\n\n/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-template-functions.php:\n  138  }\n  139  \n  140: function itrend_redirect_actoresurl() {\n  141  \tif(is_home()) {\n  142: \t\twp_redirect( get_post_type_archive_link( 'actor' ));\n  143  \t\tdie;\n  144  \t}\n  145  }\n  146  \n  147: //add_action( 'template_redirect', 'itrend_redirect_actoresurl');\n  148  \n  149  function itrend_get_vislogo() {\n\n/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/rest-api-for-relevanssi/rest-api-for-relevanssi.php:\n  111      public function plugin_install() {\n  112          if ( !is_plugin_active( 'relevanssi/relevanssi.php' ) &&  !is_plugin_active( 'relevanssi-premium/relevanssi.php' ) && current_user_can( 'activate_plugins' ) ) {\n  113: \t\t    // Stop activation redirect and show error\n  114  \t\t    wp_die('Sorry, but this plugin requires the Relevanssi Plugin to be installed and active. <br><a href=\"' . admin_url( 'plugins.php' ) . '\">&laquo; Return to Plugins</a>');\n  115  \t\t}\n\n5 matches across 2 files\n",
+			"settings":
+			{
+				"buffer_size": 1120,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "itrend-template-functions.php",
+			"settings":
+			{
+				"buffer_size": 4663,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/itrend-filters.php",
+			"settings":
+			{
+				"buffer_size": 3143,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "phploy.ini",
+			"settings":
+			{
+				"buffer_size": 794,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -286,13 +337,12 @@
 	"expanded_folders":
 	[
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/js",
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer"
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/js"
 	],
 	"file_history":
 	[
-		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer/network-visualizer.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/themes/itrend_plain/inc/template-functions.php",
+		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/network-visualizer/network-visualizer.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-template-functions.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/templates/itrend-header.php",
 		"/home/pabloselin/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/itrend-public.php",
@@ -363,6 +413,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"redirect",
 			"home",
 			"Dimensiones",
 			"zoom",
@@ -492,7 +543,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 13,
 			"sheets":
 			[
 				{
@@ -501,15 +552,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10738,
+						"buffer_size": 12106,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2152,
-								2152
+								12049,
+								12049
 							]
 						],
 						"settings":
@@ -518,10 +569,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 6977.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -551,7 +602,7 @@
 						"translation.y": 4791.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 20,
 					"type": "text"
 				},
 				{
@@ -580,7 +631,7 @@
 						"translation.y": 9855.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -610,7 +661,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -639,7 +690,7 @@
 						"translation.y": 714.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
@@ -668,7 +719,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
@@ -697,7 +748,7 @@
 						"translation.y": 8905.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
@@ -713,8 +764,8 @@
 						"selection":
 						[
 							[
-								774,
-								774
+								4225,
+								4225
 							]
 						],
 						"settings":
@@ -723,10 +774,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1748.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -755,7 +806,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
@@ -764,15 +815,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3321,
+						"buffer_size": 2820,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1811,
-								1811
+								234,
+								234
 							]
 						],
 						"settings":
@@ -784,7 +835,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
@@ -793,15 +844,281 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1146,
+						"buffer_size": 1154,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								878,
-								878
+								886,
+								886
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "templates/itrend-header.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2820,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								731,
+								731
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "templates/itrend-home.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1154,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1139,
+								1139
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "dploy.yaml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 467,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								467,
+								467
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/YAML/YAML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "templates/itrend-filters-frontend.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2149,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 0,
+					"file": "itrend-public.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12106,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11137,
+								11137
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1304.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1120,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										212,
+										220
+									],
+									[
+										272,
+										280
+									],
+									[
+										394,
+										402
+									],
+									[
+										413,
+										421
+									],
+									[
+										874,
+										882
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "itrend-template-functions.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4663,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3771,
+								3771
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2137.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "templates/itrend-filters.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3143,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								997,
+								997
 							]
 						],
 						"settings":
@@ -814,6 +1131,63 @@
 						"zoom_level": 1.0
 					},
 					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "templates/itrend-proyecto.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 861,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								476,
+								476
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "phploy.ini",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 794,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								763,
+								763
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/INI/INI.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -868,24 +1242,80 @@
 		"selected_items":
 		[
 			[
-				"actore",
-				"itrend_custom_content/css/scss/itrend-actores.scss"
+				"phpl",
+				"itrend_custom_content/phploy.ini"
 			],
 			[
-				"main",
-				"itrend_custom_content/itrend-main.php"
+				"dpl",
+				"itrend_custom_content/dploy.yaml"
+			],
+			[
+				"itrend-ho",
+				"itrend_custom_content/templates/itrend-home.php"
+			],
+			[
+				"publi",
+				"itrend_custom_content/itrend-public.php"
+			],
+			[
+				"itrend-te",
+				"itrend_custom_content/itrend-template-functions.php"
+			],
+			[
+				"templ",
+				"itrend_plain/inc/template-functions.php"
+			],
+			[
+				"tem",
+				"itrend_plain/inc/template-functions.php"
+			],
+			[
+				"proy",
+				"itrend_custom_content/templates/itrend-proyecto.php"
+			],
+			[
+				"itrend-filt",
+				"itrend_custom_content/templates/itrend-filters.php"
+			],
+			[
+				"templa",
+				"itrend_custom_content/itrend-template-functions.php"
+			],
+			[
+				"front",
+				"itrend_custom_content/templates/itrend-filters-frontend.php"
 			],
 			[
 				"hom",
 				"itrend_custom_content/templates/itrend-home.php"
 			],
 			[
-				"act",
-				"itrend_custom_content/css/scss/itrend-actores.scss"
+				"itrendhea",
+				"itrend_custom_content/templates/itrend-header.php"
+			],
+			[
+				"pub",
+				"itrend_custom_content/itrend-public.php"
 			],
 			[
 				"head",
 				"itrend_custom_content/templates/itrend-header.php"
+			],
+			[
+				"main",
+				"itrend_custom_content/itrend-main.php"
+			],
+			[
+				"itrend-he",
+				"itrend_custom_content/templates/itrend-header.php"
+			],
+			[
+				"actore",
+				"itrend_custom_content/css/scss/itrend-actores.scss"
+			],
+			[
+				"act",
+				"itrend_custom_content/css/scss/itrend-actores.scss"
 			],
 			[
 				"fich",
@@ -894,10 +1324,6 @@
 			[
 				"pu",
 				"itrend_custom_content/itrend-public.php"
-			],
-			[
-				"front",
-				"itrend_custom_content/templates/itrend-filters-frontend.php"
 			],
 			[
 				"custom",
@@ -916,10 +1342,6 @@
 				"itrend_custom_content/templates/itrend-filters-frontend.php"
 			],
 			[
-				"publi",
-				"itrend_custom_content/itrend-public.php"
-			],
-			[
 				"ma",
 				"itrend_custom_content/itrend-main.php"
 			],
@@ -936,20 +1358,12 @@
 				"itrend_network_visualizer/network-visualizer.php"
 			],
 			[
-				"itrend-he",
-				"itrend_custom_content/templates/itrend-header.php"
-			],
-			[
 				"filt",
 				"itrend_custom_content/templates/itrend-filters.php"
 			],
 			[
 				"itrend-tem",
 				"itrend_custom_content/itrend-template-functions.php"
-			],
-			[
-				"templ",
-				"itrend_plain/inc/template-functions.php"
 			],
 			[
 				"foot",
@@ -969,10 +1383,6 @@
 			],
 			[
 				"heade",
-				"itrend_custom_content/templates/itrend-header.php"
-			],
-			[
-				"itrendhea",
 				"itrend_custom_content/templates/itrend-header.php"
 			],
 			[
@@ -1016,16 +1426,8 @@
 				"itrend_custom_content/css/scss/itrend-actores.scss"
 			],
 			[
-				"phpl",
-				"itrend_custom_content/phploy.ini"
-			],
-			[
 				"itrendf",
 				"itrend_custom_content/templates/itrend-footer.php"
-			],
-			[
-				"dpl",
-				"itrend_custom_content/dploy.yaml"
 			],
 			[
 				"php",
@@ -1156,10 +1558,6 @@
 				"~/Documents/WebDev/local_sites/itrend/app/public/wp-content/plugins/itrend_custom_content/node_modules/materialize-css/sass/components/_variables.scss"
 			],
 			[
-				"pub",
-				"itrend_custom_content/itrend-public.php"
-			],
-			[
 				"cuso",
 				"itrend_custom_content/itrend-custom-fields.php"
 			],
@@ -1186,10 +1584,6 @@
 			[
 				"itrend-fronte",
 				"itrend_custom_content/templates/itrend-filters-frontend.php"
-			],
-			[
-				"itrend-filt",
-				"itrend_custom_content/js/itrend-filters-scripts.js"
 			],
 			[
 				"wp",
@@ -1228,10 +1622,6 @@
 				"itrend_custom_content/css/itrend-filters-styles.css"
 			],
 			[
-				"templa",
-				"itrend_custom_content/itrend-template-functions.php"
-			],
-			[
 				"custo",
 				"itrend-custom-fields.php"
 			],
@@ -1245,16 +1635,16 @@
 	"select_project":
 	{
 		"height": 500.0,
-		"last_filter": "c80",
+		"last_filter": "bitac",
 		"selected_items":
 		[
 			[
-				"c80",
-				"~/Documents/WebDev/local_sites/c80/app/public/wp-content/themes/c80-template/c80.sublime-project"
-			],
-			[
 				"bitac",
 				"~/Documents/WebDev/local_sites/bitacora/app/public/wp-content/themes/prompt/prompt.sublime-project"
+			],
+			[
+				"c80",
+				"~/Documents/WebDev/local_sites/c80/app/public/wp-content/themes/c80-template/c80.sublime-project"
 			],
 			[
 				"automark",
