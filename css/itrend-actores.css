@@ -5734,8 +5734,11 @@ body#itrend-vis {
   body#itrend-vis.home-mapa {
     background-image: url("../img/bg_mapa_60.jpg");
     background-repeat: no-repeat;
-    background-size: fit;
+    background-size: cover;
     background-position: bottom center; }
+    @media screen and (max-width: 768px) {
+      body#itrend-vis.home-mapa {
+        background-position: 60% 0; } }
   body#itrend-vis .top-menusection {
     position: absolute;
     top: 0;
@@ -6245,3 +6248,9 @@ body#itrend-vis #modal-instrucciones {
           margin-bottom: 6px; }
           body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper div.instruccion img {
             height: 50px; } }
+
+.show-on-small {
+  display: none; }
+  @media screen and (max-width: 768px) {
+    .show-on-small {
+      display: block; } }

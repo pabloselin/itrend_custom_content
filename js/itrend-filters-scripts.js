@@ -30,7 +30,7 @@ jQuery(document).ready(function($) {
 		itrendBuildQuery();
 	});
 
-	$('#itrend-filters form#itrend_search').on('submit', function(event) {
+	$('#itrend-filters form#itrend_search, form#itrend_search_mobile').on('submit', function(event) {
 		event.preventDefault();
 		var searchVal = $('input[data-action="search"]').val();
 		itrendBuildSearch(searchVal);

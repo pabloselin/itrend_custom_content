@@ -33,8 +33,11 @@ body#itrend-vis {
 	&.home-mapa {
 		background-image: url('../img/bg_mapa_60.jpg');
 		background-repeat: no-repeat;
-		background-size: fit;
+		background-size: cover;
 		background-position: bottom center;
+		@media screen and (max-width: 768px) {
+			background-position: 60% 0;
+		}
 	}
 
 	.top-menusection {
@@ -727,5 +730,12 @@ body#itrend-vis #modal-instrucciones {
 			}	
 		}
 
+	}
+}
+
+.show-on-small {
+	display: none;
+	@media screen and (max-width: 768px) {
+		display: block;
 	}
 }

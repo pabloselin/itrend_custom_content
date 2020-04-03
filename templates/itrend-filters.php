@@ -21,10 +21,10 @@
 				<span class="border"></span>
 			</div>
 
-			<form id="itrend_search" class="show-on-medium-and-up">
+			<form id="itrend_search_mobile" class="show-on-small">
 				<div class="input-field">
 					<i class="prefix fas fa-search"></i>
-					<input type="search" id="search-field" name="q" data-action="search" placeholder="Buscar por actor, palabra clave, campo...">
+					<input type="search" id="search-field_mobile" name="q" data-action="search" placeholder="Buscar por actor, palabra clave, campo...">
 				</div>
 			</form>
 
