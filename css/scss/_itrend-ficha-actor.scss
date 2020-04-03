@@ -51,6 +51,10 @@ h2 {
 	padding-top: 48px;
 	padding-bottom: 24px;
 	border-left: 1px solid #333;
+	@media screen and (max-width: 768px) {
+		border-left: 0;
+		border-top: 1px solid #333;
+	}
 }
 
 .info-private {
@@ -95,6 +99,15 @@ h2 {
 		margin: -6px 6px -4px 6px;
 		display: inline-block;
 		height: 26px;
+		@media screen and (max-width: 768px) {
+			display: none;
+		}
+	}
+}
+
+.mainsector {
+	@media screen and (max-width: 768px) {
+		display: block;
 	}
 }
 

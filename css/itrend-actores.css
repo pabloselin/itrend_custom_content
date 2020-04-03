@@ -5647,6 +5647,10 @@ body#itrend-vis {
     padding-top: 48px;
     padding-bottom: 24px;
     border-left: 1px solid #333; }
+    @media screen and (max-width: 768px) {
+      body#itrend-vis .itrend-datos-contacto {
+        border-left: 0;
+        border-top: 1px solid #333; } }
   body#itrend-vis .info-private {
     background-color: #ccc;
     padding: 6px 24px 24px 12px;
@@ -5676,6 +5680,12 @@ body#itrend-vis {
       margin: -6px 6px -4px 6px;
       display: inline-block;
       height: 26px; }
+      @media screen and (max-width: 768px) {
+        body#itrend-vis .info-left .sector .sector-separator {
+          display: none; } }
+  @media screen and (max-width: 768px) {
+    body#itrend-vis .mainsector {
+      display: block; } }
   body#itrend-vis .mision-content {
     color: #333;
     font-style: normal;
@@ -5979,6 +5989,9 @@ body#itrend-vis {
     display: inline-block; }
     body#itrend-vis .itrend-email-fixes a {
       color: #333; }
+    @media screen and (max-width: 768px) {
+      body#itrend-vis .itrend-email-fixes {
+        margin: 0; } }
   body#itrend-vis .btn-arrow {
     cursor: pointer;
     display: inline-block;
