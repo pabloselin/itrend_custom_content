@@ -172,6 +172,7 @@ jQuery(document).ready(function($) {
 		if(json.length > 0) {
 			messages.empty();
 			table.empty();
+			mobileTable.empty();
 			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando ' + json.length + ' actores');
 
 			if(jQuery.browser.mobile === true) {
@@ -193,8 +194,12 @@ jQuery(document).ready(function($) {
 
 			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando 0 actores');
 			
-			table.empty().append('<div class="notfound-actors" role="alert">No se encontraron actores</div>');
-
+			if(jQuery.browser.mobile === true) {
+				mobileTable.empty().append('<div class="notfound-actors" role="alert">No se encontraron actores</div>');
+			} else {
+				table.empty().append('<div class="notfound-actors" role="alert">No se encontraron actores</div>');
+			}
+		
 			//table.empty();
 			
 		}
