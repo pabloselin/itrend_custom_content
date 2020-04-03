@@ -162,6 +162,7 @@ jQuery(document).ready(function($) {
 	function itrendPopulateTable(json) {
 		console.log(json);
 		var table = $('#itrend_table_results > tbody.results');
+		var filterButtons = $('button[data-action="apply_filters"]');
 		var mobileTable = $('#itrend_mobile_results');
 		var resultsCount = $('#itrend_results_count');
 		var messages = $('#itrend_messages');
@@ -187,8 +188,6 @@ jQuery(document).ready(function($) {
 
 			}
 
-			
-
 
 		} else {
 
@@ -199,6 +198,8 @@ jQuery(document).ready(function($) {
 			//table.empty();
 			
 		}
+
+		filterButtons.empty().append('Filtrar');
 	}
 
 	
@@ -287,7 +288,9 @@ jQuery(document).ready(function($) {
 
 	function itrendDisplayLoading() {
 		var table = $('#itrend_table_results > tbody.results');
+		var filterButtons = $('button[data-action="apply_filters"]');
 		table.empty().append('<p class="loadingmsg"><i class="fas fa-spinner fa-spin"></i> Buscando actores...</p>');
+		filterButtons.empty().append('<i class="fas fa-spinner fa-spin"></i> Filtrando')
 	}
 
 	function itrendUglyRenderRow( data ) {

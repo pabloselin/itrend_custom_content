@@ -333,6 +333,9 @@ body#itrend-vis {
 		img {
 			max-width: 300px;
 			height: auto;
+			@media screen and (max-width: 768px) {
+				max-width: 200px;
+			}
 		}
 		span.border {
 			display: block;
@@ -377,6 +380,12 @@ body#itrend-vis {
 		.itrend-section-title {
 			display: inline-block;
 			text-decoration: none;
+
+			@media screen and (max-width: 768px) {
+				img {
+					max-width: 200px;
+				}
+			}
 
 			.mapa {
 				color: #FF0032;

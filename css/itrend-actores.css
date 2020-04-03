@@ -5636,6 +5636,9 @@ body#itrend-vis {
     border-bottom: 1px solid #1E1F5A;
     margin-bottom: 0;
     font-size: 44px; }
+    @media screen and (max-width: 768px) {
+      body#itrend-vis .actor-header h1 {
+        font-size: 28px; } }
   body#itrend-vis h2 {
     font-size: 26px; }
   body#itrend-vis .itrend-datos-contacto {
@@ -5913,6 +5916,9 @@ body#itrend-vis {
   body#itrend-vis .intro-presentation img {
     max-width: 300px;
     height: auto; }
+    @media screen and (max-width: 768px) {
+      body#itrend-vis .intro-presentation img {
+        max-width: 200px; } }
   body#itrend-vis .intro-presentation span.border {
     display: block;
     margin: 0 auto;
@@ -5943,6 +5949,9 @@ body#itrend-vis {
     body#itrend-vis #itrend-home .itrend-section-title {
       display: inline-block;
       text-decoration: none; }
+      @media screen and (max-width: 768px) {
+        body#itrend-vis #itrend-home .itrend-section-title img {
+          max-width: 200px; } }
       body#itrend-vis #itrend-home .itrend-section-title .mapa {
         color: #FF0032;
         font-weight: 700;

@@ -14,18 +14,10 @@
 		<div class="col m9">
 			<article id="el-proyecto" class="ficha-actor">
 					<header class="actor-header">
-						<div class="row info-header">
 							<h1 class="actor-longname">El proyecto</h1>
-							<div class="col m8 info-left">
-
+							
 								
 							<?php echo apply_filters( 'the_content', $proyecto );?>								
-
-
-							</div>
-							
-						</div>
-
 						
 
 					</header>

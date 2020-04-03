@@ -35,6 +35,10 @@
 	border-bottom: 1px solid #1E1F5A;
 	margin-bottom: 0;
 	font-size: 44px;
+
+	@media screen and (max-width: 768px) {
+		font-size: 28px;
+	}
 }
 
 h2 {
