@@ -275,6 +275,9 @@ body#itrend-vis {
   /* Analog Clock Display */
   /* Footer */
   /* Media Queries */ }
+  @media screen and (max-width: 768px) {
+    body#itrend-vis {
+      margin-bottom: 100px; } }
   body#itrend-vis .materialize-red {
     background-color: #e51c23 !important; }
   body#itrend-vis .materialize-red-text {
@@ -5748,6 +5751,9 @@ body#itrend-vis {
     font-size: 12px;
     text-transform: uppercase;
     margin: -12px 0 0 0; }
+  @media screen and (max-width: 768px) {
+    body#itrend-vis .topnav-header {
+      display: none; } }
   body#itrend-vis .row-logo {
     margin-bottom: 0; }
     body#itrend-vis .row-logo img {
@@ -5822,6 +5828,9 @@ body#itrend-vis {
     font-weight: bold; }
   body#itrend-vis .flex-row {
     display: flex; }
+    @media screen and (max-width: 768px) {
+      body#itrend-vis .flex-row {
+        display: block; } }
   body#itrend-vis .buttons-section {
     display: flex;
     justify-content: space-around;
@@ -5898,6 +5907,9 @@ body#itrend-vis {
       padding-right: 24px; }
     body#itrend-vis #itrend-filters #itrend_search .input-field .prefix {
       top: 0; }
+    @media screen and (max-width: 768px) {
+      body#itrend-vis #itrend-filters #itrend_search {
+        margin: 6px 0; } }
   body#itrend-vis .intro-presentation img {
     max-width: 300px;
     height: auto; }
@@ -5906,6 +5918,9 @@ body#itrend-vis {
     margin: 0 auto;
     border-bottom: 1px solid #333;
     width: 90%; }
+    @media screen and (max-width: 768px) {
+      body#itrend-vis .intro-presentation span.border {
+        display: none; } }
   body#itrend-vis .term-checkbox-wrap {
     margin-bottom: 6px; }
     body#itrend-vis .term-checkbox-wrap label {
@@ -6018,6 +6033,9 @@ body#itrend-vis .info-extra-vis {
   body#itrend-vis .info-extra-vis img {
     max-width: 300px;
     height: auto; }
+  @media screen and (max-width: 768px) {
+    body#itrend-vis .info-extra-vis {
+      position: relative; } }
 
 body#itrend-vis .links-stuff a.btn-home,
 body#itrend-vis .links-stuff a.btn-action,
@@ -6048,6 +6066,16 @@ body#itrend-vis .row-links-main a.btn-action {
   body#itrend-vis .row-links-main a.btn-action.btn-action-buscador img {
     max-width: 32px; }
 
+@media screen and (max-width: 768px) {
+  body#itrend-vis .links-stuff,
+  body#itrend-vis .row-links-main {
+    text-align: center; }
+    body#itrend-vis .links-stuff a.btn-home,
+    body#itrend-vis .links-stuff a.btn-action,
+    body#itrend-vis .row-links-main a.btn-home,
+    body#itrend-vis .row-links-main a.btn-action {
+      margin-bottom: 12px; } }
+
 body#itrend-vis .row-links-main a.btn-action {
   margin: -1px -5px;
   box-shadow: none;
@@ -6057,6 +6085,26 @@ body#itrend-vis .row-links-main a.btn-action {
   body#itrend-vis .row-links-main a.btn-action img {
     margin-top: -2px;
     max-width: 28px; }
+
+@media screen and (max-width: 768px) {
+  body#itrend-vis .row-links-main {
+    text-align: left;
+    display: flex;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10; }
+    body#itrend-vis .row-links-main a.btn-action {
+      width: 100%;
+      line-height: 15px;
+      text-align: center;
+      margin: 0;
+      padding: 6px; }
+      body#itrend-vis .row-links-main a.btn-action img {
+        display: block;
+        margin: 2px auto; } }
 
 body#itrend-vis #itrend_visualization_footer {
   margin-top: 24px;
@@ -6074,9 +6122,16 @@ body#itrend-vis #itrend_visualization_footer {
     body#itrend-vis #itrend_visualization_footer .logoconecta img {
       max-width: 300px;
       margin-top: 24px; }
+    @media screen and (max-width: 768px) {
+      body#itrend-vis #itrend_visualization_footer .logoconecta img {
+        max-width: 150px; } }
   body#itrend-vis #itrend_visualization_footer .logos-footer img {
     width: 100%;
     margin-top: 24px; }
+
+@media screen and (max-width: 768px) {
+  body#itrend-vis #itrend_results_count {
+    margin: 24px 0; } }
 
 body#itrend-vis #itrend_table_results td.actor_name {
   min-width: 260px; }
@@ -6087,6 +6142,22 @@ body#itrend-vis #itrend_table_results td.sector {
 
 body#itrend-vis #itrend_table_results td.alcance, body#itrend-vis #itrend_table_results td.tareas, body#itrend-vis #itrend_table_results td.acciones {
   font-size: 14px; }
+
+@media screen and (max-width: 768px) {
+  body#itrend-vis #itrend_table_results {
+    display: none; } }
+
+body#itrend-vis #itrend_mobile_results .actor-mobile {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ccc; }
+  body#itrend-vis #itrend_mobile_results .actor-mobile h2 {
+    font-weight: bold; }
+    body#itrend-vis #itrend_mobile_results .actor-mobile h2 span.codigo {
+      display: block; }
+  body#itrend-vis #itrend_mobile_results .actor-mobile p {
+    margin: 0 0 6px 0;
+    font-size: 14px; }
 
 body#itrend-vis #modal-instrucciones {
   width: 70%;
@@ -6140,3 +6211,15 @@ body#itrend-vis #modal-instrucciones {
     body#itrend-vis #modal-instrucciones .modal-footer .btn, body#itrend-vis #modal-instrucciones .modal-footer .btn-large, body#itrend-vis #modal-instrucciones .modal-footer .btn-small {
       font-weight: bold;
       margin: 24px 0; }
+  @media screen and (max-width: 768px) {
+    body#itrend-vis #modal-instrucciones {
+      width: 94%;
+      top: 5% !important;
+      overflow-y: scroll; }
+      body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper {
+        padding: 12px; }
+        body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper div.instruccion {
+          display: block;
+          margin-bottom: 6px; }
+          body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper div.instruccion img {
+            height: 50px; } }

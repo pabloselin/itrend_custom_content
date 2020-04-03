@@ -26,7 +26,7 @@ switch($filter){
 		<h4>Navegación</h4>
 		<div class="modal-content-wrapper">
 			<div class="row">
-				<div class="col m6">
+				<div class="col m6 s12">
 					<h5>Tareas</h5>
 					
 					<div class="instruccion">
@@ -44,7 +44,7 @@ switch($filter){
 						<p>Haz click en un actor para ver la ficha completa</p>
 					</div>
 				</div>
-				<div class="col m6">
+				<div class="col m6 s12">
 					<h5>Alcance Territorial / Sectorial</h5>
 
 					<div class="instruccion">

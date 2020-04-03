@@ -162,6 +162,7 @@ jQuery(document).ready(function($) {
 	function itrendPopulateTable(json) {
 		console.log(json);
 		var table = $('#itrend_table_results > tbody.results');
+		var mobileTable = $('#itrend_mobile_results');
 		var resultsCount = $('#itrend_results_count');
 		var messages = $('#itrend_messages');
 		
@@ -172,9 +173,23 @@ jQuery(document).ready(function($) {
 			table.empty();
 			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando ' + json.length + ' actores');
 
-			for(var i = 0; i < json.length; i++) {
-				table.append(itrendRenderRow(json[i]));
+			if(jQuery.browser.mobile === true) {
+
+				for(var i = 0; i < json.length; i++) {
+					mobileTable.append(itrendRenderMobileRow(json[i]));
+				}
+
+			} else {
+
+				for(var i = 0; i < json.length; i++) {
+					table.append(itrendRenderRow(json[i]));
+				}
+
 			}
+
+			
+
+
 		} else {
 
 			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando 0 actores');
@@ -211,7 +226,40 @@ jQuery(document).ready(function($) {
 									</td>
 								</tr>`;
 
+		
+
 		var compiledTable = Sqrl.Compile(tableRowTemplate);
+
+		return compiledTable({
+			post_title: data.post_title, 
+			permalink: data.permalink,
+			postmeta: data.postmeta,
+			codigo: data.postmeta.codigo,
+			sector: data.sector,
+			alcance_territorial: data.alcance_territorial,
+			tareas: data.tareas,
+			acciones_grrd: data.acciones_grrd
+		}, Sqrl);
+	}
+
+	function itrendRenderMobileRow(data) {
+		//Mobile version for actor output
+		var mobileRowTemplate = `<div class="actor-mobile">
+									<h2>
+									<a href="{{permalink}}">{{if(options.codigo !== "undefined")}}
+										<span class="codigo">{{codigo}}</span>
+										{{/if}}
+										<span class="title">{{post_title}}</span>
+									</a>
+									</h2>
+									<p class="sector"><strong>Sector: </strong>{{sector}}</p>
+									<p class="alcance"><strong>Alcance Territorial: </strong>{{alcance_territorial}}</p>
+									<p class="tareas"><strong>Tareas: </strong>{{tareas}}</p>
+									<p class="acciones_grrd"><strong>Acciones GRRD: </strong>{{acciones_grrd}}</p>
+								</div>`;
+
+
+		var compiledTable = Sqrl.Compile(mobileRowTemplate);
 
 		return compiledTable({
 			post_title: data.post_title, 

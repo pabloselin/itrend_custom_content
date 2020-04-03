@@ -21,6 +21,13 @@
 				<span class="border"></span>
 			</div>
 
+			<form id="itrend_search" class="show-on-medium-and-up">
+				<div class="input-field">
+					<i class="prefix fas fa-search"></i>
+					<input type="search" id="search-field" name="q" data-action="search" placeholder="Buscar por actor, palabra clave, campo...">
+				</div>
+			</form>
+
 			<div class="filters-info-zone panel">
 				<div class="append-zone-filter">
 					
@@ -70,7 +77,7 @@
 
 		<div class="col m9 orgs-table-list">
 			
-			<form id="itrend_search">
+			<form id="itrend_search" class="hide-on-small-only">
 				<div class="input-field">
 					<i class="prefix fas fa-search"></i>
 					<input type="search" id="search-field" name="q" data-action="search" placeholder="Buscar por actor, palabra clave, campo...">
@@ -109,6 +116,9 @@
 					<!-- Ajax loaded content goes here -->
 				</tbody>
 			</table>
+			<div id="itrend_mobile_results">
+				<!--ajax mobile results-->
+			</div>
 		</div>
 	</div>
 	

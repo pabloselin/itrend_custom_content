@@ -1,16 +1,20 @@
 
 //Colores de sectores
 
-	$estado: #00bbee;
-	$privado: #fec035;
-	$academia: #ef4853;
-	$osfl: #732ad1;
-	$otro: #00aea5;
+$estado: #00bbee;
+$privado: #fec035;
+$academia: #ef4853;
+$osfl: #732ad1;
+$otro: #00aea5;
 
 body#itrend-vis {
 	background-color: #F1F1F1;
 	font-family: 'Open Sans', sans-serif;
 	min-height: 100vh;
+
+	@media screen and (max-width: 768px) {
+		margin-bottom: 100px;
+	}
 	
 	@import 'custom-materialize.scss';
 	@import 'itrend-ficha-actor.scss';
@@ -71,6 +75,10 @@ body#itrend-vis {
 			font-size: 12px;
 			text-transform: uppercase;
 			margin: -12px 0 0 0;
+		}
+
+		@media screen and (max-width: 768px) {
+			display: none;
 		}
 	}
 
@@ -193,6 +201,9 @@ body#itrend-vis {
 
 	.flex-row {
 		display: flex;
+		@media screen and (max-width: 768px) {
+			display: block;
+		}
 	}
 
 	.buttons-section {
@@ -311,6 +322,10 @@ body#itrend-vis {
 			.input-field .prefix  {
 				top: 0;
 			}
+
+			@media screen and (max-width: 768px) {
+				margin: 6px 0;
+			}
 		}
 	}
 
@@ -324,6 +339,10 @@ body#itrend-vis {
 			margin: 0 auto;
 			border-bottom: 1px solid #333;
 			width:90%;
+
+			@media screen and (max-width: 768px) {
+				display: none;
+			}
 		}
 	}
 
@@ -440,6 +459,10 @@ body#itrend-vis {
 			max-width: 300px;
 			height: auto;
 		}
+
+		@media screen and (max-width: 768px) {
+			position: relative;
+		}
 	}
 }
 
@@ -471,7 +494,15 @@ body#itrend-vis {
 				}
 			}
 		}
+
+		@media screen and (max-width: 768px) {
+			text-align: center;
+			a.btn-home, a.btn-action {
+				margin-bottom: 12px;
+			}
+		}
 	}
+
 
 	.row-links-main {
 		a.btn-action {
@@ -483,6 +514,30 @@ body#itrend-vis {
 			img {
 				margin-top: -2px;
 				max-width:28px;
+			}
+		}
+	}
+
+	@media screen and (max-width: 768px) {
+		.row-links-main {
+			text-align: left;
+			display: flex;
+			margin: 0;
+			position:fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			z-index: 10;
+			a.btn-action {
+				width: 100%;
+				line-height: 15px;
+				text-align: center;
+				margin: 0;
+				padding: 6px;
+				img {
+					display: block;
+					margin: 2px auto;
+				}
 			}
 		}
 	}
@@ -508,15 +563,27 @@ body#itrend-vis #itrend_visualization_footer {
 
 	.logoconecta {
 		text-align: left;
+		img {
+			max-width: 300px;
+			margin-top: 24px;
+		}
+
+		@media screen and (max-width: 768px) {
 			img {
-				max-width: 300px;
-				margin-top: 24px;
+				max-width: 150px;
 			}
+		}
 	}
 
 	.logos-footer img {
 		width: 100%;
 		margin-top: 24px;
+	}
+}
+
+body#itrend-vis #itrend_results_count {
+	@media screen and (max-width: 768px) {
+		margin: 24px 0;
 	}
 }
 
@@ -531,6 +598,31 @@ body#itrend-vis #itrend_table_results {
 	td.alcance, td.tareas, td.acciones {
 		font-size: 14px;
 	}
+
+	@media screen and (max-width: 768px) {
+		display: none;
+	}
+}
+
+body#itrend-vis #itrend_mobile_results {
+	.actor-mobile {
+		h2 {
+		font-weight: bold;
+			span.codigo {
+				display: block;
+			}
+		}
+
+		p {
+			margin: 0 0 6px 0;
+			font-size: 14px;
+			}
+
+		margin-bottom: 12px;
+		padding-bottom: 12px;
+		border-bottom: 1px solid #ccc;	
+	}
+	
 }
 
 body#itrend-vis #modal-instrucciones {
@@ -544,12 +636,12 @@ body#itrend-vis #modal-instrucciones {
 	background-color: #A6A4A0;
 
 	h4 {
-    	font-style: normal;
-    	font-weight: bold;
-    	text-transform: uppercase;
-    	font-size: 18px;
-    	padding: 8px;
-    	margin-bottom: 0;
+		font-style: normal;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: 18px;
+		padding: 8px;
+		margin-bottom: 0;
 	}
 
 	.modal-content {
@@ -592,6 +684,7 @@ body#itrend-vis #modal-instrucciones {
 			float: left;
 			margin-right: 12px;
 		}
+
 	}
 
 	.modal-footer {
@@ -601,5 +694,25 @@ body#itrend-vis #modal-instrucciones {
 			font-weight: bold;
 			margin: 24px 0;
 		}
+	}
+
+	@media screen and (max-width: 768px) {
+		width: 94%;
+		top: 5% !important;
+		overflow-y: scroll;
+		.modal-content {
+			div.modal-content-wrapper {
+				padding: 12px;
+
+				div.instruccion {
+					display: block;
+					margin-bottom: 6px;
+					img {
+						height: 50px;
+					}
+				}
+			}	
+		}
+
 	}
 }
