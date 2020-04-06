@@ -29,7 +29,7 @@ switch($filter){
 				<div class="col m6 s12">
 					<h5>Tareas</h5>
 					
-					<div class="instruccion">
+					<div class="instruccion hide-on-small-only">
 						<img src="<?php echo plugin_dir_url( __FILE__ );?>../img/zoom.gif" alt="">
 						<p>Haz scroll para hacer zoom en la red</p>
 					</div>

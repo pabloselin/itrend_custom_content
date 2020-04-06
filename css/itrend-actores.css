@@ -5937,7 +5937,9 @@ body#itrend-vis {
           position: relative;
           top: 0; }
         body#itrend-vis #itrend-filters #itrend_search_mobile .input-field input {
-          margin: 0 10px 0 12px; } }
+          margin: 0 10px 0 12px; }
+          body#itrend-vis #itrend-filters #itrend_search_mobile .input-field input::placeholder {
+            color: #555; } }
     body#itrend-vis #itrend-filters #itrend_search_mobile #itrend_results_count_mobile a.btn, body#itrend-vis #itrend-filters #itrend_search_mobile #itrend_results_count_mobile a.btn-large, body#itrend-vis #itrend-filters #itrend_search_mobile #itrend_results_count_mobile a.btn-small {
       width: 100%;
       vertical-align: middle; }
@@ -6257,12 +6259,20 @@ body#itrend-vis #modal-instrucciones {
       top: 5% !important;
       overflow-y: scroll; }
       body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper {
-        padding: 12px; }
+        padding: 12px;
+        min-height: 260px; }
+        body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper h5 {
+          margin: 12px 0;
+          font-size: 15px; }
         body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper div.instruccion {
-          display: block;
-          margin-bottom: 6px; }
+          display: flex;
+          align-items: center;
+          margin-bottom: 3px;
+          font-size: 13px; }
           body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper div.instruccion img {
-            height: 50px; } }
+            height: 50px; }
+          body#itrend-vis #modal-instrucciones .modal-content div.modal-content-wrapper div.instruccion p {
+            margin: 6px 0; } }
 
 .show-on-small {
   display: none; }

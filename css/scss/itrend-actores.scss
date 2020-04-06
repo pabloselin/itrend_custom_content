@@ -349,6 +349,9 @@ body#itrend-vis {
 
 					input {
 						margin:0 10px 0 12px;
+						&::placeholder {
+							color: #555;
+						}
 					}
 				}
 			}
@@ -749,12 +752,22 @@ body#itrend-vis #modal-instrucciones {
 		.modal-content {
 			div.modal-content-wrapper {
 				padding: 12px;
+				min-height: 260px;
+				h5 {
+					margin:12px 0;
+					font-size: 15px;
+				}
 
 				div.instruccion {
-					display: block;
-					margin-bottom: 6px;
+					display: flex;
+					align-items: center;
+					margin-bottom: 3px;
+					font-size: 13px;
 					img {
 						height: 50px;
+					}
+					p {
+						margin: 6px 0;
 					}
 				}
 			}	
