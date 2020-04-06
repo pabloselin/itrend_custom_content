@@ -27,6 +27,9 @@
 					<input type="search" id="search-field_mobile" name="q" data-action="search" placeholder="Buscar por actor, palabra clave, campo...">
 					<button type="submit" class="btn waves-light">Buscar</button>
 				</div>
+				<div id="itrend_results_count_mobile">
+				<!-- Numero de resultados -->
+				</div>
 			</form>
 
 			<div class="filters-info-zone panel">
@@ -117,7 +120,8 @@
 					<!-- Ajax loaded content goes here -->
 				</tbody>
 			</table>
-			<div id="itrend_mobile_results">
+
+			<div name="itrend_mobile_results" id="itrend_mobile_results">
 				<!--ajax mobile results-->
 			</div>
 		</div>

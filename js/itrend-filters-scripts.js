@@ -171,6 +171,7 @@ jQuery(document).ready(function($) {
 		var filterButtons = $('button[data-action="apply_filters"]');
 		var mobileTable = $('#itrend_mobile_results');
 		var resultsCount = $('#itrend_results_count');
+		var resultsCountMobile = $('#itrend_results_count_mobile');
 		var messages = $('#itrend_messages');
 		
 		console.log(json.length);
@@ -179,7 +180,8 @@ jQuery(document).ready(function($) {
 			messages.empty();
 			table.empty();
 			mobileTable.empty();
-			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando ' + json.length + ' actores');
+			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando ' + json.length + ' actor(es)');
+			resultsCountMobile.empty().append('<a class="btn btn-small" href="#itrend_mobile_results">Se encontraron ' + json.length + ' actor(es) <i class="fas fa-chevron-down"></i></a>');
 
 			if(jQuery.browser.mobile === true) {
 
@@ -199,6 +201,7 @@ jQuery(document).ready(function($) {
 		} else {
 
 			resultsCount.empty().append('<i class="fas fa-chevron-right"></i> Mostrando 0 actores');
+			resultsCountMobile.empty().append('<i class="fas fa-chevron-right"></i> No se encontraron actores');
 			
 			if(jQuery.browser.mobile === true) {
 				mobileTable.empty().append('<div class="notfound-actors" role="alert">No se encontraron actores</div>');

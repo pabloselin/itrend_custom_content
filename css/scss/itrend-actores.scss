@@ -13,7 +13,7 @@ body#itrend-vis {
 	min-height: 100vh;
 
 	@media screen and (max-width: 768px) {
-		margin-bottom: 100px;
+		margin-bottom: 65px;
 	}
 	
 	@import 'custom-materialize.scss';
@@ -332,12 +332,15 @@ body#itrend-vis {
 		}
 
 		#itrend_search_mobile {
+			
+			background-color: #D7D7D7;
+
 			.input-field {
 				@media screen and (max-width: 768px) {
 					display: flex;
 					align-items: center;
 					padding: 24px 12px;
-					background-color: #fafafa;
+					
 
 					.prefix {
 						position: relative;
@@ -347,6 +350,13 @@ body#itrend-vis {
 					input {
 						margin:0 10px 0 12px;
 					}
+				}
+			}
+
+			#itrend_results_count_mobile {
+				a.btn {
+					width: 100%;
+					vertical-align: middle;
 				}
 			}
 		}
