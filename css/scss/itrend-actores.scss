@@ -330,6 +330,26 @@ body#itrend-vis {
 				margin: 6px 0;
 			}
 		}
+
+		#itrend_search_mobile {
+			.input-field {
+				@media screen and (max-width: 768px) {
+					display: flex;
+					align-items: center;
+					padding: 24px 12px;
+					background-color: #fafafa;
+
+					.prefix {
+						position: relative;
+						top: 0;
+					}
+
+					input {
+						margin:0 10px 0 12px;
+					}
+				}
+			}
+		}
 	}
 
 	.intro-presentation {

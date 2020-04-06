@@ -5926,6 +5926,17 @@ body#itrend-vis {
     @media screen and (max-width: 768px) {
       body#itrend-vis #itrend-filters #itrend_search {
         margin: 6px 0; } }
+  @media screen and (max-width: 768px) {
+    body#itrend-vis #itrend-filters #itrend_search_mobile .input-field {
+      display: flex;
+      align-items: center;
+      padding: 24px 12px;
+      background-color: #fafafa; }
+      body#itrend-vis #itrend-filters #itrend_search_mobile .input-field .prefix {
+        position: relative;
+        top: 0; }
+      body#itrend-vis #itrend-filters #itrend_search_mobile .input-field input {
+        margin: 0 10px 0 12px; } }
   body#itrend-vis .intro-presentation img {
     max-width: 300px;
     height: auto; }

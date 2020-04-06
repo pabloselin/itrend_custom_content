@@ -14,7 +14,7 @@
  * Domain Path:       	/lang
  */
 
-define( 'ITREND_PLUGIN_VERSION', '0.4.5.6' );
+define( 'ITREND_PLUGIN_VERSION', '0.4.5.7' );
 define( 'ITREND_PREFIX', '_itrend_');
 
 $pluginurl = plugin_dir_url(__FILE__);

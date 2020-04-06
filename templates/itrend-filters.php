@@ -25,6 +25,7 @@
 				<div class="input-field">
 					<i class="prefix fas fa-search"></i>
 					<input type="search" id="search-field_mobile" name="q" data-action="search" placeholder="Buscar por actor, palabra clave, campo...">
+					<button type="submit" class="btn waves-light">Buscar</button>
 				</div>
 			</form>
 
