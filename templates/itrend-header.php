@@ -10,8 +10,8 @@
 	<div class="topnav-header">
 		<nav class="container-fluid">
 			<div class="top-links">
-				<a href="https://itrend.cl">Instituto</a>
-				<a href="https://conectaresiliencia.cl">Conecta resiliencia</a>
+				<a href="http://itrend.cl">Instituto</a>
+				<a href="http://www.conectaresiliencia.cl">Conecta resiliencia</a>
 				<a href="#">Aprende resiliencia</a>		
 				<a href="#">Plataforma de datos</a>
 			</div>

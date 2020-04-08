@@ -197,10 +197,12 @@
 					<div class="link-archive">
 						<?php $options = get_option( 'itrend_options' );?>
 
-						<p class="itrend-email-fixes">Sugerencias y consultas a <a href="mailto:<?php echo $options['itrend_email'];?>"><?php echo $options['itrend_email'];?></a></p>
+						
 						<p>
 							<a href="<?php echo get_post_type_archive_link( 'actor' )?>buscador" class="btn btn-volver red darken-3">Ir al buscador de actores</a>
 						</p>
+
+						<p class="itrend-email-fixes">Sugerencias y consultas a <a href="mailto:<?php echo $options['itrend_email'];?>"><?php echo $options['itrend_email'];?></a></p>
 					</div>
 				
 			</article>
