@@ -5732,7 +5732,7 @@ body#itrend-vis {
     body#itrend-vis .container-fluid.maxfluid {
       max-width: 1600px; }
   body#itrend-vis.home-mapa {
-    background-image: url("../img/bg_mapa_60.jpg");
+    background-image: url("../img/bg_mapa_60_b.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom center; }
