@@ -497,6 +497,29 @@ function itrend_tareas_fields( array $meta_boxes) {
 
 add_filter('cmb2-taxonomy_meta_boxes', 'itrend_tareas_fields');
 
+function itrend_alcances_fields( array $meta_boxes) {
+	$prefix = '_itrend_';
+
+	$meta_boxes['alcance_territorialbox'] = array(
+		'id'           => $prefix . 'itrend_alcances_fields',
+		'title'        => __( 'Datos adicionales', 'itrend' ),
+		'object_types' => array( 'alcance_territorial' ),
+		'context'      => 'normal',
+		'priority'     => 'default',
+		'fields'	   => array(
+			array(
+				'name'	=> __('Nombre corto', 'itrend'),
+				'type'	=> 'text',
+				'id'	=> $prefix . 'alcance_territorial_nombre_corto'
+			)
+		)
+	);
+
+	return $meta_boxes;
+}
+
+add_filter('cmb2-taxonomy_meta_boxes', 'itrend_alcances_fields');
+
 /**
  * This snippet has been updated to reflect the official supporting of options pages by CMB2
  * in version 2.2.5.
