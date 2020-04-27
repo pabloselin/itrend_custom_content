@@ -104,6 +104,8 @@ function itrend_translate_attached_posts_fields( $translated_text, $text, $domai
 	return $translated_text;
 }
 
+add_filter( 'gettext', 'itrend_translate_attached_posts_fields', 20, 3 );
+
 function itrend_relevant_taxonomies() {
 	return array(
 		'sector',
@@ -122,7 +124,7 @@ function itrend_register_query_vars( $vars ) {
 add_filter( 'query_vars', 'itrend_register_query_vars' );
 
 
-add_filter( 'gettext', 'itrend_translate_attached_posts_fields', 20, 3 );
+
 
 function itrend_rewrites() {
 	add_rewrite_tag( '%visualizacion%', '([^&]+)' );
